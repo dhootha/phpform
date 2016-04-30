@@ -21,9 +21,9 @@ $mail->SMTPDebug = 2;
 //Ask for HTML-friendly debug output
 $mail->Debugoutput = 'html';
 //Set the hostname of the mail server
-$mail->Host = "smtp.asia.secureserver.net";
+$mail->Host = "smtpout.secureserver.net";
 //Set the SMTP port number - likely to be 25, 465 or 587
-$mail->Port = 80;
+$mail->Port = 465;
 //Whether to use SMTP authentication
 
 
