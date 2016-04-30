@@ -63,12 +63,12 @@ $mail->Username = "uday@palsglobalsolutions.com";
 //Password to use for SMTP authentication
 $mail->Password = "pals123";
 //Set who the message is to be sent from
-$mail->setFrom('uday@palsglobalsolutions.com', 'Events');
+$mail->setFrom('events@palsglobalsolutions.com', 'Events');
 //Set an alternative reply-to address
-$mail->addReplyTo('uday@palsglobalsolutions.com', 'Events');
+$mail->addReplyTo('events@palsglobalsolutions.com', 'Events');
 
 //Set who the message is to be sent to
-$mail->addAddress($_POST['pro_email'], $_POST['pro_fname']);
+$mail->addAddress($_POST['pro_email'], $_POST['pro_fname']." ".$_POST['pro_lname']);
 $mail->addBCC('uday@palsglobalsolutions.com', 'Events');
 //Set the subject line
 $mail->Subject = 'DevOps with Microsoft Cloud - Join us for the Round Table Event';
