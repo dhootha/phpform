@@ -1,0 +1,158 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>PHPWebProject1</Name>
+    <ProjectGuid>{684065f1-5e32-4f4c-be89-fb1fd6a671ca}</ProjectGuid>
+    <RootNamespace>PHPWebProject1</RootNamespace>
+    <OutputType>Library</OutputType>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="docs\Callback_function_notes.txt" />
+    <Compile Include="docs\DomainKeys_notes.txt" />
+    <Compile Include="docs\extending.html" />
+    <Compile Include="docs\faq.html" />
+    <Compile Include="docs\generatedocs.sh" />
+    <Compile Include="docs\Note_for_SMTP_debugging.txt" />
+    <Compile Include="docs\pop3_article.txt" />
+    <Compile Include="examples\images\phpmailer.png" />
+    <Compile Include="examples\images\phpmailer_mini.png" />
+    <Compile Include="examples\scripts\shAutoloader.js" />
+    <Compile Include="examples\scripts\shBrushPhp.js" />
+    <Compile Include="examples\scripts\shCore.js" />
+    <Compile Include="examples\scripts\shLegacy.js" />
+    <Compile Include="examples\scripts\XRegExp.js" />
+    <Compile Include="examples\styles\shCore.css" />
+    <Compile Include="examples\styles\shCoreDefault.css" />
+    <Compile Include="examples\styles\shCoreDjango.css" />
+    <Compile Include="examples\styles\shCoreEclipse.css" />
+    <Compile Include="examples\styles\shCoreEmacs.css" />
+    <Compile Include="examples\styles\shCoreFadeToGrey.css" />
+    <Compile Include="examples\styles\shCoreMDUltra.css" />
+    <Compile Include="examples\styles\shCoreMidnight.css" />
+    <Compile Include="examples\styles\shCoreRDark.css" />
+    <Compile Include="examples\styles\shThemeAppleScript.css" />
+    <Compile Include="examples\styles\shThemeDefault.css" />
+    <Compile Include="examples\styles\shThemeDjango.css" />
+    <Compile Include="examples\styles\shThemeEclipse.css" />
+    <Compile Include="examples\styles\shThemeEmacs.css" />
+    <Compile Include="examples\styles\shThemeFadeToGrey.css" />
+    <Compile Include="examples\styles\shThemeMDUltra.css" />
+    <Compile Include="examples\styles\shThemeMidnight.css" />
+    <Compile Include="examples\styles\shThemeRDark.css" />
+    <Compile Include="examples\styles\shThemeVisualStudio.css" />
+    <Compile Include="examples\styles\wrapping.png" />
+    <Compile Include="examples\code_generator.phps" />
+    <Compile Include="examples\contents.html" />
+    <Compile Include="examples\contentsutf8.html" />
+    <Compile Include="examples\exceptions.phps" />
+    <Compile Include="examples\gmail.phps" />
+    <Compile Include="examples\gmail_xoauth.phps" />
+    <Compile Include="examples\index.html" />
+    <Compile Include="examples\mail.phps" />
+    <Compile Include="examples\mailing_list.phps" />
+    <Compile Include="examples\pop_before_smtp.phps" />
+    <Compile Include="examples\sendmail.phps" />
+    <Compile Include="examples\send_file_upload.phps" />
+    <Compile Include="examples\send_multiple_file_upload.phps" />
+    <Compile Include="examples\signed-mail.phps" />
+    <Compile Include="examples\smtp.php" />
+    <Compile Include="examples\smtp.php.bak" />
+    <Compile Include="examples\smtp.phps" />
+    <Compile Include="examples\smtp_check.phps" />
+    <Compile Include="examples\smtp_no_auth.phps" />
+    <Compile Include="examples\ssl_options.phps" />
+    <Compile Include="extras\EasyPeasyICS.php" />
+    <Compile Include="extras\htmlfilter.php" />
+    <Compile Include="extras\ntlm_sasl_client.php" />
+    <Compile Include="extras\README.md" />
+    <Compile Include="language\phpmailer.lang-am.php" />
+    <Compile Include="language\phpmailer.lang-ar.php" />
+    <Compile Include="language\phpmailer.lang-az.php" />
+    <Compile Include="language\phpmailer.lang-be.php" />
+    <Compile Include="language\phpmailer.lang-bg.php" />
+    <Compile Include="language\phpmailer.lang-br.php" />
+    <Compile Include="language\phpmailer.lang-ca.php" />
+    <Compile Include="language\phpmailer.lang-ch.php" />
+    <Compile Include="language\phpmailer.lang-cz.php" />
+    <Compile Include="language\phpmailer.lang-de.php" />
+    <Compile Include="language\phpmailer.lang-dk.php" />
+    <Compile Include="language\phpmailer.lang-el.php" />
+    <Compile Include="language\phpmailer.lang-eo.php" />
+    <Compile Include="language\phpmailer.lang-es.php" />
+    <Compile Include="language\phpmailer.lang-et.php" />
+    <Compile Include="language\phpmailer.lang-fa.php" />
+    <Compile Include="language\phpmailer.lang-fi.php" />
+    <Compile Include="language\phpmailer.lang-fo.php" />
+    <Compile Include="language\phpmailer.lang-fr.php" />
+    <Compile Include="language\phpmailer.lang-gl.php" />
+    <Compile Include="language\phpmailer.lang-he.php" />
+    <Compile Include="language\phpmailer.lang-hr.php" />
+    <Compile Include="language\phpmailer.lang-hu.php" />
+    <Compile Include="language\phpmailer.lang-id.php" />
+    <Compile Include="language\phpmailer.lang-it.php" />
+    <Compile Include="language\phpmailer.lang-ja.php" />
+    <Compile Include="language\phpmailer.lang-ka.php" />
+    <Compile Include="language\phpmailer.lang-ko.php" />
+    <Compile Include="language\phpmailer.lang-lt.php" />
+    <Compile Include="language\phpmailer.lang-lv.php" />
+    <Compile Include="language\phpmailer.lang-ms.php" />
+    <Compile Include="language\phpmailer.lang-nl.php" />
+    <Compile Include="language\phpmailer.lang-no.php" />
+    <Compile Include="language\phpmailer.lang-pl.php" />
+    <Compile Include="language\phpmailer.lang-pt.php" />
+    <Compile Include="language\phpmailer.lang-ro.php" />
+    <Compile Include="language\phpmailer.lang-ru.php" />
+    <Compile Include="language\phpmailer.lang-se.php" />
+    <Compile Include="language\phpmailer.lang-si.php" />
+    <Compile Include="language\phpmailer.lang-sk.php" />
+    <Compile Include="language\phpmailer.lang-sl.php" />
+    <Compile Include="language\phpmailer.lang-sr.php" />
+    <Compile Include="language\phpmailer.lang-tr.php" />
+    <Compile Include="language\phpmailer.lang-uk.php" />
+    <Compile Include="language\phpmailer.lang-vi.php" />
+    <Compile Include="language\phpmailer.lang-zh.php" />
+    <Compile Include="language\phpmailer.lang-zh_cn.php" />
+    <Compile Include="test\bootstrap.php" />
+    <Compile Include="test\fakepopserver.sh" />
+    <Compile Include="test\fakesendmail.sh" />
+    <Compile Include="test\phpmailerLangTest.php" />
+    <Compile Include="test\phpmailerTest.php" />
+    <Compile Include="test\runfakepopserver.sh" />
+    <Compile Include="test\testbootstrap-dist.php" />
+    <Compile Include="test\test_callback.php" />
+    <Compile Include=".gitignore" />
+    <Compile Include=".scrutinizer.yml" />
+    <Compile Include=".travis.yml" />
+    <Compile Include="changelog.md" />
+    <Compile Include="class.phpmailer.php" />
+    <Compile Include="class.phpmaileroauth.php" />
+    <Compile Include="class.phpmaileroauthgoogle.php" />
+    <Compile Include="class.pop3.php" />
+    <Compile Include="class.smtp.php" />
+    <Compile Include="composer.json" />
+    <Compile Include="composer.lock" />
+    <Compile Include="get_oauth_token.php" />
+    <Compile Include="LICENSE" />
+    <Compile Include="PHPMailerAutoload.php" />
+    <Compile Include="README.md" />
+    <Compile Include="travis.phpunit.xml.dist" />
+    <Compile Include="VERSION" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="docs" />
+    <Folder Include="examples\images" />
+    <Folder Include="examples\scripts" />
+    <Folder Include="examples\styles" />
+    <Folder Include="examples" />
+    <Folder Include="extras" />
+    <Folder Include="language" />
+    <Folder Include="test" />
+  </ItemGroup>
+</Project>
