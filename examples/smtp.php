@@ -1,4 +1,32 @@
 <?php
+
+
+$servername = "ap-cdbr-azure-southeast-b.cloudapp.net";
+$username = "b9638ac1a1d625";
+$password = "2d8b8a3a";
+$dbname = "acsm_70271d13b405930";
+// Database=acsm_70271d13b405930;Data Source=ap-cdbr-azure-southeast-b.cloudapp.net;User Id=b9638ac1a1d625;Password=2d8b8a3a
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "INSERT INTO events (pro_fname, pro_lname, pro_email,pro_phone,pro_ans_field08,pro_organization,pro_ans_field10)
+VALUES ('".$_POST['pro_fname']."', '".$_POST['pro_lname']."', '".$_POST['pro_email']."','".$_POST['pro_phone']."','".$_POST['pro_ans_field08']."','".$_POST['pro_organization']."','".$_POST['pro_ans_field10']."')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+	die();
+}
+
+$conn->close();
+
+
 /**
  * This example shows making an SMTP connection with authentication.
  */
