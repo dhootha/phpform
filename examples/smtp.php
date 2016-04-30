@@ -25,7 +25,7 @@ $mail->Host = "smtpout.secureserver.net";
 //Set the SMTP port number - likely to be 25, 465 or 587
 $mail->Port = 465;
 //Whether to use SMTP authentication
-
+$mail->SMTPSecure  = 'ssl';
 
 $mail->SMTPAuth = true;
 //Username to use for SMTP authentication
