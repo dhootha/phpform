@@ -55,7 +55,7 @@ jQuery("#formProfileForm").on('submit',(function(e){
 		processData:false,
 		success: function(data){
 		jQuery("#mail-status").html(data);
-		jQuery('#loader-icon').hide();
+		jQuery('#loader-icon').html("Thank you for registering for the event. Please check your inbox/spam for the confirmation.");
 		},
 		error: function(){} 	        
 		
@@ -340,7 +340,7 @@ function validateContact() {
             &nbsp; </td>
                 </tr>
       </form>
-	  <div id="loader-icon" style="display:none;"><img src="Images/LoaderIcon.gif" /></div>
+	  <div id="loader-icon" style="display:none;">Please wait ... </div>
               <tr>
         <td align="center"></td>
       </tr>
