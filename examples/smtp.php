@@ -74,7 +74,60 @@ $mail->addBCC('uday@palsglobalsolutions.com', 'Events');
 $mail->Subject = 'DevOps with Microsoft Cloud - Join us for the Round Table Event';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
-$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
+//$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
+
+if(isset($_POST['pro_fname'])) {
+   $fname = $_POST['pro_fname'];
+} else {
+    $fname = "MR/MRS Participant";
+}
+
+$bodycontent = <<<EOD
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>DevOps with Microsoft Cloud - Join us for the Round Table Event</title>
+</head>
+<body>
+<div style="width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">
+  <div >
+
+Dear {$fname},
+  <p>
+   <br>
+Thank you for registering for our upcoming Round Table – Demystifying DevOps!
+ <br>
+ <br>
+We will confirm your participation and get back to you soon along with the program details. If you do not receive a confirmation mail, request you to check your SPAM and contact us at events@palsglobalsolutions.com.
+ <br>
+ <br>
+You can either call (+91-970-496-3439) or Email (events@palsglobalsolutions.com) in case of any queries / assistance regarding the same.
+ <br>
+ <br>
+Thank you and we look forward to see you!
+ </p>
+ <br>
+ <br>
+  </div>
+--
+Warm Regards , <br>
+PALS Event Team | PALS Global Solutions Pvt. Ltd. |<br>
+Address: 2nd Floor, Plot no : 122, Kavuri Hills<br>
+Phase -1, Jubilee Hills, Hyderabad - 500033, Telangana, INDIA<br>
+T:Landline: +91-40-40202507, +91-40-40201779<br>
+Website: http://www.palsglobalsolutions.com<br>
+<a href="http:/www.palsglobalsolutions.com/"><img src="http://demouday.azurewebsites.net/Images/image001.png" alt="PALS | Partnering to fuel your success."></a>
+
+</div>
+</body>
+</html>
+
+
+EOD;
+
+$mail->msgHTML($bodycontent);
+
 //Replace the plain text body with one created manually
 $mail->AltBody = 'This is a plain-text message body';
 //Attach an image file
@@ -86,3 +139,4 @@ if (!$mail->send()) {
 } else {
     echo "Message sent!";
 }
+
