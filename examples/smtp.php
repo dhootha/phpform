@@ -17,7 +17,7 @@ $mail->isSMTP();
 // 0 = off (for production use)
 // 1 = client messages
 // 2 = client and server messages
-$mail->SMTPDebug = 2;
+$mail->SMTPDebug = 0;
 //Ask for HTML-friendly debug output
 $mail->Debugoutput = 'html';
 //Set the hostname of the mail server
@@ -26,6 +26,7 @@ $mail->Host = "smtpout.secureserver.net";
 $mail->Port = 465;
 //Whether to use SMTP authentication
 $mail->SMTPSecure  = 'ssl';
+$mail->DKIM_domain = '127.0.0.1';
 
 $mail->SMTPAuth = true;
 //Username to use for SMTP authentication
