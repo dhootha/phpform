@@ -1,0 +1,3490 @@
+﻿<!DOCTYPE html>
+<html>
+		<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>DevOps with Microsoft Cloud - Join us for the Round Table Event</title>
+		<link rel="shortcut icon" href="//www.microsoft.com/favicon.ico?v2" />
+		<link rel="stylesheet" href="css/microsoft-template-style-v2.css"/>
+		<style>
+.form-section { display:none; }
+.ms-banner-section { background-image: url(Images/banner.jpg); height:354px; margin: -79px 0 0; }
+.banner-title-text { color:#000000; }
+.r123FormSubmit, .r123FormSubmit:hover { background-color: #438ab4; color:#ffffff }
+</style>
+		<!-- Meetings: META CACHE HTML Head -->
+		<meta http-equiv="expires" content="-1"/>
+		<meta http-equiv="pragma" content="no-cache"/>
+		<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate"/>
+		<!-- Meetings: End META CACHE HTML Head -->
+
+		<style>
+.rule_hide { display: none !important; }
+.rule_show { display: ''; }
+</style>
+		<link href="css/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" media="all"/>
+		<link type="text/css" href="css/colorbox.css" rel="stylesheet" media="screen" />
+		<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.metadata.min.js" type="text/javascript"></script>
+		<script src="js/jquery.tablesorter.js" type="text/javascript"></script>
+		<script src="js/jquery-ui-1.8.14.custom.min.js" type="text/javascript"></script>
+		<script src="js/jquery.cookie.pack.js" type="text/javascript"></script>
+		<script language="javascript" type="text/javascript">
+	   		jQuery.noConflict();
+		</script>
+		<script src="js/countrySelect.js" type="text/javascript"></script>
+		<script src="js/inviteAttendee.js" type="text/javascript"></script>
+		<script src="js/popup.js" type="text/javascript"></script>
+		<script src="js/eventFunctions.js" type="text/javascript"></script>
+		<script src="js/jquery.colorbox-min.js"></script>
+		</head>
+		<html>
+		<body>
+<div>
+          <div class="header-section">
+    <div class="section-wrapper">
+              <div class="ms-header-left-logo"> <a href="http://azure.microsoft.com/" target="_blank"><img src="Images/EN-BASICE-Banner-AzureLogoBlack.png"></a></div>
+              <div class="ms-header-right-logo"><a href="https://www.microsoft.com/" target="_blank"> <img src="Images/EN-BASICE-Logo-MSFTLogo.png"></a></div>
+            </div>
+  </div>
+          <div class="ms-banner-section">
+    <div class="section-wrapper paddingLRZero">
+              <div id="banner-title"><span class="banner-title-text"></span></div>
+              <div id="banner-image"></div>
+            </div>
+  </div>
+          <div class="content-wrapper" >
+    <div class="section-wrapper">
+              <div class="form-section" >
+              <!-- R123: End Custom Shell Header --> 
+              
+              <script>
+		var offset = new Date().getTimezoneOffset();
+	</script>
+              <div >
+              <table id="page-table" class="ms-formWraper" id="r123-startTable">
+              <tr>
+        <td align="center"><FONT class="text">
+          <div><script>jQuery("head").append("<meta name='ms.env' content='Live'/>");</script></div>
+          </FONT></td>
+      </tr>
+              <!-- Begin form --> 
+              <script type="text/javascript">
+			jQuery(document).ready(function() {
+
+				
+				$regFormSubmitButton = jQuery('.regFormSubmitButton');
+				$formProfileForm = jQuery('form[name="formProfileForm"]');
+
+				var buttonId = "";
+
+				jQuery('input[type=submit]').click( function(evt) {
+					buttonId = evt.target.id;
+				});
+
+				$formProfileForm.submit( function(evt) {
+					var submitId = buttonId;
+				
+					$btn = jQuery('#' + submitId);
+					$btn.prop('disabled',true);
+					$formProfileForm.append('<input type="hidden" name="' + $btn.attr('name') + '" value="' + $btn.attr('value') + '">');
+					return true;
+				});
+
+				
+
+				
+				jQuery(window).bind("pageshow", function() {
+				   $regFormSubmitButton.attr('disabled', false);
+				});
+
+			})
+
+		</script>
+              <form action="https://www.microsoftevents.com/profile/form/index.cfm" method="post" name="formProfileForm" id="formProfileForm" enctype="multipart/form-data">
+        
+        <!-- Start: Header Text -->
+        <tr class="section-header"><!-- section header row -->
+                  <td><font class="header"><span class="PersonalProfileHeader">Personal Profile!</span></font></td>
+                </tr>
+        <!-- End: Header Text -->
+        
+        <tr>
+                  <td><div id="uniqueMessage"></div>
+            <TABLE border="0" class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0">
+                      <TR>
+                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_fname"><font class="subheader">First name</font></label>
+                          <span class="error">*</span></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="2" valign="middle" align="left"><INPUT TYPE="Text" NAME="pro_fname" VALUE="" SIZE="25" MAXLENGTH="50" CLASS="r123formelement requiredField" ID="pro_fname"></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_lname"><font class="subheader">Last name</font></label>
+                          <span class="error">*</span></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="2" valign="middle" align="left"><INPUT TYPE="Text" NAME="pro_lname" VALUE="" SIZE="25" MAXLENGTH="50" CLASS="r123formelement requiredField" ID="pro_lname"></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_email"><font class="subheader">Email</font></label>
+                          <span class="error">*</span></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="2" valign="middle" align="left"><style>
+				.errorField { outline: 1px solid #cd0a0a !important; *border: 1px solid #cd0a0a !important;}
+				#uniqueMessage {padding:5px; margin:5px; line-height:15px;color:red;}
+				</style>
+                          <script type="text/javascript">
+					jQuery(document).ready(function() {
+		  				$profileEmail = jQuery('#pro_email');
+						$uniqueMessage = jQuery('#uniqueMessage')
+
+		  				$profileEmail.blur(
+		  				function(){
+							
+							if($profileEmail.val().length > 0) {
+								jQuery.ajax({
+									cache : false,
+									type  : "post",
+									url   : '/ajax/registration.cfc',
+									data: {	method	 		: 'checkUniqueRegistrationEmail',
+													emailAddress	: jQuery(this).val(),
+													eventId 		: '3662',
+													registrationId 	: '0'
+												  },
+									dataType : "json",
+									success  : function( data, textStatus, XMLHttpRequest ){
+												if (data.isUnique == false){
+													$uniqueMessage.html('A registration already exists with this email address.');
+													$profileEmail.addClass('errorField');
+												} else {
+													$uniqueMessage.text('');
+													$profileEmail.removeClass('errorField');
+												}
+									}
+								})
+							}
+						});
+
+	  				});
+				</script>
+                          <INPUT TYPE="text" NAME="pro_email" VALUE="" SIZE="25" MAXLENGTH="100" CLASS="r123formelement requiredField" ID="pro_email"></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_phone"><font class="subheader">Work Phone</font></label>
+                          <span class="error">*</span></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="2" valign="middle" align="left"><INPUT TYPE="Text" NAME="pro_phone" VALUE="" SIZE="25" MAXLENGTH="30" CLASS="r123formelement requiredField"  ID="pro_phone"></TD>
+              </TR>
+                      <tr >
+                <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="pro_ans_field08"><font class="subheader"><span class="CustomProfileJobRole_CandE">Job Title</span></font></label></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="3" ALIGN="left" VALIGN="top"><select name="pro_ans_field08" class="input r123formelement certain-type-ahead" size="1" id="pro_ans_field08" >
+                    <OPTION VALUE=""></OPTION>
+                    <option value="Analyst / Press" >Analyst / Press</option>
+                    <option value="Developer / Engineer" >Developer / Engineer</option>
+                    <option value="Executive" >Executive,</option>
+                    <option value="IT or Technical Manager" >IT or Technical Manager</option>
+                    <option value="Marketing / Sales" >Marketing / Sales</option>
+                    <option value="Researcher / Academic" >Researcher / Academic</option>
+                    <option value="Systems / Solution Architect" >Systems / Solution Architect</option>
+                    <option value="System Administrator" >System Administrator</option>
+                    <option value="Student" >Student</option>
+                    <option value="Other" >Other</option>
+                  </select></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_organization"><font class="subheader">Organization</font></label>
+                          <span class="error">*</span></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="2" valign="middle" align="left"><input type="text" name="pro_organization" value="" size="25" maxlength="100" class="r123formelement requiredField" id="pro_organization"></TD>
+              </TR>
+                      <tr >
+                <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="pro_ans_field10"><font class="subheader"><span class="CustomProfileRegistrantCountry">Country</span></font></label>
+                          <span class="error">*</span></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="3" ALIGN="left" VALIGN="top"><select name="pro_ans_field10" class="input r123formelement certain-type-ahead" size="1" id="pro_ans_field10" >
+                    <OPTION VALUE="">Unknown</OPTION>
+                    <option value="Afghanistan" >Afghanistan</option>
+                    <option value="Åland Islands" >Åland Islands</option>
+                    <option value="Albania" >Albania</option>
+                    <option value="Algeria" >Algeria</option>
+                    <option value="American Samoa" >American Samoa</option>
+                    <option value="Andorra" >Andorra</option>
+                    <option value="Angola" >Angola</option>
+                    <option value="Anguilla" >Anguilla</option>
+                    <option value="Antarctica" >Antarctica</option>
+                    <option value="Antigua and Barbuda" >Antigua and Barbuda</option>
+                    <option value="Argentina" >Argentina</option>
+                    <option value="Armenia" >Armenia</option>
+                    <option value="Aruba" >Aruba</option>
+                    <option value="Australia" >Australia</option>
+                    <option value="Austria" >Austria</option>
+                    <option value="Azerbaijan" >Azerbaijan</option>
+                    <option value="Bahamas" >Bahamas</option>
+                    <option value="Bahrain" >Bahrain</option>
+                    <option value="Bangladesh" >Bangladesh</option>
+                    <option value="Barbados" >Barbados</option>
+                    <option value="Belarus" >Belarus</option>
+                    <option value="Belgium" >Belgium</option>
+                    <option value="Belize" >Belize</option>
+                    <option value="Benin" >Benin</option>
+                    <option value="Bermuda" >Bermuda</option>
+                    <option value="Bhutan" >Bhutan</option>
+                    <option value="Bolivia" >Bolivia</option>
+                    <option value="Bonaire" >Bonaire</option>
+                    <option value="Bosnia and Herzegovina" >Bosnia and Herzegovina</option>
+                    <option value="Botswana" >Botswana</option>
+                    <option value="Bouvet Island" >Bouvet Island</option>
+                    <option value="Brazil" >Brazil</option>
+                    <option value="British Indian Ocean Territory" >British Indian Ocean Territory</option>
+                    <option value="British Virgin Islands" >British Virgin Islands</option>
+                    <option value="Brunei" >Brunei</option>
+                    <option value="Bulgaria" >Bulgaria</option>
+                    <option value="Burkina Faso" >Burkina Faso</option>
+                    <option value="Burundi" >Burundi</option>
+                    <option value="Cambodia" >Cambodia</option>
+                    <option value="Cameroon" >Cameroon</option>
+                    <option value="Canada" >Canada</option>
+                    <option value="Cape Verde" >Cape Verde</option>
+                    <option value="Cayman Islands" >Cayman Islands</option>
+                    <option value="Central African Republic" >Central African Republic</option>
+                    <option value="Chad" >Chad</option>
+                    <option value="Chile" >Chile</option>
+                    <option value="China" >China</option>
+                    <option value="Christmas Island" >Christmas Island</option>
+                    <option value="Cocos (Keeling) Islands" >Cocos (Keeling) Islands</option>
+                    <option value="Colombia" >Colombia</option>
+                    <option value="Comoros" >Comoros</option>
+                    <option value="Congo" >Congo</option>
+                    <option value="Congo (DRC)" >Congo (DRC)</option>
+                    <option value="Cook Islands" >Cook Islands</option>
+                    <option value="Costa Rica" >Costa Rica</option>
+                    <option value="Côte d'Ivoire" >Côte d'Ivoire</option>
+                    <option value="Croatia" >Croatia</option>
+                    <option value="Cuba" >Cuba</option>
+                    <option value="Curaçao" >Curaçao</option>
+                    <option value="Cyprus" >Cyprus</option>
+                    <option value="Czech Republic" >Czech Republic</option>
+                    <option value="Denmark" >Denmark</option>
+                    <option value="Djibouti" >Djibouti</option>
+                    <option value="Dominica" >Dominica</option>
+                    <option value="Dominican Republic" >Dominican Republic</option>
+                    <option value="Ecuador" >Ecuador</option>
+                    <option value="Egypt" >Egypt</option>
+                    <option value="El Salvador" >El Salvador</option>
+                    <option value="Equatorial Guinea" >Equatorial Guinea</option>
+                    <option value="Eritrea" >Eritrea</option>
+                    <option value="Estonia" >Estonia</option>
+                    <option value="Ethiopia" >Ethiopia</option>
+                    <option value="Falkland Islands" >Falkland Islands</option>
+                    <option value="Faroe Islands" >Faroe Islands</option>
+                    <option value="Fiji" >Fiji</option>
+                    <option value="Finland" >Finland</option>
+                    <option value="France" >France</option>
+                    <option value="French Guiana" >French Guiana</option>
+                    <option value="French Polynesia" >French Polynesia</option>
+                    <option value="French Southern and Antarctic Lands" >French Southern and Antarctic Lands</option>
+                    <option value="Gabon" >Gabon</option>
+                    <option value="Gambia" >Gambia</option>
+                    <option value="Georgia" >Georgia</option>
+                    <option value="Germany" >Germany</option>
+                    <option value="Ghana" >Ghana</option>
+                    <option value="Gibraltar" >Gibraltar</option>
+                    <option value="Greece" >Greece</option>
+                    <option value="Greenland" >Greenland</option>
+                    <option value="Grenada" >Grenada</option>
+                    <option value="Guadeloupe" >Guadeloupe</option>
+                    <option value="Guam" >Guam</option>
+                    <option value="Guatemala" >Guatemala</option>
+                    <option value="Guernsey" >Guernsey</option>
+                    <option value="Guinea" >Guinea</option>
+                    <option value="Guinea-Bissau" >Guinea-Bissau</option>
+                    <option value="Guyana" >Guyana</option>
+                    <option value="Haiti" >Haiti</option>
+                    <option value="Heard Island and McDonald Islands" >Heard Island and McDonald Islands</option>
+                    <option value="Honduras" >Honduras</option>
+                    <option value="Hong Kong SAR" >Hong Kong SAR</option>
+                    <option value="Hungary" >Hungary</option>
+                    <option value="Iceland" >Iceland</option>
+                    <option value="India" >India</option>
+                    <option value="Indonesia" >Indonesia</option>
+                    <option value="Iran" >Iran</option>
+                    <option value="Iraq" >Iraq</option>
+                    <option value="Ireland" >Ireland</option>
+                    <option value="Isle of Man" >Isle of Man</option>
+                    <option value="Israel" >Israel</option>
+                    <option value="Italy" >Italy</option>
+                    <option value="Jamaica" >Jamaica</option>
+                    <option value="Jan Mayen" >Jan Mayen</option>
+                    <option value="Japan" >Japan</option>
+                    <option value="Jersey" >Jersey</option>
+                    <option value="Jordan" >Jordan</option>
+                    <option value="Kazakhstan" >Kazakhstan</option>
+                    <option value="Kenya" >Kenya</option>
+                    <option value="Kiribati" >Kiribati</option>
+                    <option value="Korea" >Korea</option>
+                    <option value="Kuwait" >Kuwait</option>
+                    <option value="Kyrgyzstan" >Kyrgyzstan</option>
+                    <option value="Laos" >Laos</option>
+                    <option value="Latvia" >Latvia</option>
+                    <option value="Lebanon" >Lebanon</option>
+                    <option value="Lesotho" >Lesotho</option>
+                    <option value="Liberia" >Liberia</option>
+                    <option value="Libya" >Libya</option>
+                    <option value="Liechtenstein" >Liechtenstein</option>
+                    <option value="Lithuania" >Lithuania</option>
+                    <option value="Luxembourg" >Luxembourg</option>
+                    <option value="Macao SAR" >Macao SAR</option>
+                    <option value="Macedonia FYRO" >Macedonia, FYRO</option>
+                    <option value="Madagascar" >Madagascar</option>
+                    <option value="Malawi" >Malawi</option>
+                    <option value="Malaysia" >Malaysia</option>
+                    <option value="Maldives" >Maldives</option>
+                    <option value="Mali" >Mali</option>
+                    <option value="Malta" >Malta</option>
+                    <option value="Marshall Islands" >Marshall Islands</option>
+                    <option value="Martinique" >Martinique</option>
+                    <option value="Mauritania" >Mauritania</option>
+                    <option value="Mauritius" >Mauritius</option>
+                    <option value="Mayotte" >Mayotte</option>
+                    <option value="Mexico" >Mexico</option>
+                    <option value="Micronesia" >Micronesia</option>
+                    <option value="Moldova" >Moldova</option>
+                    <option value="Monaco" >Monaco</option>
+                    <option value="Mongolia" >Mongolia</option>
+                    <option value="Montenegro" >Montenegro</option>
+                    <option value="Montserrat" >Montserrat</option>
+                    <option value="Morocco" >Morocco</option>
+                    <option value="Mozambique" >Mozambique</option>
+                    <option value="Myanmar" >Myanmar</option>
+                    <option value="Namibia" >Namibia</option>
+                    <option value="Nauru" >Nauru</option>
+                    <option value="Nepal" >Nepal</option>
+                    <option value="Netherlands" >Netherlands</option>
+                    <option value="New Caledonia" >New Caledonia</option>
+                    <option value="New Zealand" >New Zealand</option>
+                    <option value="Nicaragua" >Nicaragua</option>
+                    <option value="Niger" >Niger</option>
+                    <option value="Nigeria" >Nigeria</option>
+                    <option value="Niue" >Niue</option>
+                    <option value="Norfolk Island" >Norfolk Island</option>
+                    <option value="North Korea" >North Korea</option>
+                    <option value="Northern Mariana Islands" >Northern Mariana Islands</option>
+                    <option value="Norway" >Norway</option>
+                    <option value="Oman" >Oman</option>
+                    <option value="Pakistan" >Pakistan</option>
+                    <option value="Palau" >Palau</option>
+                    <option value="Palestinian Authority" >Palestinian Authority</option>
+                    <option value="Panama" >Panama</option>
+                    <option value="Papua New Guinea" >Papua New Guinea</option>
+                    <option value="Paraguay" >Paraguay</option>
+                    <option value="Peru" >Peru</option>
+                    <option value="Philippines" >Philippines</option>
+                    <option value="Pitcairn Islands" >Pitcairn Islands</option>
+                    <option value="Poland" >Poland</option>
+                    <option value="Portugal" >Portugal</option>
+                    <option value="Puerto Rico" >Puerto Rico</option>
+                    <option value="Qatar" >Qatar</option>
+                    <option value="Réunion" >Réunion</option>
+                    <option value="Romania" >Romania</option>
+                    <option value="Russia" >Russia</option>
+                    <option value="Rwanda" >Rwanda</option>
+                    <option value="Saba" >Saba</option>
+                    <option value="Saint Barthélemy" >Saint Barthélemy</option>
+                    <option value="Saint Kitts and Nevis" >Saint Kitts and Nevis</option>
+                    <option value="Saint Lucia" >Saint Lucia</option>
+                    <option value="Saint Martin" >Saint Martin</option>
+                    <option value="Saint Pierre and Miquelon" >Saint Pierre and Miquelon</option>
+                    <option value="Saint Vincent and the Grenadines" >Saint Vincent and the Grenadines</option>
+                    <option value="Samoa" >Samoa</option>
+                    <option value="San Marino" >San Marino</option>
+                    <option value="São Tomé and Príncipe" >São Tomé and Príncipe</option>
+                    <option value="Saudi Arabia" >Saudi Arabia</option>
+                    <option value="Senegal" >Senegal</option>
+                    <option value="Serbia" >Serbia</option>
+                    <option value="Seychelles" >Seychelles</option>
+                    <option value="Sierra Leone" >Sierra Leone</option>
+                    <option value="Singapore" >Singapore</option>
+                    <option value="Sint Eustatius" >Sint Eustatius</option>
+                    <option value="Sint Maarten" >Sint Maarten</option>
+                    <option value="Slovakia" >Slovakia</option>
+                    <option value="Slovenia" >Slovenia</option>
+                    <option value="Solomon Islands" >Solomon Islands</option>
+                    <option value="Somalia" >Somalia</option>
+                    <option value="South Africa" >South Africa</option>
+                    <option value="South Georgia and the South Sandwich Islands" >South Georgia and the South Sandwich Islands</option>
+                    <option value="South Sudan" >South Sudan</option>
+                    <option value="Spain" >Spain</option>
+                    <option value="Sri Lanka" >Sri Lanka</option>
+                    <option value="St Helena Ascension Tristan da Cunha" >St Helena, Ascension, Tristan da Cunha</option>
+                    <option value="Sudan" >Sudan</option>
+                    <option value="Suriname" >Suriname</option>
+                    <option value="Svalbard" >Svalbard</option>
+                    <option value="Swaziland" >Swaziland</option>
+                    <option value="Sweden" >Sweden</option>
+                    <option value="Switzerland" >Switzerland</option>
+                    <option value="Syria" >Syria</option>
+                    <option value="Taiwan" >Taiwan</option>
+                    <option value="Tajikistan" >Tajikistan</option>
+                    <option value="Tanzania" >Tanzania</option>
+                    <option value="Thailand" >Thailand</option>
+                    <option value="Timor-Leste" >Timor-Leste</option>
+                    <option value="Togo" >Togo</option>
+                    <option value="Tokelau" >Tokelau</option>
+                    <option value="Tonga" >Tonga</option>
+                    <option value="Trinidad and Tobago" >Trinidad and Tobago</option>
+                    <option value="Tunisia" >Tunisia</option>
+                    <option value="Turkey" >Turkey</option>
+                    <option value="Turkmenistan" >Turkmenistan</option>
+                    <option value="Turks and Caicos Islands" >Turks and Caicos Islands</option>
+                    <option value="Tuvalu" >Tuvalu</option>
+                    <option value="U.S. Outlying Islands" >U.S. Outlying Islands</option>
+                    <option value="U.S. Virgin Islands" >U.S. Virgin Islands</option>
+                    <option value="Uganda" >Uganda</option>
+                    <option value="Ukraine" >Ukraine</option>
+                    <option value="United Arab Emirates" >United Arab Emirates</option>
+                    <option value="United Kingdom" >United Kingdom</option>
+                    <option value="United States" >United States</option>
+                    <option value="Uruguay" >Uruguay</option>
+                    <option value="Uzbekistan" >Uzbekistan</option>
+                    <option value="Vanuatu" >Vanuatu</option>
+                    <option value="Vatican City" >Vatican City</option>
+                    <option value="Venezuela" >Venezuela</option>
+                    <option value="Vietnam" >Vietnam</option>
+                    <option value="Wallis and Futuna" >Wallis and Futuna</option>
+                    <option value="Yemen" >Yemen</option>
+                    <option value="Zambia" >Zambia</option>
+                    <option value="Zimbabwe" >Zimbabwe</option>
+                  </select></TD>
+              </TR>
+                    </TABLE></td>
+                </tr>
+        <!-- End row in page table -->
+        <INPUT TYPE="Hidden" NAME="pro_prefix" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_mname" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_suffix" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_badge_name" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_position" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_addr_line1" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_addr_line2" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_addr_line3" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_addr_line4" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_addr_city" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_addr_state" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_addr_postal_code" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_addr_intl_state" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_addr_country" VALUE="United States">
+        <INPUT TYPE="Hidden" NAME="pro_url" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_phone2" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_phone_mobile" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_fax" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_ssn" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_dob" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_frn_gender_id" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_pin" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_password" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_asst_name" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_asst_email" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_asst_phone" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_asst_cc_email" VALUE="0">
+        <INPUT TYPE="Hidden" NAME="pro_show_online" VALUE="1">
+        <INPUT TYPE="Hidden" NAME="pro_external_frn_key" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_add_name" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_add_email" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_add_phone" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_add_cc_email" VALUE="0">
+        <INPUT TYPE="Hidden" NAME="pro_alt_addr_line1" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_alt_addr_line2" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_alt_addr_line3" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_alt_addr_line4" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_alt_addr_city" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_alt_addr_state" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_alt_addr_postal_code" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_alt_addr_intl_state" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_alt_addr_country" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_ship_addr_line1" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_ship_addr_line2" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_ship_addr_line3" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_ship_addr_line4" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_ship_addr_city" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_ship_addr_state" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_ship_addr_postal_code" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_ship_addr_intl_state" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_ship_addr_country" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_trv_travel_login_id" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_trv_passport_fname" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_trv_passport_lname" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_trv_passport_num" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_trv_frn_cou_id" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_trv_passport_exp" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_trv_frn_arln_id" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_trv_freq_fly_num" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_trv_frn_arln_seat_id" VALUE="">
+        <INPUT TYPE="Hidden" NAME="pro_avatar" VALUE="">
+        <INPUT TYPE="Hidden" NAME="profile_third_party_key" VALUE="">
+        <INPUT TYPE="Hidden" NAME="third_party_id" VALUE="0">
+        <INPUT TYPE="Hidden" NAME="sectionsToCheck" VALUE="20">
+        <input type="hidden" name="SectionsToCheck" value="111">
+        <tr>
+                  <td><TABLE class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0">
+                      <tr >
+                      <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field01"><font class="subheader"><span class="GovernmentEmployeeHeader">Are you a public sector employee?
+                        </div>
+                        </font></label></TD>
+                    </TR>
+                      <TR>
+                      <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TABLE CELLPADDING=1 CELLSPACING=0>
+                          <TR>
+                          <TD VALIGN="top"><INPUT TYPE="Checkbox" NAME="reg_ans_field01" VALUE="Yes"  ID="reg_ans_field01_Yes" class="r123formelement" /></TD>
+                          <TD VALIGN="top" COLSPAN=1><LABEL class="control-label control-label" FOR="reg_ans_field01_Yes"> <FONT class="text"><span class="GovernmentEmployeeYes">Yes, I am a Public Sector Employee<span></FONT> </LABEL></TD>
+                        </TR>
+                        </TABLE></TD>
+                    </TR>
+                    </TABLE></td>
+                </tr>
+        <!-- End row in page table -->
+        <INPUT TYPE="Hidden" NAME="sectionsToCheck" VALUE="40">
+        <script>
+					function showQuestion(rowJIndex,fieldName){
+						$thisRow = jQuery('#' + rowJIndex);
+						$thisRow.removeClass('rule_hide').addClass('rule_show').show();
+						// add parent dependency
+						$parentId = jQuery('[name="' + fieldName + '"]').closest("table.rule_show").attr('id');
+						if (!$parentId) { $parentId = 0; }
+						$thisRow.attr('parentId',$parentId);
+						jQuery("td > input, td > select", $thisRow).prop("disabled", false); // enabled
+						// track only if the quests are shown
+						trackQuestions();						
+						
+					}
+
+					function hideQuestion(rowJIndex){
+						$thisRow = jQuery('#' + rowJIndex);
+						$thisRow.removeClass('rule_show').addClass('rule_hide').hide();
+						
+						jQuery("td > input, td > select", $thisRow).prop("disabled", true).prop("selectedIndex", -1); // disabled
+						hideChildren(rowJIndex);
+						trackQuestions();
+					}
+
+					function trackQuestions(){
+						var IDs = [];
+						$inlineIds = jQuery('#inlineIds');
+							jQuery('.rule_show').each(function(){ 
+								IDs.push(this.id);
+							});
+						$inlineIds.val(IDs.join(','));
+					}
+
+
+					function hideChildren(parentId){
+						jQuery("[parentId='" + parentId + "']").each(function(){
+							hideChildren(jQuery(this).attr('id'));
+							jQuery(" td > input, td > select", jQuery(this)).prop("checked", false).prop("selectedIndex", -1); // unselect previous value 
+							jQuery(this).removeClass('rule_show').addClass('rule_hide').hide();
+						});
+					}
+					 
+					function isNumber(n) {
+					  	return !isNaN(parseFloat(n)) && isFinite(n);
+					}
+
+					function replaceAll(find, replace, str) {
+						return str.replace(new RegExp(find, 'g'), replace);
+					}
+
+				</script>
+        <tr>
+                  <td><table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74250" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field02">
+            <font class="subheader">
+            <div Class="GovernmentEmployeeNotice">This is a Microsoft event where hospitality (e.g., meals, refreshments) and promotional items may be provided to attendees at no charge. The aggregate value of such hospitality and any promotional items is not expected to exceed $75. Prior to attending this event, guests who are employed by or otherwise represent public sector entities are asked to review their organization's policies to ensure that their attendance at this event is permitted. By attending this event, guests are representing to Microsoft that they are permitted by their organization's policies to attend this event.</div>
+            </font>
+            </label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TABLE CELLPADDING=1 CELLSPACING=0>
+                    </TABLE></TD>
+                </TR>
+        </table>
+        <script>
+				 jQuery().ready(function(){
+					
+					var arAnswer113383 = ["::Yes::"];
+					
+					
+					for (var i in arAnswer113383) {
+						if (!isNumber(arAnswer113383[i]) && arAnswer113383[i].toString().indexOf('::') != -1) {
+					   		arAnswer113383[i] = replaceAll("::", "",arAnswer113383[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('reg_ans_field01' === 'one' && jQuery.inArray('1',arAnswer113383)){
+						showQuestion('74250','reg_ans_field01');
+					} 
+					
+					jQuery('[name="reg_ans_field01"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="reg_ans_field01"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113383) != -1 ) {
+								  		queToShow.push('74250');
+								  		showQuestion('74250','reg_ans_field01');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74250');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113383) !== -1 ){ 
+								showQuestion('74250','reg_ans_field01');
+							} else {
+								hideQuestion('74250');
+							};
+						}
+					);						
+
+					jQuery('[name="reg_ans_field01"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74250').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+				 });	
+			</script>
+        <input type="hidden" name="inlineIds" id="inlineIds" value="" />
+        </td>
+        <tr>
+                  <input type="hidden" name="SectionsToCheck" value="112">
+                
+        <tr>
+                  <td><table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74290" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field42"><font class="subheader"><span class="HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TABLE CELLPADDING=1 CELLSPACING=0>
+                      <TR>
+                      <TD VALIGN="top"><INPUT TYPE="Checkbox" NAME="reg_ans_field42" VALUE="CheckBoxPrivacyAzure"  ID="reg_ans_field42_CheckBoxPrivacyAzure" class="r123formelement" /></TD>
+                      <TD VALIGN="top" COLSPAN=1><LABEL class="control-label control-label" FOR="reg_ans_field42_CheckBoxPrivacyAzure"> <FONT class="text"><span class="CheckBoxPrivacyAzure">Microsoft may use your contact information to provide updates and special offers about Microsoft Azure and other Microsoft products and services. You can unsubscribe at any time. To learn more you can read the <a href='http://go.microsoft.com/fwlink/?LinkId=521839' target='_blank'>Privacy Statement</a>.</span></FONT> </LABEL></TD>
+                    </TR>
+                    </TABLE></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="11179" style="display:none;">
+        <tr >
+                  <td valign="top" align="left"  class="clsFormfieldTd"><label for="pro_ans_field02"><font class="subheader"><span class="AzurePrivacy HiddenContent"></span></font></label></td>
+                  <td>&nbsp;</td>
+                  <TD width="70%" ALIGN="left"><input type="text" name="pro_ans_field02" size="20" maxlength="50" value="" class="r123formelement" id="pro_ans_field02" /></TD>
+                </TR>
+        </table>
+        <script>
+				 jQuery().ready(function(){
+					
+					var arAnswer113385 = [1];
+					
+					
+					for (var i in arAnswer113385) {
+						if (!isNumber(arAnswer113385[i]) && arAnswer113385[i].toString().indexOf('::') != -1) {
+					   		arAnswer113385[i] = replaceAll("::", "",arAnswer113385[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113385)){
+						showQuestion('74290','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113385) != -1 ) {
+								  		queToShow.push('74290');
+								  		showQuestion('74290','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74290');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113385) !== -1 ){ 
+								showQuestion('74290','one');
+							} else {
+								hideQuestion('74290');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74290').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113385 = [1];
+					
+					
+					for (var i in arAnswer113385) {
+						if (!isNumber(arAnswer113385[i]) && arAnswer113385[i].toString().indexOf('::') != -1) {
+					   		arAnswer113385[i] = replaceAll("::", "",arAnswer113385[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113385)){
+						showQuestion('11179','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113385) != -1 ) {
+								  		queToShow.push('11179');
+								  		showQuestion('11179','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('11179');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113385) !== -1 ){ 
+								showQuestion('11179','one');
+							} else {
+								hideQuestion('11179');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#11179').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+				 });	
+			</script>
+        </td>
+        <tr>
+                  <input type="hidden" name="SectionsToCheck" value="114">
+                
+        <tr>
+                  <td><table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74252" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field04"><font class="subheader"><span class="ConfirmationEmailSubject HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field04" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field04">Microsoft Event Registration Confirmation</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74253" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field05"><font class="subheader"><span class="ConfirmationEmailBody HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field05" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field05">This confirms your registration for the following event:</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74254" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field06"><font class="subheader"><span class="ConfirmationEmailSignOff HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field06" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field06">Thank you for your interest in Microsoft Events.  We look forward to seeing you at the event!</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74255" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field07"><font class="subheader"><span class="CancellationEmailSubject HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field07" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field07">Microsoft Event Registration Cancellation Confirmation</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74256" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field08"><font class="subheader"><span class="CancellationEmailBody HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field08" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field08">This confirms your registration has been cancelled for the following event:</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74257" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field09"><font class="subheader"><span class="CancellationEmailSignOff HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field09" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field09">Thank you for your interest in Microsoft Events.  We look forward to seeing you at an event in the future!</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74258" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field10"><font class="subheader"><span class="ReminderEmailSubject HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field10" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field10">Microsoft Event Reminder</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74259" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field11"><font class="subheader"><span class="ReminderEmailBody HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field11" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field11">Thank you for your interest in Microsoft events. We would like to remind you that you are registered for the following event:</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74260" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field12"><font class="subheader"><span class="ReminderEmailSignOff HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field12" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field12">We look forward to seeing you at the event!</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74261" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field13"><font class="subheader"><span class="PrivacyStatementFooterEmail HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field13" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field13">Microsoft respects your privacy. Review our online Privacy Statement</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74262" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field14"><font class="subheader"><span class="LocalMicrosoftOffice HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field14" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field14">One Microsoft Way, Redmond, WA 98052-6399</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74263" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field15"><font class="subheader"><span class="AddToCalendarBody HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field15" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field15"></TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74264" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field16"><font class="subheader"><span class="CancelRegistrationEmailLink HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field16" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field16">Click here to cancel your registration.</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74265" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field17"><font class="subheader"><span class="RelocatedorRescheduledEmailSubject HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field17" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field17">Microsoft Event Change Notice to Registered Customers</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74266" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field18"><font class="subheader"><span class="RelocatedorRescheduledEmailBody HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field18" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field18">The Microsoft event for which you are registered has changed location and/or schedule.  Please see the new event details below:</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74267" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field19"><font class="subheader"><span class="RelocatedorRescheduledEmailSignOff HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field19" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field19">We apologize for any inconvenience to you and your schedule.  We will be sure to notify you if this event is re-scheduled for a later date.  
+
+Thank you for your interest in Microsoft Events.</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74268" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field20"><font class="subheader"><span class="ThankYouEmailSubject HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field20" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field20">Thank You For Attending A Microsoft Event</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74269" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field21"><font class="subheader"><span class="ThankYouEmailBody HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field21" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field21">Thank you for attending the Microsoft event:</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74270" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field22"><font class="subheader"><span class="ThankYouEmailSignOff HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field22" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field22">We hope you found this event both valuable and informative.  We look forward to seeing you again in the future!</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74271" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field23"><font class="subheader"><span class="NoShowEmailSubject HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field23" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field23">We're Sorry We Missed You</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74272" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field24"><font class="subheader"><span class="NoShowEmailBody HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field24" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field24">Our records indicate that you were registered for the following event but did not attend:</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74273" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field25"><font class="subheader"><span class="NoShowEmailSignOff HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field25" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field25">We're sorry we missed you, and we look forward to seeing you at a future event.  Thank you for your interest in Microsoft events!</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74274" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field26"><font class="subheader"><span class="WaitlistHoldRegistrationEmailSubject HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field26" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field26">Microsoft Event Registration Pending</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74275" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field27"><font class="subheader"><span class="WaitlistHoldRegistrationEmailBody HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field27" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field27">Thank you for your interest in attending an upcoming Microsoft event. Due to the popularity of this event registration cannot be automatically confirmed. You will be notified by email if there is capacity for you to attend.</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74276" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field28"><font class="subheader"><span class="WaitlistHoldRegistrationEmailSignOff HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field28" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field28">Thank you again for your interest in Microsoft events.</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74277" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field29"><font class="subheader"><span class="WaitlistHoldDeclinedEmailSubject HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field29" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field29">Microsoft Event Registration Status Update</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74278" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field30"><font class="subheader"><span class="WaitlistHoldDeclinedEmailBody HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field30" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field30">Thank you for your interest in attending a Microsoft event. Unfortunately, due to the popularity of this event we are unable to accommodate your request to attend.</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74279" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field31"><font class="subheader"><span class="WaitlistHoldDeclinedEmailSignOff HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field31" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field31">We apologize for any inconvenience this may have caused and look forward to seeing you at future events.</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74285" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field37"><font class="subheader"><span class="EventCancellationEmailSubject HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field37" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field37">Microsoft Event Cancellation Notice to Registered Customers</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74286" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field38"><font class="subheader"><span class="EventCancellationEmailBody HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field38" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field38">Our records indicate that you are registered for an upcoming Microsoft event.  Unfortunately, this event has been cancelled.</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74287" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field39"><font class="subheader"><span class="SurveyEmailLink HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field39" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field39">Please take a moment to fill out our event survey.</TEXTAREA></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74288" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field40"><font class="subheader"><span class="EventCancellationEmailSignOff HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field40" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field40">We apologize for any inconvenience.  We will be sure to notify you if this event is re-scheduled for a later date.  Thank you for your interest in Microsoft events.</TEXTAREA></TD>
+                </TR>
+        </table>
+        <script>
+				 jQuery().ready(function(){
+					
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74252','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74252');
+								  		showQuestion('74252','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74252');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74252','one');
+							} else {
+								hideQuestion('74252');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74252').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74253','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74253');
+								  		showQuestion('74253','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74253');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74253','one');
+							} else {
+								hideQuestion('74253');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74253').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74254','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74254');
+								  		showQuestion('74254','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74254');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74254','one');
+							} else {
+								hideQuestion('74254');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74254').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74255','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74255');
+								  		showQuestion('74255','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74255');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74255','one');
+							} else {
+								hideQuestion('74255');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74255').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74256','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74256');
+								  		showQuestion('74256','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74256');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74256','one');
+							} else {
+								hideQuestion('74256');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74256').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74257','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74257');
+								  		showQuestion('74257','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74257');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74257','one');
+							} else {
+								hideQuestion('74257');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74257').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74258','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74258');
+								  		showQuestion('74258','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74258');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74258','one');
+							} else {
+								hideQuestion('74258');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74258').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74259','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74259');
+								  		showQuestion('74259','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74259');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74259','one');
+							} else {
+								hideQuestion('74259');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74259').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74260','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74260');
+								  		showQuestion('74260','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74260');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74260','one');
+							} else {
+								hideQuestion('74260');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74260').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74261','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74261');
+								  		showQuestion('74261','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74261');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74261','one');
+							} else {
+								hideQuestion('74261');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74261').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74262','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74262');
+								  		showQuestion('74262','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74262');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74262','one');
+							} else {
+								hideQuestion('74262');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74262').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74263','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74263');
+								  		showQuestion('74263','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74263');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74263','one');
+							} else {
+								hideQuestion('74263');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74263').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74264','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74264');
+								  		showQuestion('74264','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74264');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74264','one');
+							} else {
+								hideQuestion('74264');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74264').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74265','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74265');
+								  		showQuestion('74265','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74265');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74265','one');
+							} else {
+								hideQuestion('74265');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74265').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74266','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74266');
+								  		showQuestion('74266','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74266');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74266','one');
+							} else {
+								hideQuestion('74266');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74266').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74267','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74267');
+								  		showQuestion('74267','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74267');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74267','one');
+							} else {
+								hideQuestion('74267');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74267').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74268','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74268');
+								  		showQuestion('74268','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74268');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74268','one');
+							} else {
+								hideQuestion('74268');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74268').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74269','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74269');
+								  		showQuestion('74269','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74269');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74269','one');
+							} else {
+								hideQuestion('74269');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74269').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74270','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74270');
+								  		showQuestion('74270','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74270');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74270','one');
+							} else {
+								hideQuestion('74270');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74270').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74271','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74271');
+								  		showQuestion('74271','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74271');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74271','one');
+							} else {
+								hideQuestion('74271');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74271').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74272','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74272');
+								  		showQuestion('74272','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74272');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74272','one');
+							} else {
+								hideQuestion('74272');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74272').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74273','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74273');
+								  		showQuestion('74273','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74273');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74273','one');
+							} else {
+								hideQuestion('74273');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74273').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74274','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74274');
+								  		showQuestion('74274','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74274');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74274','one');
+							} else {
+								hideQuestion('74274');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74274').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74275','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74275');
+								  		showQuestion('74275','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74275');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74275','one');
+							} else {
+								hideQuestion('74275');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74275').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74276','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74276');
+								  		showQuestion('74276','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74276');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74276','one');
+							} else {
+								hideQuestion('74276');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74276').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74277','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74277');
+								  		showQuestion('74277','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74277');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74277','one');
+							} else {
+								hideQuestion('74277');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74277').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74278','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74278');
+								  		showQuestion('74278','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74278');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74278','one');
+							} else {
+								hideQuestion('74278');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74278').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74279','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74279');
+								  		showQuestion('74279','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74279');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74279','one');
+							} else {
+								hideQuestion('74279');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74279').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74285','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74285');
+								  		showQuestion('74285','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74285');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74285','one');
+							} else {
+								hideQuestion('74285');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74285').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74286','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74286');
+								  		showQuestion('74286','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74286');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74286','one');
+							} else {
+								hideQuestion('74286');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74286').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74287','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74287');
+								  		showQuestion('74287','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74287');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74287','one');
+							} else {
+								hideQuestion('74287');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74287').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+					var arAnswer113392 = [1];
+					
+					
+					for (var i in arAnswer113392) {
+						if (!isNumber(arAnswer113392[i]) && arAnswer113392[i].toString().indexOf('::') != -1) {
+					   		arAnswer113392[i] = replaceAll("::", "",arAnswer113392[i]);
+					   	}				   	
+					}
+
+					// if always apply then show the answer
+					if ('one' === 'one' && jQuery.inArray('1',arAnswer113392)){
+						showQuestion('74288','one');
+					} 
+					
+					jQuery('[name="one"]').change(
+						function(){
+							var $value = jQuery(this).val();
+							var $type = jQuery(this).prop("type");
+							if ($type == 'select-multiple' && $value) {
+								var $value = $value.toString();
+							}
+							var hasLength = ($value != null) ? $value.length : 0;
+							var $value = (isNumber($value)) ? parseInt($value) : $value;
+
+							 if ( ($type == 'checkbox' || $type == 'radio')) {
+							    
+							    var queToHide = []; // track questions to hide
+							    var queToShow = []; // track questions to show
+
+								jQuery('[name="one"]').each( function(index) {
+								  var thisValue = jQuery(this).val();
+
+								  
+								  if ( isNumber(thisValue) ) { thisValue = parseInt(thisValue); }
+								  if ( jQuery(this).is(':checked') && jQuery.inArray(thisValue,arAnswer113392) != -1 ) {
+								  		queToShow.push('74288');
+								  		showQuestion('74288','one');	
+								  		return false;						  		
+									  } else {
+									  	queToHide.push('74288');
+									  }						 	
+								});
+								// if we have questions to hide and they are not in the show stack then hide them
+								if (queToHide.length){
+									jQuery.each( queToHide, function( index, question ){
+										if (jQuery.inArray(question,queToShow) != 0) {
+											hideQuestion(question);	
+									    }
+									});
+								}
+
+						 	} else if ( hasLength && jQuery.inArray($value,arAnswer113392) !== -1 ){ 
+								showQuestion('74288','one');
+							} else {
+								hideQuestion('74288');
+							};
+						}
+					);						
+
+					jQuery('[name="one"]').change();
+					
+					try {
+						cellWidth = jQuery('.clsFormfieldTd:visible').last().width();
+						jQuery('#74288').find('td:first').css('width',cellWidth);
+					} catch (e) { }
+
+
+					
+				
+				 });	
+			</script>
+        </td>
+        <tr>
+                  <input type="hidden" name="SectionsToCheck" value="121">
+                
+        <tr>
+                  <td><table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0">
+                      <tr>
+                      <td valign="top"><font class="text">
+                        <div><script>jQuery("head").append("<meta name='ms.pagetype' content='Registration'/><meta name='ms.sitesec' content='LandingPage'/><meta name='ms.eventcollectionid' content=''/><meta name='ms.sitename' content='DevOps with Microsoft Cloud'/><meta name='ms.ea_targetcampaign' content='IN_06-05-16_403951'/><meta name='ms.cid' content='AP-Azure-IPVNT-FY16-05May-06-DevOps-with-Microsoft-Cloud'/>");
+</script></div>
+                        </font></td>
+                    </tr>
+                    </table></td>
+                </tr>
+        <!-- End row in page table -->
+        
+        <input type="hidden" name="sectionstocheck" value="101" />
+        <input type="hidden" name="custom1_fieldstovalidate" value=""  />
+        <tr>
+                  <td align="center"><input type="submit" name="submitForm" value="Register Now" class="RegoFormSubmitButton r123FormSubmit" id="submitForm" class="r123FormSubmit regFormSubmitButton"/>
+            &nbsp; </td>
+                </tr>
+        <tr>
+                  <td><input type="hidden" name="PKregID" 		value="0"/>
+            <input type="hidden" name="PKprimary_regID"	value="0"/>
+            <input type="hidden" name="PKformID"		value="0x1829526cf8"/>
+            <input type="hidden" name="EmailHistId"     value="0"/>
+            <input type="hidden" name="submitForm"		value="yes"/>
+            <input type="hidden" name="bitIsFirstPage" value="0"/>
+            <input type="hidden" name="isFirstAuthorizedRequest" value="0"/>
+            <input type="hidden" name="throttleID" value="0608D488-0B99-E67B-4BCD94EC9F7E9C22"/>
+            <input type="hidden" name="insertKey" value="0608FD8FB2CA524AB5918D40B5B064D7"/>
+            <input type="hidden" name="r123_url__?PKformID" value="0x1829526cf8"/>
+            <input type="hidden" name="r123_url__referer" value="https://email19.asia.secureserver.net/webmail.php?beta"/></td>
+                </tr>
+      </form>
+              <tr>
+        <td align="center"></td>
+      </tr>
+              <tr>
+        <td align="center"><font class="text"> 
+          <script src="https://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.3&s=1"></script> 
+          <script src="js/event_bingmap.js"></script> 
+          <script src="jslocalizationScript.js"></script> 
+          <script type="text/javascript">  
+ 
+jQuery(document).ready(function(){
+  var eventBingMap = null;
+if (jQuery("#eventBingMapDiv").length > 0)
+{      
+  setTimeout(function(){ 
+    LoadMap()  
+    if (eventBingMap != null){
+      eventBingMap.Clear();     
+    }                
+      StartGeocoding("Nehru Place, American Plaza, New Delhi, Delhi 110019, India New Delhi   India");
+ },300);   
+     }
+});
+    </script> 
+          <script type="text/javascript" src="js/Bootstrap.js"></script>
+          </div>
+          </font></td>
+      </tr>
+              </table>
+            </div>
+    <script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script> 
+    <script type="text/javascript">
+			try { _gaq.push(['_setAccount', 'UA-467490-6']);  _gaq.push(['_trackPageview', location.pathname + location.search + location.hash]); } catch(err) {}
+		</script> 
+  </div>
+          <div class="content-section">
+    <div class="header">DevOps with Microsoft Cloud</div>
+    <p>6th May 2016 5:00 PM - 9:00 PM</p>
+    <p>Eros International Hotel Royal Ball Room <br/>
+              Nehru Place, American Plaza, New Delhi, Delhi 110019, India</p>
+    <div>
+              <p>DevOps with Microsoft Cloud. Join us to be more agile, Improve quality, save time and money and accelerate your application delivery life cycle. </p>
+              <table cellpadding="4" cellspacing="0" class="day-agenda bg-color-row" style="width:100%;">
+        <tbody>
+                  <tr>
+            <td colspan="2" style="text-align:center; background-color:#4d1262; color:#ffffff; border:none;"><strong style="color:#ffffff;">Agenda</strong></td>
+          </tr>
+                  <tr>
+            <td style="background-color:#4d1262; text-align:center; color:#ffffff"><strong style="color:#ffffff;">Time</strong></td>
+            <td style="background-color:#4d1262; text-align:center; color:#ffffff"><strong style="color:#ffffff;">Session</strong></td>
+          </tr>
+                  <tr>
+            <td width="125">5:30 - 6:00</td>
+            <td>Welcome and Registration Keynote</td>
+          </tr>
+                  <tr>
+            <td>6:00 - 6:15</td>
+            <td>Keynote</td>
+          </tr>
+                  <tr>
+            <td>6:15 – 7:15 </td>
+            <td>Implementing DevOps End-to- End with Visual Studio 2015</td>
+          </tr>
+                  <tr>
+            <td>7:15 – 8:15</td>
+            <td><em>Cross Platform Development with Visual Studio 2015 using Xamarin</em></td>
+          </tr>
+                  <tr>
+            <td>8:15 onwards</td>
+            <td>Cocktail and Dinner </td>
+          </tr>
+                </tbody>
+      </table>
+            </div>
+    <br/>
+    <br/>
+    <br/>
+    <div></div>
+  </div>
+        </div>
+</div>
+<div class="ms-footer">
+          <div class="section-wrapper">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+        <tr>
+                  <td align="left"><p class="footnote CertainHostingFooter">Developed by PALS Global Solutions.com</p></td>
+                  <!-- <td align="right" class="footer-text"><img src="https://azureinfo.microsoft.com/rs/microsoftdemandcenter/images/MS_Logo_white_100.png" height="15px"><br>
+            © 2016 Microsoft</td>--> 
+                </tr>
+      </tbody>
+            </table>
+  </div>
+        </div>
+</div>
+<script src="js/ExpandCollapseAgenda.js"></script> 
+<script src="js/FormFields-Placeholder-Script-Localized.js"></script> 
+<script src="js/C-and-E-Privacy-EmailandPhone-JS-AllProducts-V2-Localized_1.js"></script> 
+<script>
+//call the XML file
+var eventCode = 'IN_06-05-16_403951';
+ jQuery(document).ready(function(){    
+
+//call localization
+getXMLFileforTranslation( 'English-default') ;
+
+//call privacy localization
+translationPrivacyAndCookie('English-Default');
+
+});
+</script> 
+<script src="js/FormFields-Placeholder-Script-Localized.js"></script>
+</body>
+</html>
+</body>
+</html>
