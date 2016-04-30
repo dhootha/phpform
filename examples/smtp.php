@@ -59,16 +59,19 @@ $mail->DKIM_domain = '127.0.0.1';
 $mail->SMTPAuth = true;
 //Username to use for SMTP authentication
 $mail->Username = "uday@palsglobalsolutions.com";
+
 //Password to use for SMTP authentication
 $mail->Password = "pals123";
 //Set who the message is to be sent from
-$mail->setFrom('uday@palsglobalsolutions.com', 'First Last');
+$mail->setFrom('uday@palsglobalsolutions.com', 'Events');
 //Set an alternative reply-to address
-$mail->addReplyTo('uday@palsglobalsolutions.com', 'First Last');
+$mail->addReplyTo('uday@palsglobalsolutions.com', 'Events');
+
 //Set who the message is to be sent to
-$mail->addAddress('uday@palsglobalsolutions.com', 'John Doe');
+$mail->addAddress($_POST['pro_email'], $_POST['pro_fname']);
+$mail->addBCC('uday@palsglobalsolutions.com', 'Events');
 //Set the subject line
-$mail->Subject = 'PHPMailer SMTP test';
+$mail->Subject = 'DevOps with Microsoft Cloud - Join us for the Round Table Event';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 $mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));

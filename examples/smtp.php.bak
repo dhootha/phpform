@@ -4,7 +4,8 @@
 $servername = "ap-cdbr-azure-southeast-b.cloudapp.net";
 $username = "b9638ac1a1d625";
 $password = "2d8b8a3a";
-$dbname = "events";
+$dbname = "acsm_70271d13b405930";
+// Database=acsm_70271d13b405930;Data Source=ap-cdbr-azure-southeast-b.cloudapp.net;User Id=b9638ac1a1d625;Password=2d8b8a3a
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -58,14 +59,17 @@ $mail->DKIM_domain = '127.0.0.1';
 $mail->SMTPAuth = true;
 //Username to use for SMTP authentication
 $mail->Username = "uday@palsglobalsolutions.com";
+
 //Password to use for SMTP authentication
 $mail->Password = "pals123";
 //Set who the message is to be sent from
-$mail->setFrom('uday@palsglobalsolutions.com', 'First Last');
+$mail->setFrom('uday@palsglobalsolutions.com', 'Events');
 //Set an alternative reply-to address
-$mail->addReplyTo('uday@palsglobalsolutions.com', 'First Last');
+$mail->addReplyTo('uday@palsglobalsolutions.com', 'Events');
+
 //Set who the message is to be sent to
-$mail->addAddress('uday@palsglobalsolutions.com', 'John Doe');
+$mail->addAddress($_POST['pro_email'], $_POST['pro_fname']);
+$mail->addBCC('uday@palsglobalsolutions.com', 'Events');
 //Set the subject line
 $mail->Subject = 'PHPMailer SMTP test';
 //Read an HTML message body from an external file, convert referenced images to embedded,
