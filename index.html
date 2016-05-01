@@ -71,6 +71,15 @@ jQuery("#formProfileForm").on('submit',(function(e){
 			jQuery("#pro_ans_field08").val('');
 			jQuery("#pro_organization").val('');
 			jQuery("#pro_ans_field10").val('');
+
+				jQuery("#pro_fname").css('background-color','');
+				jQuery("#pro_lname").css('background-color','');
+			jQuery("#pro_email").css('background-color','');
+			jQuery("#pro_phone").css('background-color','');
+			jQuery("#pro_ans_field08").css('background-color','');
+			jQuery("#pro_organization").css('background-color','');
+			jQuery("#pro_ans_field10").css('background-color','');
+
 		},
 		error: function(){
 				 jQuery('#submitForm').prop("disabled",false);
