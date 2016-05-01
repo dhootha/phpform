@@ -43,6 +43,7 @@ jQuery(document).ready(function (e){
 jQuery("#formProfileForm").on('submit',(function(e){
 	e.preventDefault();
 	jQuery('#loader-icon').show();
+
 	var valid;	
 	valid = validateContact();
 	if(valid) {
@@ -53,15 +54,28 @@ jQuery("#formProfileForm").on('submit',(function(e){
 		contentType: false,
 		cache: false,
 		processData:false,
+		beforeSend:     
+            function() {    
+				jQuery('#loader-icon').html("Please wait while your event is getting registered.");
+            },
 		success: function(data){
-		jQuery("#mail-status").html(data);
-		jQuery('#loader-icon').html("Thank you for registering for the event. Please check your inbox/spam for the confirmation.");
-		 jQuery('#submitForm').prop("disabled",true);
+			jQuery("#mail-status").html(data);
+			jQuery('#loader-icon').html("Thank you for registering for the event. Please check your inbox/spam for the confirmation.");
+			jQuery('#formProfileForm').hide();
+			 jQuery('#submitForm').prop("disabled",true);
+			 
+				jQuery("#pro_fname").val('');
+				jQuery("#pro_lname").val('');
+			jQuery("#pro_email").val('');
+			jQuery("#pro_phone").val('');
+			jQuery("#pro_ans_field08").val('');
+			jQuery("#pro_organization").val('');
+			jQuery("#pro_ans_field10").val('');
 		},
 		error: function(){
 				 jQuery('#submitForm').prop("disabled",false);
 
-		} 	        
+		}
 		
 		});
 	}
@@ -75,8 +89,7 @@ function validateContact() {
 	var valid = true;	
 	jQuery(".demoInputBox").css('background-color','');
 	jQuery(".info").html('');
-	
-	
+		
 	if(!jQuery("#pro_fname").val()) {
 		jQuery("#userName-info").html("(required)");
 		jQuery("#pro_fname").css('background-color','#FFFFDF');
@@ -340,11 +353,16 @@ function validateContact() {
         <input type="hidden" name="sectionstocheck" value="101" />
         <input type="hidden" name="custom1_fieldstovalidate" value=""  />
         <tr>
+                  <td align="center">	  <div id="loader-icon" style="display:none;">Please fill all the fields. </div>
+
+            &nbsp; </td>
+                </tr>
+				
+		<tr>
                   <td align="center"><input type="submit" name="submitForm" value="Register Now" class="RegoFormSubmitButton r123FormSubmit" id="submitForm" class="r123FormSubmit regFormSubmitButton"/>
             &nbsp; </td>
                 </tr>
       </form>
-	  <div id="loader-icon" style="display:none;">Please wait ... </div>
               <tr>
         <td align="center"></td>
       </tr>
