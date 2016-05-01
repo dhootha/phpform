@@ -56,8 +56,12 @@ jQuery("#formProfileForm").on('submit',(function(e){
 		success: function(data){
 		jQuery("#mail-status").html(data);
 		jQuery('#loader-icon').html("Thank you for registering for the event. Please check your inbox/spam for the confirmation.");
+		 jQuery('#submitForm').prop("disabled",true);
 		},
-		error: function(){} 	        
+		error: function(){
+				 jQuery('#submitForm').prop("disabled",false);
+
+		} 	        
 		
 		});
 	}
@@ -176,7 +180,7 @@ function validateContact() {
 					var submitId = buttonId;
 				
 					$btn = jQuery('#' + submitId);
-					$btn.prop('disabled',true);
+					//$btn.prop('disabled',true);
 					$formProfileForm.append('<input type="hidden" name="' + $btn.attr('name') + '" value="' + $btn.attr('value') + '">');
 					return true;
 				});
