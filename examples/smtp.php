@@ -29,7 +29,7 @@ if ($conn->query($sql) === TRUE) {
 	die();
 }
 
-$conn->close();
+//$conn->close();
 
 
 /**
@@ -141,6 +141,20 @@ $mail->AltBody = 'This is a plain-text message body';
 //send the message, check for errors
 if (!$mail->send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
+	
+
+		$updatesql = "update events set user_status=1 where id=".$conn->insert_id;
+
+		if ($conn->query($updatesql) === TRUE) {
+			echo "New record created successfullyMessage sent!";
+		//	die();
+		} else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+			die();
+		}
+
+		$conn->close();
+
 } else {
     echo "Message sent!";
 }
