@@ -113,13 +113,13 @@ $bodycontent = <<<EOD
 Dear {$fname},
   <p>
    <br>
-Thank you for registering to Demystifying DevOps Round Table on {$eventDate}
+Thank you for registering to Demystifying DevOps Round Table on {$eventDate}.
  <br>
  <br>
-We will get back to you in 48Hrs to confirm your registration. If you do not receive a confirmation mail, please email to events@palsglobalsolutions.com.
+We will get back to you in 48Hrs to confirm your registration. If you do not receive a confirmation mail, please email us at events@palsglobalsolutions.com.
  <br>
  <br>
-You can also call +91-9704963439 of any queries / assistance regarding the same. 
+You can also call +91-9704963439 for any queries / assistance regarding the same. 
  <br>
  <br>
 Thank you and we look forward to see you!
