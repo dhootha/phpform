@@ -74,7 +74,7 @@ $mail->addReplyTo('events@palsglobalsolutions.com', 'Events');
 
 //Set who the message is to be sent to
 $mail->addAddress($_POST['pro_email'], $_POST['pro_fname']." ".$_POST['pro_lname']);
-$mail->addBCC('uday@palsglobalsolutions.com', 'Events');
+$mail->addBCC('uday@palsglobalsolutions.com', 'Microsoft DevOps Events');
 //Set the subject line
 $mail->Subject = 'DevOps with Microsoft Cloud - Join us for the Round Table Event';
 //Read an HTML message body from an external file, convert referenced images to embedded,
@@ -86,6 +86,18 @@ if(isset($_POST['pro_fname'])) {
 } else {
     $fname = "MR/MRS Participant";
 }
+if(isset($_POST['pro_ans_field10'])){
+	if($_POST['pro_ans_field10'] == 1){
+		$eventDate = "12th May 2016";
+	} else if($_POST['pro_ans_field10'] == 2){
+		$eventDate = "25th May 2016";
+	} else if($_POST['pro_ans_field10'] == 3){
+		$eventDate = "08th June 2016";
+	}
+} else {
+		$eventDate = "12th June 2016";
+}
+
 
 $bodycontent = <<<EOD
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -101,13 +113,13 @@ $bodycontent = <<<EOD
 Dear {$fname},
   <p>
    <br>
-Thank you for registering for our upcoming Round Table – Demystifying DevOps!
+Thank you for registering to Demystifying DevOps Round Table on {$eventDate}
  <br>
  <br>
-We will confirm your participation and get back to you soon along with the program details. If you do not receive a confirmation mail, request you to check your SPAM and contact us at events@palsglobalsolutions.com.
+We will get back to you in 48Hrs to confirm your registration. If you do not receive a confirmation mail, please email to events@palsglobalsolutions.com.
  <br>
  <br>
-You can either call (+91-970-496-3439) or Email (events@palsglobalsolutions.com) in case of any queries / assistance regarding the same.
+You can also call +91-9704963439 of any queries / assistance regarding the same. 
  <br>
  <br>
 Thank you and we look forward to see you!
@@ -115,13 +127,12 @@ Thank you and we look forward to see you!
  <br>
  <br>
   </div>
---
 Warm Regards , <br>
 PALS Event Team | PALS Global Solutions Pvt. Ltd. |<br>
 Address: 2nd Floor, Plot no : 122, Kavuri Hills<br>
 Phase -1, Jubilee Hills, Hyderabad - 500033, Telangana, INDIA<br>
-T:Landline: +91-40-40202507, +91-40-40201779<br>
-Website: http://www.palsglobalsolutions.com<br>
++91-40-40202507, +91-40-40201779<br>
+http://www.palsglobalsolutions.com<br>
 <a href="http:/www.palsglobalsolutions.com/"><img src="http://demouday.azurewebsites.net/Images/image001.png" alt="PALS | Partnering to fuel your success."></a>
 
 </div>
