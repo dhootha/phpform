@@ -115,7 +115,7 @@ Thank you and we look forward to see you!
  <br>
  <br>
   </div>
---
+--<br>
 Warm Regards , <br>
 PALS Event Team | PALS Global Solutions Pvt. Ltd. |<br>
 Address: 2nd Floor, Plot no : 122, Kavuri Hills<br>

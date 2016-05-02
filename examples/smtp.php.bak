@@ -143,17 +143,17 @@ if (!$mail->send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
 	
 
-$updatesql = "update events set user_status=1 where id=".$conn->insert_id;
+		$updatesql = "update events set user_status=1 where id=".$conn->insert_id;
 
-if ($conn->query($updatesql) === TRUE) {
-    echo "New record created successfullyMessage sent!";
-//	die();
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-	die();
-}
+		if ($conn->query($updatesql) === TRUE) {
+			echo "New record created successfullyMessage sent!";
+		//	die();
+		} else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+			die();
+		}
 
-$conn->close();
+		$conn->close();
 
 } else {
     echo "Message sent!";
