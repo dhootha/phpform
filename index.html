@@ -56,7 +56,7 @@ jQuery("#formProfileForm").on('submit',(function(e){
 		processData:false,
 		beforeSend:     
             function() {    
-				jQuery('#loader-icon').html("Please wait while your event is getting registered.");
+				jQuery('#loader-icon').html("Please wait! ...");
             },
 		success: function(data){
 			jQuery("#mail-status").html(data);
