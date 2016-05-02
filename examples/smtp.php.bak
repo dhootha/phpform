@@ -70,7 +70,7 @@ $mail->Password = "P@ls2016";
 //Set who the message is to be sent from
 $mail->setFrom('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
 //Set an alternative reply-to address
-$mail->addReplyTo('events@palsglobalsolutions.com', 'Events');
+$mail->addReplyTo('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
 
 //Set who the message is to be sent to
 $mail->addAddress($_POST['pro_email'], $_POST['pro_fname']." ".$_POST['pro_lname']);

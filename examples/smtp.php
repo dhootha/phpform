@@ -108,7 +108,7 @@ $bodycontent = <<<EOD
   <title>DevOps with Microsoft Cloud - Join us for the Round Table Event</title>
 </head>
 <body>
-<div style="width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">
+<div style="width: 640px; font-family: Arial, Helvetica, sans-serif;">
   <div >
 
 Dear {$fname},
