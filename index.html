@@ -60,7 +60,7 @@ jQuery("#formProfileForm").on('submit',(function(e){
             },
 		success: function(data){
 			jQuery("#mail-status").html(data);
-			jQuery('#loader-icon').html("Thank you for registering. Please check your inbox for acknowledgement.");
+			jQuery('#loader-icon').html("Thank you for registering and acknowledgement has been sent to your email.");
 			jQuery('#formProfileForm').hide();
 			 jQuery('#submitForm').prop("disabled",true);
 			 
