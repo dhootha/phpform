@@ -76,7 +76,7 @@ $mail->addReplyTo('events@palsglobalsolutions.com', 'Events');
 $mail->addAddress($_POST['pro_email'], $_POST['pro_fname']." ".$_POST['pro_lname']);
 $mail->addBCC('uday@palsglobalsolutions.com', 'Microsoft DevOps Events');
 //Set the subject line
-$mail->Subject = 'DevOps with Microsoft Cloud - Join us for the Round Table Event';
+$mail->Subject = 'Demystifying DevOps - Join us for the Round Table Event';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 //$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
@@ -124,7 +124,6 @@ You can also call +91-9704963439 of any queries / assistance regarding the same.
  <br>
 Thank you and we look forward to see you!
  </p>
- <br>
  <br>
   </div>
 Warm Regards , <br>

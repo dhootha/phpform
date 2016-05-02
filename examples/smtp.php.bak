@@ -68,7 +68,7 @@ $mail->Username = "uday@palsglobalsolutions.com";
 //Password to use for SMTP authentication
 $mail->Password = "pals123";
 //Set who the message is to be sent from
-$mail->setFrom('events@palsglobalsolutions.com', 'Events');
+$mail->setFrom('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
 //Set an alternative reply-to address
 $mail->addReplyTo('events@palsglobalsolutions.com', 'Events');
 
