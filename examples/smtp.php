@@ -63,17 +63,18 @@ $mail->DKIM_domain = '127.0.0.1';
 
 $mail->SMTPAuth = true;
 //Username to use for SMTP authentication
-$mail->Username = "uday@palsglobalsolutions.com";
+$mail->Username = "events@palsglobalsolutions.com";
 
 //Password to use for SMTP authentication
-$mail->Password = "pals123";
+$mail->Password = "P@ls2016";
 //Set who the message is to be sent from
 $mail->setFrom('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
 //Set an alternative reply-to address
-$mail->addReplyTo('events@palsglobalsolutions.com', 'Events');
+$mail->addReplyTo('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
 
 //Set who the message is to be sent to
 $mail->addAddress($_POST['pro_email'], $_POST['pro_fname']." ".$_POST['pro_lname']);
+$mail->addBCC('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
 $mail->addBCC('uday@palsglobalsolutions.com', 'Microsoft DevOps Events');
 //Set the subject line
 $mail->Subject = 'Demystifying DevOps - Join us for the Round Table Event';
