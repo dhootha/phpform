@@ -1,5 +1,6 @@
 <?php
 
+//print_r($_REQUEST);
 
 $servername = "ap-cdbr-azure-southeast-b.cloudapp.net";
 $username = "b9638ac1a1d625";
@@ -18,7 +19,7 @@ $sql = "INSERT INTO events (pro_fname, pro_lname, pro_email,pro_phone,pro_ans_fi
 VALUES ('".mysql_real_escape_string($_POST['pro_fname'])."', '".mysql_real_escape_string($_POST['pro_lname'])."', '".mysql_real_escape_string($_POST['pro_email'])."','".mysql_real_escape_string($_POST['pro_phone'])."','".mysql_real_escape_string($_POST['pro_ans_field08'])."','".mysql_real_escape_string($_POST['pro_organization'])."','".mysql_real_escape_string($_POST['pro_ans_field10'])."')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    echo "New record created successfullyMessage sent!";
 //	die();
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
