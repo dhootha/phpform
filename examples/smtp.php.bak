@@ -76,6 +76,7 @@ $mail->addReplyTo('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
 $mail->addAddress($_POST['pro_email'], $_POST['pro_fname']." ".$_POST['pro_lname']);
 $mail->addBCC('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
 $mail->addBCC('uday@palsglobalsolutions.com', 'Microsoft DevOps Events');
+$mail->addBCC('sriya@palsglobalsolutions.com', 'Microsoft DevOps Events');
 //Set the subject line
 $mail->Subject = 'Demystifying DevOps - Join us for the Round Table Event';
 //Read an HTML message body from an external file, convert referenced images to embedded,

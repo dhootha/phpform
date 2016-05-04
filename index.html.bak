@@ -1,0 +1,478 @@
+﻿<!DOCTYPE html>
+<html>
+		<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>DevOps with Microsoft Cloud - Join us for the Round Table Event</title>
+		<link rel="shortcut icon" href="//www.microsoft.com/favicon.ico?v2" />
+		<link rel="stylesheet" href="css/microsoft-template-style-v2.css"/>
+		<style>
+.form-section { display:none; }
+.ms-banner-section { background-image: url(Images/banner.jpg); height:354px; margin: -79px 0 0; }
+.banner-title-text { color:#000000; }
+.r123FormSubmit, .r123FormSubmit:hover { background-color: #438ab4; color:#ffffff }
+</style>
+		<!-- Meetings: META CACHE HTML Head -->
+		<meta http-equiv="expires" content="-1"/>
+		<meta http-equiv="pragma" content="no-cache"/>
+		<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate"/>
+		<!-- Meetings: End META CACHE HTML Head -->
+
+		<style>
+.rule_hide { display: none !important; }
+.rule_show { display: ''; }
+</style>
+		<link href="css/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" media="all"/>
+		<link type="text/css" href="css/colorbox.css" rel="stylesheet" media="screen" />
+		<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.metadata.min.js" type="text/javascript"></script>
+		<script src="js/jquery.tablesorter.js" type="text/javascript"></script>
+		<script src="js/jquery-ui-1.8.14.custom.min.js" type="text/javascript"></script>
+		<script src="js/jquery.cookie.pack.js" type="text/javascript"></script>
+		<script language="javascript" type="text/javascript">
+	   		jQuery.noConflict();
+		</script>
+		<script src="js/countrySelect.js" type="text/javascript"></script>
+		<script src="js/inviteAttendee.js" type="text/javascript"></script>
+		<script src="js/popup.js" type="text/javascript"></script>
+		<script src="js/eventFunctions.js" type="text/javascript"></script>
+		<script src="js/jquery.colorbox-min.js"></script>
+
+		<script type="text/javascript">
+jQuery(document).ready(function (e){
+jQuery("#formProfileForm").on('submit',(function(e){
+	e.preventDefault();
+	jQuery('#loader-icon').show();
+
+	var valid;	
+	valid = validateContact();
+	if(valid) {
+		jQuery.ajax({
+		url: "examples/smtp.php",
+		type: "POST",
+		data:  new FormData(this),
+		contentType: false,
+		cache: false,
+		processData:false,
+		beforeSend:     
+            function() {    
+				jQuery('#loader-icon').html("Please wait ...");
+            },
+		success: function(data){
+			jQuery("#mail-status").html(data);
+			jQuery('#loader-icon').html("Thank you for registering and acknowledgement has been sent to your email.");
+			jQuery('#formProfileForm').hide();
+			 jQuery('#submitForm').prop("disabled",true);
+			 
+				jQuery("#pro_fname").val('');
+				jQuery("#pro_lname").val('');
+			jQuery("#pro_email").val('');
+			jQuery("#pro_phone").val('');
+			jQuery("#pro_ans_field08").val('');
+			jQuery("#pro_organization").val('');
+			jQuery("#pro_ans_field10").val('');
+
+				jQuery("#pro_fname").css('background-color','');
+				jQuery("#pro_lname").css('background-color','');
+			jQuery("#pro_email").css('background-color','');
+			jQuery("#pro_phone").css('background-color','');
+			jQuery("#pro_ans_field08").css('background-color','');
+			jQuery("#pro_organization").css('background-color','');
+			jQuery("#pro_ans_field10").css('background-color','');
+
+		},
+		error: function(){
+				 jQuery('#submitForm').prop("disabled",false);
+
+		}
+		
+		});
+	}
+}));
+
+function validateContacts() {
+	var valid = true;	
+	return valid;
+}
+function validateContact() {
+	var valid = true;	
+	jQuery(".demoInputBox").css('background-color','');
+	jQuery(".info").html('');
+		
+	if(!jQuery("#pro_fname").val()) {
+		jQuery("#userName-info").html("(required)");
+		jQuery("#pro_fname").css('background-color','#FFFFDF');
+		valid = false;
+	} else {
+		jQuery("#pro_fname").css('background-color','#FFFFFF');
+	}
+	if(!jQuery("#pro_lname").val()) {
+		jQuery("#userName-info").html("(required)");
+		jQuery("#pro_lname").css('background-color','#FFFFDF');
+		valid = false;
+	}
+
+	if(!jQuery("#pro_email").val()) {
+		jQuery("#userEmail-info").html("(required)");
+		jQuery("#pro_email").css('background-color','#FFFFDF');
+		valid = false;
+	}
+/*	if(!jQuery("#pro_email").val().match(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/)) {
+		jQuery("#userEmail-info").html("(invalid)");
+		jQuery("#pro_email").css('background-color','#FFFFDF');
+		valid = false;
+	}
+*/
+
+	if(!jQuery("#pro_phone").val()) {
+		jQuery("#subject-info").html("(required)");
+		jQuery("#pro_phone").css('background-color','#FFFFDF');
+		valid = false;
+	}
+	if(!jQuery("#pro_ans_field08").val()) {
+		jQuery("#subject-info").html("(required)");
+		jQuery("#pro_ans_field08").css('background-color','#FFFFDF');
+		valid = false;
+	}
+	if(!jQuery("#pro_organization").val()) {
+		jQuery("#subject-info").html("(required)");
+		jQuery("#pro_organization").css('background-color','#FFFFDF');
+		valid = false;
+	}
+	if(!jQuery("#pro_ans_field10").val()) {
+		jQuery("#subject-info").html("(required)");
+		jQuery("#pro_ans_field10").css('background-color','#FFFFDF');
+		valid = false;
+	}
+	
+	
+	return valid;
+}
+
+});
+</script>
+
+
+		</head>
+		<html>
+		<body>
+<div>
+          <div class="header-section">
+    <div class="section-wrapper">
+              <div class="ms-header-left-logo"> <a href="http://www.microsoft.com/" target="_blank"><img src="Images/EN-BASICE-Banner-AzureLogoBlack.png"></a></div>
+              <div class="ms-header-right-logo"><a href="http://www.palsglobalsolutions.com/" target="_blank"> <img src="Images/EN-BASICE-Logo-MSFTLogo.png"></a></div>
+            </div>
+  </div>
+          <div class="ms-banner-section">
+    <div class="section-wrapper paddingLRZero">
+              <div id="banner-title"><span class="banner-title-text"></span></div>
+              <div id="banner-image"></div>
+            </div>
+  </div>
+          <div class="content-wrapper" >
+    <div class="section-wrapper">
+              <div class="form-section" >
+              <!-- R123: End Custom Shell Header --> 
+              
+              <script>
+		var offset = new Date().getTimezoneOffset();
+	</script>
+              <div >
+              <table id="page-table" class="ms-formWraper" id="r123-startTable">
+              <tr>
+        <td align="center"><FONT class="text">
+          <div><script>jQuery("head").append("<meta name='ms.env' content='Live'/>");</script></div>
+          </FONT></td>
+      </tr>
+              <!-- Begin form --> 
+              <script type="text/javascript">
+			jQuery(document).ready(function() {
+
+				
+				$regFormSubmitButton = jQuery('.regFormSubmitButton');
+				$formProfileForm = jQuery('form[name="formProfileForm"]');
+
+				var buttonId = "";
+
+				jQuery('input[type=submit]').click( function(evt) {
+					buttonId = evt.target.id;
+				});
+
+				$formProfileForm.submit( function(evt) {
+					var submitId = buttonId;
+				
+					$btn = jQuery('#' + submitId);
+					//$btn.prop('disabled',true);
+					$formProfileForm.append('<input type="hidden" name="' + $btn.attr('name') + '" value="' + $btn.attr('value') + '">');
+					return true;
+				});
+
+				
+
+				
+				jQuery(window).bind("pageshow", function() {
+				   $regFormSubmitButton.attr('disabled', false);
+				});
+
+			})
+
+		</script>
+              <form action="http://events.palsglobalsolutions.com" method="post" name="formProfileForm" id="formProfileForm" enctype="multipart/form-data">
+        
+        <!-- Start: Header Text -->
+        <tr class="section-header"><!-- section header row -->
+                  <td><font class="header"><span class="PersonalProfileHeader">Personal Profile!</span></font></td>
+                </tr>
+        <!-- End: Header Text -->
+        
+        <tr>
+                  <td><div id="uniqueMessage"></div>
+            <TABLE border="0" class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0">
+                      <TR>
+                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_fname"><font class="subheader">First name</font></label>
+                          <span class="error">*</span></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="2" valign="middle" align="left"><INPUT TYPE="Text" NAME="pro_fname" VALUE="" SIZE="25" MAXLENGTH="50" CLASS="r123formelement requiredField" ID="pro_fname"></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_lname"><font class="subheader">Last name</font></label>
+                          <span class="error">*</span></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="2" valign="middle" align="left"><INPUT TYPE="Text" NAME="pro_lname" VALUE="" SIZE="25" MAXLENGTH="50" CLASS="r123formelement requiredField" ID="pro_lname"></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_email"><font class="subheader">Email</font></label>
+                          <span class="error">*</span></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="2" valign="middle" align="left"><style>
+				.errorField { outline: 1px solid #cd0a0a !important; *border: 1px solid #cd0a0a !important;}
+				#uniqueMessage {padding:5px; margin:5px; line-height:15px;color:red;}
+				</style>
+                    
+                          <INPUT TYPE="text" NAME="pro_email" VALUE="" SIZE="25" MAXLENGTH="100" CLASS="r123formelement requiredField" ID="pro_email"></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_phone"><font class="subheader">Work Phone</font></label>
+                          <span class="error">*</span></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="2" valign="middle" align="left"><INPUT TYPE="Text" NAME="pro_phone" VALUE="" SIZE="25" MAXLENGTH="30" CLASS="r123formelement requiredField"  ID="pro_phone"></TD>
+              </TR>
+                      <tr >
+                <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="pro_ans_field08"><font class="subheader"><span class="CustomProfileJobRole_CandE">Job Title</span></font></label></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="3" ALIGN="left" VALIGN="top"><select name="pro_ans_field08" class="input r123formelement certain-type-ahead" size="1" id="pro_ans_field08" >
+                    <OPTION VALUE=""></OPTION>
+					<option value="CEO">CEO</option>
+					<option value="Founder">Founder</option>
+					<option value="Co-founder">Co-founder </option>
+					<option value="Delivery Head">Delivery Head</option>
+					<option value="IT Head">IT Head</option>
+					<option value="VP">VP </option>
+					<option value="Director">Director </option>
+					<option value="CTO">CTO</option>
+					<option value="IT Manager">IT Manager </option>
+					<option value="Business Head">Business Head</option>
+					<option value="Project Manager">Project Manager</option>
+					<option value="Senior Manager">Senior Manager </option>
+					<option value="Lead Solution Architect">Lead Solution Architect</option>
+					<option value="Production Head">Production Head</option>
+					<option value="Country Head">Country Head </option>
+					<option value="Business Owner">Business Owner </option>
+					<option value="Other">Other</option>
+                  </select></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_organization"><font class="subheader">Organization</font></label>
+                          <span class="error">*</span></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="2" valign="middle" align="left"><input type="text" name="pro_organization" value="" size="25" maxlength="100" class="r123formelement requiredField" id="pro_organization"></TD>
+              </TR>
+                      <tr >
+                <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="pro_ans_field10"><font class="subheader"><span class="CustomProfileRegistrantCountry">Select a Date</span></font></label>
+                          <span class="error">*</span></TD>
+              </TR>
+                      <TR>
+                <TD COLSPAN="3" ALIGN="left" VALIGN="top">
+					<select name="pro_ans_field10" id="pro_ans_field10" class="input r123formelement certain-type-ahead" size="1" >
+                    <OPTION VALUE=""></OPTION>
+                    <option value="1" >12th May 2016</option>
+                    <option value="2" >25th May 2016</option>
+                    <option value="3" >08th June 2016</option>
+                  </select>
+				</TD>
+              </TR>
+                    </TABLE></td>
+                </tr>
+     
+      
+        <tr>
+                  <td><table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74250" style="display:none;">
+        
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TABLE CELLPADDING=1 CELLSPACING=0>
+                    </TABLE></TD>
+                </TR>
+        </table>
+			
+        <input type="hidden" name="inlineIds" id="inlineIds" value="" />
+        </td>
+        <tr>
+                  <input type="hidden" name="SectionsToCheck" value="112">
+                
+        <tr>
+                  <td><table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74290" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field42"><font class="subheader"><span class="HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TABLE CELLPADDING=1 CELLSPACING=0>
+                      <TR>
+                      <TD VALIGN="top"><INPUT TYPE="Checkbox" NAME="reg_ans_field42" VALUE="CheckBoxPrivacyAzure"  ID="reg_ans_field42_CheckBoxPrivacyAzure" class="r123formelement" /></TD>
+                      <TD VALIGN="top" COLSPAN=1><LABEL class="control-label control-label" FOR="reg_ans_field42_CheckBoxPrivacyAzure"> <FONT class="text"><span class="CheckBoxPrivacyAzure">Microsoft may use your contact information to provide updates and special offers about Microsoft Azure and other Microsoft products and services. You can unsubscribe at any time. To learn more you can read the <a href='http://go.microsoft.com/fwlink/?LinkId=521839' target='_blank'>Privacy Statement</a>.</span></FONT> </LABEL></TD>
+                    </TR>
+                    </TABLE></TD>
+                </TR>
+        </table>
+        <table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="11179" style="display:none;">
+        <tr >
+                  <td valign="top" align="left"  class="clsFormfieldTd"><label for="pro_ans_field02"><font class="subheader"><span class="AzurePrivacy HiddenContent"></span></font></label></td>
+                  <td>&nbsp;</td>
+                  <TD width="70%" ALIGN="left"><input type="text" name="pro_ans_field02" size="20" maxlength="50" value="" class="r123formelement" id="pro_ans_field02" /></TD>
+                </TR>
+        </table>
+       
+        </td>
+        <tr>
+                  <input type="hidden" name="SectionsToCheck" value="114">
+                
+        <tr>
+                  <td><table class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0" class="rule_hide" id="74252" style="display:none;">
+        <tr >
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="reg_ans_field04"><font class="subheader"><span class="ConfirmationEmailSubject HiddenContent"></span></font></label></TD>
+                </TR>
+        <TR>
+                  <TD COLSPAN="3" ALIGN="left" VALIGN="top"><TEXTAREA ROWS="3" NAME="reg_ans_field04" COLS="35" maxlength="4000" class="r123formelement" ID="reg_ans_field04">Microsoft Event Registration Confirmation</TEXTAREA></TD>
+                </TR>
+        </table>
+      
+        </td>
+        <tr>
+       
+        <!-- End row in page table -->
+        
+        <input type="hidden" name="sectionstocheck" value="101" />
+        <input type="hidden" name="custom1_fieldstovalidate" value=""  />
+        <tr>
+                  <td align="center">	  <div id="loader-icon" style="display:none;">Please fill all the fields. </div>
+
+            &nbsp; </td>
+                </tr>
+				
+		<tr>
+                  <td align="center"><input type="submit" name="submitForm" value="Register Now" class="RegoFormSubmitButton r123FormSubmit" id="submitForm" class="r123FormSubmit regFormSubmitButton"/>
+            &nbsp; </td>
+                </tr>
+      </form>
+              <tr>
+        <td align="center"></td>
+      </tr>
+              <tr>
+        <td align="center"><font class="text"> 
+          <script src="js/event_bingmap.js"></script> 
+          <script src="js/localizationScript.js"></script> 
+          <script type="text/javascript" src="js/Bootstrap.js"></script>
+          </div>
+          </font></td>
+      </tr>
+              </table>
+            </div>
+  </div>
+          <div class="content-section">
+    <div class="header">DevOps with Microsoft Cloud</div>
+    <p>10:00 AM - 02:00 PM on 12th May or 25th May or 08th June 2016</p>
+    <p> Lemon Tree Premier, Hi-tech City, Hyderabad<br/></p>
+    <div>
+              <p>Join us to be more agile, improve quality, save time and money and accelerate your application delivery life cycle. </p>
+              <table cellpadding="4" cellspacing="0" class="day-agenda bg-color-row" style="width:100%;">
+        <tbody>
+                  <tr>
+            <td colspan="2" style="text-align:center; background-color:#4d1262; color:#ffffff; border:none;"><strong style="color:#ffffff;">Agenda</strong></td>
+          </tr>
+                  <tr>
+            <td style="background-color:#4d1262; text-align:center; color:#ffffff"><strong style="color:#ffffff;">Time</strong></td>
+            <td style="background-color:#4d1262; text-align:center; color:#ffffff"><strong style="color:#ffffff;">Topic</strong></td>
+          </tr>
+                  <tr>
+            <td width="125">10:00 - 10:30</td>
+            <td>Welcome and Registration</td>
+          </tr>
+                  <tr>
+            <td>10:30 - 12:45</td>
+            <td>Insights into End to End DevOps with Microsoft Cloud</td>
+          </tr>
+                  <tr>
+            <td>12:45-13:00 </td>
+            <td>Q&A and Feedback</td>
+          </tr>
+                  <tr>
+            <td>13:00-14:00</td>
+            <td>Lunch</td>
+          </tr>
+                </tbody>
+      </table>
+            </div>
+    <br/>
+    <br/>
+			RSVP: Sriya Singhnina, <br>Phone: +91-9704963439, Email: sriya@palsglobalsolutions.com
+    <br/>
+    <br/>
+    <br/>
+    <div></div>
+  </div>
+        </div>
+</div>
+<div class="ms-footer">
+          <div class="section-wrapper">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="left">
+              <tbody>
+        <tr>
+                  <td align="left"><p class="footnote CertainHostingFooter">Disclaimer: These Round Tables and any offers herein are brought to you by <a href="http://www.palsglobalsolutions.com" target="_blank">PALS Global Solutions Pvt. Ltd.</a></p></td>
+               </tr>
+      </tbody>
+            </table>
+  </div>
+        </div>
+</div>
+<script src="js/ExpandCollapseAgenda.js"></script> 
+<script src="js/FormFields-Placeholder-Script-Localized.js"></script> 
+<script>
+ jQuery(document).ready(function(){    
+
+//call localization
+getXMLFileforTranslation( 'English-default') ;
+
+
+});
+</script> 
+<script src="js/FormFields-Placeholder-Script-Localized.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77214150-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+</body>
+</html>
