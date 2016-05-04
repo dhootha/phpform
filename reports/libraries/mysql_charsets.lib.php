@@ -5,7 +5,9 @@
  *
  * @package PhpMyAdmin
  */
-use PMA\libraries\Util;
+if (! defined('PHPMYADMIN')) {
+    exit;
+}
 
 /**
  * Generate charset dropdown box
@@ -82,21 +84,19 @@ function PMA_generateCharsetDropdownBox($type = PMA_CSDROPDOWN_COLLATION,
 /**
  * Generate the charset query part
  *
- * @param string           $collation Collation
- * @param boolean optional $override  force 'CHARACTER SET' keyword
+ * @param string $collation Collation
  *
  * @return string
  */
-function PMA_generateCharsetQueryPart($collation, $override = false)
+function PMA_generateCharsetQueryPart($collation)
 {
-    list($charset) = explode('_', $collation);
-    $keyword = ' CHARSET=';
-
-    if ($override) {
-        $keyword = ' CHARACTER SET ';
+    if (!PMA_DRIZZLE) {
+        list($charset) = explode('_', $collation);
+        return ' CHARACTER SET ' . $charset
+            . ($charset == $collation ? '' : ' COLLATE ' . $collation);
+    } else {
+        return ' COLLATE ' . $collation;
     }
-    return $keyword . $charset
-        . ($charset == $collation ? '' : ' COLLATE ' . $collation);
 }
 
 /**
@@ -116,13 +116,19 @@ function PMA_getDbCollation($db)
 
     if (! $GLOBALS['cfg']['Server']['DisableIS']) {
         // this is slow with thousands of databases
-        $sql = 'SELECT DEFAULT_COLLATION_NAME FROM information_schema.SCHEMATA'
-            . ' WHERE SCHEMA_NAME = \'' . Util::sqlAddSlashes($db)
+        $sql = PMA_DRIZZLE
+            ? 'SELECT DEFAULT_COLLATION_NAME FROM data_dictionary.SCHEMAS'
+            . ' WHERE SCHEMA_NAME = \'' . PMA_Util::sqlAddSlashes($db)
+            . '\' LIMIT 1'
+            : 'SELECT DEFAULT_COLLATION_NAME FROM information_schema.SCHEMATA'
+            . ' WHERE SCHEMA_NAME = \'' . PMA_Util::sqlAddSlashes($db)
             . '\' LIMIT 1';
         return $GLOBALS['dbi']->fetchValue($sql);
     } else {
         $GLOBALS['dbi']->selectDb($db);
-        $return = $GLOBALS['dbi']->fetchValue('SELECT @@collation_database');
+        $return = $GLOBALS['dbi']->fetchValue(
+            'SHOW VARIABLES LIKE \'collation_database\'', 0, 1
+        );
         if ($db !== $GLOBALS['db']) {
             $GLOBALS['dbi']->selectDb($GLOBALS['db']);
         }
@@ -137,7 +143,9 @@ function PMA_getDbCollation($db)
  */
 function PMA_getServerCollation()
 {
-    return $GLOBALS['dbi']->fetchValue('SELECT @@collation_server');
+    return $GLOBALS['dbi']->fetchValue(
+        'SHOW VARIABLES LIKE \'collation_server\'', 0, 1
+    );
 }
 
 /**
@@ -231,9 +239,6 @@ function PMA_getCollationDescr($collation)
     case 'romanian':
         $descr = __('Romanian');
         break;
-    case 'sinhala':
-        $descr = __('Sinhalese');
-        break;
     case 'slovak':
         $descr = __('Slovak');
         break;
@@ -261,10 +266,6 @@ function PMA_getCollationDescr($collation)
     case 'unicode':
         $descr = __('Unicode') . ' (' . __('multilingual') . ')';
         break;
-    case 'vietnamese':
-        $descr = __('Vietnamese');
-        break;
-    /** @noinspection PhpMissingBreakStatementInspection */
     case 'bin':
         $is_bin = true;
         // no break; statement here, continuing with 'general' section:
@@ -375,3 +376,4 @@ function PMA_getCollationDescr($collation)
 
     return $descr;
 }
+?>

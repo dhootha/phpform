@@ -27,32 +27,34 @@ textarea {
 
 
 body {
-<?php if (! empty($GLOBALS['cfg']['FontFamily'])) : ?>
+<?php if (! empty($GLOBALS['cfg']['FontFamily'])) { ?>
     font-family: <?php echo $GLOBALS['cfg']['FontFamily']; ?>;
-<?php endif; ?>
+    <?php
+} ?>
     padding: 0;
     margin: 0;
     margin-<?php echo $left; ?>: 240px;
-    color: <?php echo $GLOBALS['cfg']['MainColor']; ?>;
-    background: <?php echo $GLOBALS['cfg']['MainBackground']; ?>;
+    color: #444;
+    background: #fff;
 }
 
 body#loginform {
     margin: 0;
 }
 
-#page_content {
+#page_content, #session_debug {
     margin: 0 .5em;
 }
 
-<?php if (! empty($GLOBALS['cfg']['FontFamilyFixed'])) : ?>
+<?php if (! empty($GLOBALS['cfg']['FontFamilyFixed'])) { ?>
     textarea,
     tt,
     pre,
     code {
     font-family: <?php echo $GLOBALS['cfg']['FontFamilyFixed']; ?>;
     }
-<?php endif; ?>
+    <?php
+} ?>
 
 
 h1 {
@@ -323,10 +325,12 @@ input.button:disabled {
 textarea {
     overflow: visible;
     margin: 6px;
+    height: <?php echo ceil($GLOBALS['cfg']['TextareaRows'] * 1.2); ?>em;
 }
 
 textarea.char {
     margin: 6px;
+    height: <?php echo ceil($GLOBALS['cfg']['CharTextareaRows'] * 1.2); ?>em;
 }
 
 fieldset, .preview_sql {
@@ -467,7 +471,6 @@ th.center, td.center {
 
 th.right, td.right {
     text-align: right;
-    padding-right: 1em;
 }
 
 tr.vtop th, tr.vtop td, th.vtop, td.vtop {
@@ -607,12 +610,13 @@ tr:last-child td.condition {
     border-width: 0 1px 1px 1px;
 }
 
-<?php if ($GLOBALS['text_dir'] === 'ltr') : ?>
+<?php if ($GLOBALS['text_dir'] === 'ltr') { ?>
     /* for first th which must have right border set (ltr only) */
     .before-condition {
     border-right: 1px solid <?php echo $GLOBALS['cfg']['BrowseMarkerBackground']; ?>;
     }
-<?php endif; ?>
+    <?php
+} ?>
 
 /**
  * cells with the value NULL
@@ -636,11 +640,12 @@ table [class=value] {
 }
 
 
-<?php if (! empty($GLOBALS['cfg']['FontFamilyFixed'])) : ?>
+<?php if (! empty($GLOBALS['cfg']['FontFamilyFixed'])) { ?>
     .value {
     font-family: <?php echo $GLOBALS['cfg']['FontFamilyFixed']; ?>;
     }
-<?php endif; ?>
+    <?php
+} ?>
 .attention {
     color: red;
     font-weight: bold;
@@ -714,14 +719,16 @@ div.error {
     margin: .5em 0 0.5em;
     border: 1px solid;
     background-repeat: no-repeat;
-    <?php if ($GLOBALS['text_dir'] === 'ltr') : ?>
+    <?php
+    if ($GLOBALS['text_dir'] === 'ltr') { ?>
         background-position: 10px 50%;
         padding: 10px 10px 10px 10px;
-    <?php else : ?>
+        <?php
+    } else { ?>
         background-position: 99% 50%;
         padding: 10px 35px 10px 10px;
         <?php
-    endif; ?>
+    } ?>
 
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -888,7 +895,6 @@ form.login label {
 form.login input[type=text],
 form.login input[type=password],
 form.login select {
-    box-sizing: border-box;
     width: 14em;
 }
 
@@ -1134,30 +1140,20 @@ div#tablestatistics table {
     color: #fff;
 }
 
-#page_nav_icons {
+#goto_pagetop, #lock_page_icon {
     position: fixed;
+    padding: .25em .25em .2em;
     top: 0;
-    <?php echo $right; ?>: 0;
     z-index: 99;
-    padding: .25em 0;
-}
-
-#goto_pagetop, #lock_page_icon, #page_settings_icon {
-    padding: .25em;
     background: #888;
 }
 
-#page_settings_icon {
-    cursor: pointer;
-    display: none;
+#goto_pagetop {
+    <?php echo $right; ?>: 0;
 }
 
-#page_settings_modal {
-    display: none;
-}
-
-#pma_navigation_settings {
-    display: none;
+#lock_page_icon {
+    <?php echo $right; ?>: 2em;
 }
 
 #span_table_comment {
@@ -1368,7 +1364,7 @@ table#chartGrid div.monitorChart {
 div.tabLinks {
     margin-left: 0.3em;
     float: <?php echo $left; ?>;
-    padding: 5px 0;
+    padding: 5px 0px;
 }
 
 div.tabLinks a, div.tabLinks label {
@@ -1376,7 +1372,7 @@ div.tabLinks a, div.tabLinks label {
 }
 
 div.tabLinks .icon {
-    margin: -0.2em 0.3em 0 0;
+    margin: -0.2em 0.3em 0px 0px;
 }
 
 .popupContent {
@@ -1510,13 +1506,16 @@ p.notice {
     margin: 1.5em 0;
     border: 1px solid #000;
     background-repeat: no-repeat;
-    <?php if ($GLOBALS['text_dir'] === 'ltr') : ?>
+    <?php
+    if ($GLOBALS['text_dir'] === 'ltr') { ?>
         background-position: 10px 50%;
         padding: 10px 10px 10px 25px;
-    <?php else : ?>
+        <?php
+    } else { ?>
         background-position: 99% 50%;
         padding: 25px 10px 10px 10px
-    <?php endif; ?>
+        <?php
+    } ?>
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -1548,16 +1547,14 @@ div#profilingchart {
 /* end profiling */
 
 /* table charting */
+
 #resizer {
     border: 1px solid silver;
 }
 #inner-resizer { /* make room for the resize handle */
     padding: 10px;
 }
-.chartOption {
-    float: <?php echo $left; ?>;
-    margin-<?php echo $right;?>: 40px;
-}
+
 /* end table charting */
 
 /* querybox */
@@ -1587,25 +1584,32 @@ div#profilingchart {
 #sectionlinks a,
 .buttonlinks a,
 a.button {
+    font-size: .88em;
     font-weight: bold;
     text-shadow: 0 1px 0 #fff;
     line-height: 35px;
     margin-<?php echo $left; ?>: 7px;
     border: 1px solid #aaa;
-    padding: 3px 7px;
-    color: #111 !important;
+    padding: 5px 10px;
+    color: #111;
     text-decoration: none;
     background: #ddd;
     white-space: nowrap;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
-    <?php echo $_SESSION['PMA_Theme']->getCssGradient('f8f8f8', 'd8d8d8'); ?>
+    box-shadow: <?php echo $GLOBALS['text_dir'] === 'rtl' ? '-' : ''; ?>1px 1px 2px rgba(0,0,0,.5);
+    /*
+    -webkit-box-shadow: <?php echo $GLOBALS['text_dir'] === 'rtl' ? '-' : ''; ?>1px 1px 2px rgba(0,0,0,.5);
+    -moz-box-shadow: <?php echo $GLOBALS['text_dir'] === 'rtl' ? '-' : ''; ?>1px 1px 2px rgba(0,0,0,.5);
+    text-shadow: #fff 0 1px 0;
+    */
+    <?php echo $_SESSION['PMA_Theme']->getCssGradient('ffffff', 'cccccc'); ?>
 }
 #sectionlinks a:hover,
 .buttonlinks a:hover,
 a.button:hover {
-    <?php echo $_SESSION['PMA_Theme']->getCssGradient('ffffff', 'dddddd'); ?>
+    <?php echo $_SESSION['PMA_Theme']->getCssGradient('cccccc', 'dddddd'); ?>
 }
 
 div#sqlquerycontainer {
@@ -1617,7 +1621,6 @@ div#sqlquerycontainer {
 div#tablefieldscontainer {
     float: <?php echo $right; ?>;
     width: 29%;
-    margin-top: -20px;
     /* height: 15em; */
 }
 
@@ -1794,19 +1797,11 @@ div.sqlvalidate {
     margin-bottom: 0;
     max-height: 10em;
     overflow: auto;
-    direction: ltr;
 }
 
 .result_query div.sqlOuter {
     background: <?php echo $GLOBALS['cfg']['BgOne']; ?>;
-}
-
-.result_query .success, .result_query .error {
-    margin-bottom: 0;
-    border-bottom: none !important;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    padding-bottom: 5px;
+    padding: 1em;
 }
 
 #PMA_slidingMessage code.sql,
@@ -1988,30 +1983,6 @@ select.invalid_value,
 /**
   * Export and Import styles
   */
-
-.export_table_list_container {
-    display: inline-block;
-    max-height: 20em;
-    overflow-y: scroll;
-}
-
-.export_table_select th {
-    text-align: center;
-    vertical-align: middle;
-}
-
-.export_table_select .all {
-    font-weight: bold;
-    border-bottom: 1px solid black;
-}
-
-.export_structure, .export_data {
-    text-align: center;
-}
-
-.export_table_name {
-    vertical-align: middle;
-}
 
 .exportoptions h3,
 .importoptions h3 {
@@ -2490,7 +2461,6 @@ fieldset .disabled-field td {
 
 #prefs_autoload {
     margin-bottom: .5em;
-    margin-left: .5em;
 }
 
 #placeholder .button {
@@ -2561,17 +2531,6 @@ fieldset .disabled-field td {
 }
 .doubleFieldset div.wrap {
     padding: 1.5em;
-}
-
-#table_name_col_no_outer {
-    margin-top: 45px;
-}
-
-#table_name_col_no {
-    position: fixed;
-    top: 55px;
-    width: 100%;
-    background: #ffffff;
 }
 
 #table_columns input[type="text"],
@@ -2789,6 +2748,10 @@ fieldset .disabled-field td {
   user-select: none;
 }
 
+#page_content {
+    background-color: white;
+}
+
 .navigation {
     margin: .8em 0;
 
@@ -2930,7 +2893,7 @@ body .ui-widget {
 
 /* over-riding jqplot-yaxis class */
 .jqplot-yaxis {
-    left:0 !important;
+    left:0px !important;
     min-width:25px;
     width:auto;
 }
@@ -3012,7 +2975,7 @@ table.show_create td {
     position: relative;
     margin-<?php echo $left; ?>: 240px;
 }
-#pma_console .templates {
+#pma_console>.templates {
     display: none;
 }
 #pma_console .mid_text,
@@ -3039,7 +3002,6 @@ table.show_create td {
 #pma_console .message span.text,
 #pma_console .message span.action,
 #pma_console .toolbar .button,
-#pma_console .toolbar .text,
 #pma_console .switch_button {
     padding: 0 3px;
     display: inline-block;
@@ -3051,19 +3013,13 @@ table.show_create td {
 }
 #pma_console .message span.action:hover,
 #pma_console .toolbar .button:hover,
-#pma_console .switch_button:hover,
-#pma_console .toolbar .button.active {
+#pma_console .switch_button:hover {
     background: #ddd;
 }
-#pma_console .toolbar .text {
-    font-weight: bold;
-}
-#pma_console .toolbar .button,
-#pma_console .toolbar .text {
+#pma_console .toolbar .button {
     margin-<?php echo $right; ?>: .4em;
 }
-#pma_console .toolbar .button,
-#pma_console .toolbar .text {
+#pma_console .toolbar .button {
     float: <?php echo $right; ?>;
 }
 #pma_console .content {
@@ -3073,26 +3029,6 @@ table.show_create td {
     border-top: solid 1px #aaa;
     background: #fff;
     padding-top: .4em;
-}
-#pma_console .content.console_dark_theme {
-    background: #000;
-    color: #fff;
-}
-#pma_console .content.console_dark_theme .CodeMirror-wrap {
-    background: #000;
-    color: #fff;
-}
-#pma_console .content.console_dark_theme .action_content {
-    color: #000;
-}
-#pma_console .content.console_dark_theme .message {
-    border-color: #373B41;
-}
-#pma_console .content.console_dark_theme .CodeMirror-cursor {
-    border-color: #fff;
-}
-#pma_console .content.console_dark_theme .cm-keyword {
-    color: #de935f;
 }
 #pma_console .message,
 #pma_console .query_input {
@@ -3105,7 +3041,7 @@ table.show_create td {
     border-bottom: solid 1px #ccc;
     padding-bottom: .2em;
 }
-#pma_console .message.expanded>.action_content {
+#pma_console .message.expanded .action_content {
     position: relative;
 }
 #pma_console .message:before,
@@ -3197,11 +3133,8 @@ html.ie8 #pma_console .message .action_content {
 #pma_console .message .text {
     background: #fff;
 }
-#pma_console .message.collapsed>.action_content {
+#pma_console .message.collapsed:not(:hover) .action_content {
     display: none;
-}
-#pma_console .message.collapsed:hover>.action_content {
-    display: block;
 }
 #pma_console .message .bookmark_label {
     padding: 0 4px;
@@ -3273,55 +3206,6 @@ html.ie7 #pma_console .query_input {
     margin: 0;
     padding: 2px 4px;
 }
-#pma_console .button.hide,
-#pma_console .message span.text.hide {
-    display: none;
-}
-#debug_console.grouped .ungroup_queries,
-#debug_console.ungrouped .group_queries {
-    display: inline-block;
-}
-#debug_console.ungrouped .ungroup_queries,
-#debug_console.ungrouped .sort_count,
-#debug_console.grouped .group_queries {
-    display: none;
-}
-#debug_console .count {
-    margin-right: 8px;
-}
-#debug_console .show_trace .trace,
-#debug_console .show_args .args {
-    display: block;
-}
-#debug_console .hide_trace .trace,
-#debug_console .hide_args .args,
-#debug_console .show_trace .action.dbg_show_trace,
-#debug_console .hide_trace .action.dbg_hide_trace,
-#debug_console .traceStep.hide_args .action.dbg_hide_args,
-#debug_console .traceStep.show_args .action.dbg_show_args {
-    display: none;
-}
-
-#debug_console .traceStep:after,
-#debug_console .trace.welcome:after,
-#debug_console .debug>.welcome:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-#debug_console .debug_summary {
-    float: left;
-}
-#debug_console .trace.welcome .time {
-    float: right;
-}
-#debug_console .traceStep .file,
-#debug_console .script_name {
-    float: right;
-}
-#debug_console .traceStep .args pre {
-    margin: 0;
-}
 
 /* Code mirror console style*/
 
@@ -3345,6 +3229,7 @@ html.ie7 #pma_console .query_input {
     font-size: 120%;
 }
 .cm-s-pma .CodeMirror-scroll {
+    padding-bottom: 2em;
     cursor: text;
 }
 
@@ -3353,8 +3238,8 @@ html.ie7 #pma_console .query_input {
 .pma_drop_handler {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
     width: 100%;
     background: rgba(0, 0, 0, 0.6);
     height: 100%;
@@ -3368,7 +3253,7 @@ html.ie7 #pma_console .query_input {
 .pma_sql_import_status {
     display: none;
     position: fixed;
-    bottom: 0;
+    bottom: 0px;
     right: 25px;
     width: 400px;
     border: 1px solid #999;
@@ -3417,13 +3302,13 @@ html.ie7 #pma_console .query_input {
 .pma_sql_import_status h2 .minimize {
     float: right;
     margin-right: 5px;
-    padding: 0 10px;
+    padding: 0px 10px;
 }
 
 .pma_sql_import_status h2 .close {
     float: right;
     margin-right: 5px;
-    padding: 0 10px;
+    padding: 0px 10px;
     display: none;
 }
 
@@ -3451,7 +3336,7 @@ html.ie7 #pma_console .query_input {
     background: white;
     min-height: 300px;
     z-index: 800;
-    -webkit-box-shadow: 0 0 15px #999;
+    -webkit-box-shadow: 0px 0px 15px #999;
     border-radius: 10px;
     cursor: move;
 }
@@ -3459,7 +3344,7 @@ html.ie7 #pma_console .query_input {
 .pma_drop_result h2 .close {
     float: right;
     margin-right: 5px;
-    padding: 0 10px;
+    padding: 0px 10px;
 }
 
 .dependencies_box {
@@ -3514,18 +3399,3 @@ th.headerSortDown .sorticon, th.headerSortUp:hover .sorticon {
     background-image: url(<?php echo $_SESSION['PMA_Theme']->getImgPath('s_asc.png');?>);
 }
 /* end of styles of sortable tables */
-
-/* styles for jQuery-ui to support rtl languages */
-body .ui-dialog .ui-dialog-titlebar-close {
-    <?php echo $right; ?>: .3em;
-    <?php echo $left; ?>: initial;
-}
-
-body .ui-dialog .ui-dialog-title {
-    float: <?php echo $left; ?>;
-}
-
-body .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
-    float: <?php echo $right; ?>;
-}
-/* end of styles for jQuery-ui to support rtl languages */

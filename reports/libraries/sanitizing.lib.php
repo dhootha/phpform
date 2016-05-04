@@ -5,6 +5,9 @@
  *
  * @package PhpMyAdmin
  */
+if (! defined('PHPMYADMIN')) {
+    exit;
+}
 
 /**
  * Checks whether given link is valid
@@ -27,7 +30,7 @@ function PMA_checkLink($url)
         $valid_starts[] = '?page=servers&';
     }
     foreach ($valid_starts as $val) {
-        if (mb_substr($url, 0, mb_strlen($val)) == $val) {
+        if (/*overload*/mb_substr($url, 0, /*overload*/mb_strlen($val)) == $val) {
             return true;
         }
     }
@@ -86,7 +89,7 @@ function PMA_replaceDocLink($found)
         /* Guess */
         $page = 'setup';
     }
-    $link = PMA\libraries\Util::getDocuLink($page, $anchor);
+    $link = PMA_Util::getDocuLink($page, $anchor);
     return '<a href="' . $link . '" target="documentation">';
 }
 
@@ -131,8 +134,6 @@ function PMA_sanitize($message, $escape = false, $safe = false)
         '[/sup]'    => '</sup>',
          // used in common.inc.php:
         '[conferr]' => '<iframe src="show_config_errors.php" />',
-         // used in libraries/Util.php
-        '[dochelpicon]' => PMA\libraries\Util::getImage('b_help.png', __('Documentation')),
     );
 
     $message = strtr($message, $replace_pairs);
@@ -187,3 +188,4 @@ function PMA_sanitizeFilename($filename, $replaceDots = false)
     return $filename;
 }
 
+?>

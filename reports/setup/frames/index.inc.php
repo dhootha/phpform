@@ -6,11 +6,6 @@
  * @package PhpMyAdmin-Setup
  */
 
-use PMA\libraries\config\ConfigFile;
-use PMA\libraries\config\FormDisplay;
-use PMA\libraries\config\ServerConfigChecks;
-use PMA\libraries\LanguageManager;
-
 if (!defined('PHPMYADMIN')) {
     exit;
 }
@@ -19,13 +14,15 @@ if (!defined('PHPMYADMIN')) {
  * Core libraries.
  */
 require_once './libraries/display_select_lang.lib.php';
+require_once './libraries/config/FormDisplay.class.php';
+require_once './libraries/config/ServerConfigChecks.class.php';
+require_once './libraries/VersionInformation.php';
 require_once './setup/lib/index.lib.php';
-require_once './libraries/config/FormDisplay.tpl.php';
 
 // prepare unfiltered language list
-$all_languages = LanguageManager::getInstance()->sortedLanguages();
+$all_languages = PMA_langList();
+uasort($all_languages, 'PMA_languageCmp');
 
-/** @var ConfigFile $cf */
 $cf = $GLOBALS['ConfigFile'];
 $separator = PMA_URL_getArgSeparator('html');
 
@@ -69,7 +66,7 @@ if (!$config_writable || !$config_readable) {
 // Check https connection
 //
 $is_https = !empty($_SERVER['HTTPS'])
-    && mb_strtolower($_SERVER['HTTPS']) == 'on';
+    && /*overload*/mb_strtolower($_SERVER['HTTPS']) == 'on';
 if (!$is_https) {
     $text = __(
         'You are not using a secure connection; all data (including potentially '
@@ -95,20 +92,21 @@ if (!$is_https) {
 }
 
 echo '<form id="select_lang" method="post" action="'
-    , htmlspecialchars($_SERVER['REQUEST_URI']) , '">';
+    . htmlspecialchars($_SERVER['REQUEST_URI']) . '">';
 echo PMA_URL_getHiddenInputs();
 echo '<bdo lang="en" dir="ltr"><label for="lang">';
-echo __('Language') , (__('Language') != 'Language' ? ' - Language' : '');
+echo __('Language') . (__('Language') != 'Language' ? ' - Language' : '');
 echo '</label></bdo><br />';
 echo '<select id="lang" name="lang" class="autosubmit" lang="en" dir="ltr">';
 
 // create language list
 $lang_list = array();
-foreach ($all_languages as $each_lang) {
+foreach ($all_languages as $each_lang_key => $each_lang) {
+    $lang_name = PMA_languageName($each_lang);
     //Is current one active?
-    $selected = $each_lang->isActive() ? ' selected="selected"' : '';
-    echo '<option value="' , $each_lang->getCode() , '"' , $selected , '>' , $each_lang->getName()
-        , '</option>' , "\n";
+    $selected = ($GLOBALS['lang'] == $each_lang_key) ? ' selected="selected"' : '';
+    echo '<option value="' . $each_lang_key . '"' . $selected . '>' . $lang_name
+        . '</option>' . "\n";
 }
 
 echo '</select>';
@@ -133,7 +131,7 @@ default:
     break;
 }
 
-echo '<h2>' , __('Overview') , '</h2>';
+echo '<h2>' . __('Overview') . '</h2>';
 
 // message handling
 PMA_messagesEnd();
@@ -150,7 +148,7 @@ echo '</legend>';
 //
 // Display server list
 //
-echo PMA_displayFormTop(
+PMA_displayFormTop(
     'index.php', 'get',
     array(
         'page' => 'servers',
@@ -162,28 +160,28 @@ if ($cf->getServerCount() > 0) {
     echo '<table cellspacing="0" class="datatable" style="table-layout: fixed">';
     echo '<tr>';
     echo '<th>#</th>';
-    echo '<th>' , __('Name') , '</th>';
-    echo '<th>' , __('Authentication type') , '</th>';
+    echo '<th>' . __('Name') . '</th>';
+    echo '<th>' . __('Authentication type') . '</th>';
     echo '<th colspan="2">DSN</th>';
     echo '</tr>';
 
     foreach ($cf->getServers() as $id => $server) {
         echo '<tr>';
-        echo '<td>' , $id  , '</td>';
-        echo '<td>' , htmlspecialchars($cf->getServerName($id)) , '</td>';
+        echo '<td>' . $id  . '</td>';
+        echo '<td>' . htmlspecialchars($cf->getServerName($id)) . '</td>';
         echo '<td>'
-            , htmlspecialchars($cf->getValue("Servers/$id/auth_type"))
-            ,  '</td>';
-        echo '<td>' , htmlspecialchars($cf->getServerDSN($id)) , '</td>';
+            . htmlspecialchars($cf->getValue("Servers/$id/auth_type"))
+            .  '</td>';
+        echo '<td>' . htmlspecialchars($cf->getServerDSN($id)) . '</td>';
         echo '<td style="white-space: nowrap">';
         echo '<small>';
-        echo '<a href="' , PMA_URL_getCommon() , $separator , 'page=servers'
-            , $separator , 'mode=edit' , $separator , 'id=' , $id , '">'
-            , __('Edit') , '</a>';
+        echo '<a href="' . PMA_URL_getCommon() . $separator . 'page=servers'
+            . $separator . 'mode=edit' . $separator . 'id=' . $id . '">'
+            . __('Edit') . '</a>';
         echo ' | ';
-        echo '<a href="' , PMA_URL_getCommon() , $separator , 'page=servers'
-            , $separator , 'mode=remove' , $separator , 'id=' , $id , '">'
-            , __('Delete') , '</a>';
+        echo '<a href="' . PMA_URL_getCommon() . $separator . 'page=servers'
+            . $separator . 'mode=remove' . $separator . 'id=' . $id . '">'
+            . __('Delete') . '</a>';
         echo '</small>';
         echo '</td>';
         echo '</tr>';
@@ -193,7 +191,7 @@ if ($cf->getServerCount() > 0) {
     echo '<table width="100%">';
     echo '<tr>';
     echo '<td>';
-    echo '<i>' , __('There are no configured servers') , '</i>';
+    echo '<i>' . __('There are no configured servers') . '</i>';
     echo '</td>';
     echo '</tr>';
     echo '</table>';
@@ -202,24 +200,24 @@ if ($cf->getServerCount() > 0) {
 echo '<table width="100%">';
 echo '<tr>';
 echo '<td class="lastrow" style="text-align: left">';
-echo '<input type="submit" name="submit" value="' , __('New server') , '" />';
+echo '<input type="submit" name="submit" value="' . __('New server') . '" />';
 echo '</td>';
 echo '</tr>';
 echo '</table>';
 echo '</div>';
 
-echo PMA_displayFormBottom();
+PMA_displayFormBottom();
 
 echo '</fieldset>';
 
-echo '<fieldset class="simple"><legend>' , __('Configuration file') , '</legend>';
+echo '<fieldset class="simple"><legend>' . __('Configuration file') . '</legend>';
 
 //
 // Display config file settings and load/save form
 //
 $form_display = new FormDisplay($cf);
 
-echo PMA_displayFormTop('config.php');
+PMA_displayFormTop('config.php');
 echo '<table width="100%" cellspacing="0">';
 
 // Display language list
@@ -227,10 +225,11 @@ $opts = array(
     'doc' => $form_display->getDocLink('DefaultLang'),
     'values' => array(),
     'values_escaped' => true);
-foreach ($all_languages as $each_lang) {
-    $opts['values'][$each_lang->getCode()] = $each_lang->getName();
+foreach ($all_languages as $each_lang_key => $each_lang) {
+    $lang_name = PMA_languageName($each_lang);
+    $opts['values'][$each_lang_key] = $lang_name;
 }
-echo PMA_displayInput(
+PMA_displayInput(
     'DefaultLang', __('Default language'), 'select',
     $cf->getValue('DefaultLang'), '', true, $opts
 );
@@ -255,7 +254,7 @@ if ($cf->getServerCount() > 0) {
     $opts['values']['1'] = __('- none -');
     $opts['values_escaped'] = true;
 }
-echo PMA_displayInput(
+PMA_displayInput(
     'ServerDefault', __('Default server'), 'select',
     $cf->getValue('ServerDefault'), '', true, $opts
 );
@@ -267,49 +266,49 @@ $opts = array(
         'win' => 'Windows (\r\n)'),
     'values_escaped' => true);
 $eol = PMA_ifSetOr($_SESSION['eol'], (PMA_IS_WINDOWS ? 'win' : 'unix'));
-echo PMA_displayInput(
+PMA_displayInput(
     'eol', __('End of line'), 'select',
     $eol, '', true, $opts
 );
 
 echo '<tr>';
 echo '<td colspan="2" class="lastrow" style="text-align: left">';
-echo '<input type="submit" name="submit_display" value="' , __('Display') , '" />';
-echo '<input type="submit" name="submit_download" value="' , __('Download') , '" />';
+echo '<input type="submit" name="submit_display" value="' . __('Display') . '" />';
+echo '<input type="submit" name="submit_download" value="' . __('Download') . '" />';
 echo '&nbsp; &nbsp;';
 
-echo '<input type="submit" name="submit_save" value="' , __('Save') , '"';
+echo '<input type="submit" name="submit_save" value="' . __('Save') . '"';
 if (!$config_writable) {
     echo ' disabled="disabled"';
 }
 echo '/>';
 
-echo '<input type="submit" name="submit_load" value="' , __('Load') , '"';
+echo '<input type="submit" name="submit_load" value="' . __('Load') . '"';
 if (!$config_exists) {
     echo ' disabled="disabled"';
 }
 echo '/>';
 
-echo '<input type="submit" name="submit_delete" value="' , __('Delete') , '"';
+echo '<input type="submit" name="submit_delete" value="' . __('Delete') . '"';
 if (!$config_exists || !$config_writable) {
     echo ' disabled="disabled"';
 }
 echo '/>';
 
 echo '&nbsp; &nbsp;';
-echo '<input type="submit" name="submit_clear" value="' , __('Clear')
-    , '" class="red" />';
+echo '<input type="submit" name="submit_clear" value="' . __('Clear')
+    . '" class="red" />';
 echo '</td>';
 echo '</tr>';
 echo '</table>';
 
-echo PMA_displayFormBottom();
+PMA_displayFormBottom();
 
 echo '</fieldset>';
 echo '<div id="footer">';
-echo '<a href="https://www.phpmyadmin.net/">' , __('phpMyAdmin homepage') , '</a>';
+echo '<a href="https://www.phpmyadmin.net/">' . __('phpMyAdmin homepage') . '</a>';
 echo '<a href="https://www.phpmyadmin.net/donate/">'
-    ,  __('Donate') , '</a>';
-echo '<a href="' ,  PMA_URL_getCommon() , $separator , 'version_check=1">'
-    , __('Check for latest version') , '</a>';
+    .  __('Donate') . '</a>';
+echo '<a href="' .  PMA_URL_getCommon() . $separator . 'version_check=1">'
+    . __('Check for latest version') . '</a>';
 echo '</div>';

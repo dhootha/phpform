@@ -14,8 +14,8 @@ var defaultX = 0;
 var defaultY = 0;
 
 // Variables
-var x = 0;
-var y = 0;
+var x;
+var y;
 var scale = 1;
 
 var svg;
@@ -26,9 +26,6 @@ var svg;
 function zoomAndPan()
 {
     var g = svg.getElementById('groupPanel');
-    if (!g) {
-        return;
-    }
 
     g.setAttribute('transform', 'translate(' + x + ', ' + y + ') scale(' + scale + ')');
     var id;
@@ -107,7 +104,7 @@ function loadSVG() {
  */
 function addZoomPanControllers() {
     var $placeholder = $('#placeholder');
-    if ($("#placeholder").find("svg").length > 0) {
+    if ($("#placeholder svg").length > 0) {
         var pmaThemeImage = $('#pmaThemeImage').val();
         // add panning arrows
         $('<img class="button" id="left_arrow" src="' + pmaThemeImage + 'west-mini.png">').appendTo($placeholder);
@@ -148,14 +145,10 @@ function initGISVisualization() {
     selectVisualization();
     // Resizes the GIS visualization to fit into the space available
     resizeGISVisualization();
-    if (typeof OpenLayers !== 'undefined') {
-        // Configure OpenLayers
-        OpenLayers._getScriptLocation = function() {return './js/openlayers/';};
-        // Adds necessary styles to the div that coontains the openStreetMap
-        styleOSM();
-        // Draws openStreetMap with openLayers
-        drawOpenLayers();
-    }
+    // Adds necessary styles to the div that coontains the openStreetMap
+    styleOSM();
+    // Draws openStreetMap with openLayers
+    drawOpenLayers();
     // Loads the SVG element and make a reference to it
     loadSVG();
     // Adds controllers for zooming and panning
@@ -211,9 +204,6 @@ AJAX.registerOnload('tbl_gis_visualization.js', function () {
         initGISVisualization();
     }
 
-    if (typeof OpenLayers === 'undefined') {
-        $('#choice, #labelChoice').hide();
-    }
     $(document).on('click', '#choice', function () {
         if ($(this).prop('checked') === false) {
             $('#placeholder').show();
@@ -259,10 +249,10 @@ AJAX.registerOnload('tbl_gis_visualization.js', function () {
     });
 
     $(document).on('drag', 'svg', function (event, dd) {
-        var newX = Math.round(dd.offsetX);
+        newX = Math.round(dd.offsetX);
         x +=  newX - dragX;
         dragX = newX;
-        var newY = Math.round(dd.offsetY);
+        newY = Math.round(dd.offsetY);
         y +=  newY - dragY;
         dragY = newY;
         zoomAndPan();
@@ -282,9 +272,8 @@ AJAX.registerOnload('tbl_gis_visualization.js', function () {
         //zoom in
         scale *= zoomFactor;
 
-        var $placeholder = $('#placeholder').find('svg');
-        width = $placeholder.attr('width');
-        height = $placeholder.attr('height');
+        width = $('#placeholder svg').attr('width');
+        height = $('#placeholder svg').attr('height');
         // zooming in keeping the center unmoved.
         x = width / 2 - (width / 2 - x) * zoomFactor;
         y = height / 2 - (height / 2 - y) * zoomFactor;
@@ -304,9 +293,8 @@ AJAX.registerOnload('tbl_gis_visualization.js', function () {
         //zoom out
         scale /= zoomFactor;
 
-        var $placeholder = $('#placeholder').find('svg');
-        width = $placeholder.attr('width');
-        height = $placeholder.attr('height');
+        width = $('#placeholder svg').attr('width');
+        height = $('#placeholder svg').attr('height');
         // zooming out keeping the center unmoved.
         x = width / 2 - (width / 2 - x) / zoomFactor;
         y = height / 2 - (height / 2 - y) / zoomFactor;

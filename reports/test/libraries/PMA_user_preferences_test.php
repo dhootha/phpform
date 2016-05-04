@@ -9,13 +9,16 @@
 /*
  * Include to test
  */
-use PMA\libraries\config\ConfigFile;
-
 require_once 'libraries/user_preferences.lib.php';
+require_once 'libraries/DatabaseInterface.class.php';
+require_once 'libraries/config/ConfigFile.class.php';
+require_once 'libraries/core.lib.php';
+require_once 'libraries/Util.class.php';
+require_once 'libraries/php-gettext/gettext.inc';
 require_once 'libraries/relation.lib.php';
 require_once 'libraries/url_generating.lib.php';
 require_once 'libraries/sanitizing.lib.php';
-
+require_once 'libraries/Message.class.php';
 
 /**
  * tests for methods under user_preferences library
@@ -75,8 +78,6 @@ class PMA_User_Preferences_Test extends PHPUnit_Framework_TestCase
      */
     public function testLoadUserprefs()
     {
-        $_SESSION['relation'][$GLOBALS['server']]['PMA_VERSION'] = PMA_VERSION;
-
         $_SESSION['relation'][$GLOBALS['server']]['userconfigwork'] = null;
         unset($_SESSION['userconfig']);
 
@@ -111,7 +112,7 @@ class PMA_User_Preferences_Test extends PHPUnit_Framework_TestCase
         $_SESSION['relation'][$GLOBALS['server']]['user'] = "user";
         $GLOBALS['controllink'] = null;
 
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -151,7 +152,6 @@ class PMA_User_Preferences_Test extends PHPUnit_Framework_TestCase
     public function testSaveUserprefs()
     {
         $GLOBALS['server'] = 2;
-        $_SESSION['relation'][2]['PMA_VERSION'] = PMA_VERSION;
         $_SESSION['relation'][2]['userconfigwork'] = null;
         unset($_SESSION['userconfig']);
 
@@ -202,7 +202,7 @@ class PMA_User_Preferences_Test extends PHPUnit_Framework_TestCase
         $query2 = 'UPDATE `pmadb`.`testconf` SET `timevalue` = NOW(), `config_data` = \''
             . json_encode(array(1)) . '\' WHERE `username` = \'user\'';
 
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -229,7 +229,7 @@ class PMA_User_Preferences_Test extends PHPUnit_Framework_TestCase
         $query2 = 'INSERT INTO `pmadb`.`testconf` (`username`, `timevalue`,`config_data`) '
             . 'VALUES (\'user\', NOW(), \'' . json_encode(array(1)) . '\')';
 
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -273,8 +273,8 @@ class PMA_User_Preferences_Test extends PHPUnit_Framework_TestCase
         $result = PMA_applyUserprefs(
             array(
                 'DBG/sql' => true,
-                'ErrorHandler/display' => true,
-                'ErrorHandler/gather' => false,
+                'Error_Handler/display' => true,
+                'Error_Handler/gather' => false,
                 'Servers/foobar' => '123',
                 'Server/hide_db' => true
             )
@@ -322,7 +322,6 @@ class PMA_User_Preferences_Test extends PHPUnit_Framework_TestCase
      */
     public function testPersistOption()
     {
-        $_SESSION['relation'][$GLOBALS['server']]['PMA_VERSION'] = PMA_VERSION;
         $_SESSION['relation'][$GLOBALS['server']]['userconfigwork'] = null;
         $_SESSION['userconfig'] = array();
         $_SESSION['userconfig']['ts'] = "123";
@@ -360,6 +359,7 @@ class PMA_User_Preferences_Test extends PHPUnit_Framework_TestCase
             );
         }
 
+        $GLOBALS['cfg']['PmaAbsoluteUri'] = 'http://www.phpmyadmin.net';
         $GLOBALS['cfg']['ServerDefault'] = 1;
         $GLOBALS['lang'] = '';
 
@@ -378,7 +378,7 @@ class PMA_User_Preferences_Test extends PHPUnit_Framework_TestCase
         );
 
         $this->assertContains(
-            'Location: ./file.html?a=b&saved=1&server=0&' .
+            'Location: http://www.phpmyadmin.netfile.html?a=b&saved=1&server=0&' .
             'token=token#h+ash',
             $GLOBALS['header'][0]
         );
@@ -440,3 +440,4 @@ class PMA_User_Preferences_Test extends PHPUnit_Framework_TestCase
         );
     }
 }
+?>

@@ -9,6 +9,7 @@
 /*
  * Include to test.
  */
+require_once 'libraries/php-gettext/gettext.inc';
 
 /**
  * Tests for libraries/config/messages.inc.php
@@ -42,7 +43,7 @@ class PMA_MessagesIncTest extends PHPUnit_Framework_TestCase
         $strConfigSQLQuery_Explain_name = '';
         $strConfigSendErrorReports_name = '';
 
-        include 'libraries/config/messages.inc.php';
+        include_once 'libraries/config/messages.inc.php';
 
         $this->assertEquals(
             'Allow login to any MySQL server',
@@ -74,3 +75,4 @@ class PMA_MessagesIncTest extends PHPUnit_Framework_TestCase
         );
     }
 }
+?>

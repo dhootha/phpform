@@ -10,7 +10,8 @@
  * Include to test.
  */
 require_once 'libraries/browse_foreigners.lib.php';
-
+require_once 'libraries/php-gettext/gettext.inc';
+require_once 'libraries/Util.class.php';
 require_once 'libraries/url_generating.lib.php';
 
 /**
@@ -247,11 +248,11 @@ class PMA_BrowseForeignersTest extends PHPUnit_Framework_TestCase
         $foreignData = array();
         $foreignData['disp_row'] = '';
         $fieldkey = 'bar';
-        $current_value = '';
+        $data = array();
         $_REQUEST['rownumber'] = 1;
         $_REQUEST['foreign_filter'] = '5';
         $result = PMA_getHtmlForRelationalFieldSelection(
-            $db, $table, $field, $foreignData, $fieldkey, $current_value
+            $db, $table, $field, $foreignData, $fieldkey, $data
         );
 
         $this->assertContains(
@@ -293,7 +294,7 @@ class PMA_BrowseForeignersTest extends PHPUnit_Framework_TestCase
 
         $this->assertContains(
             '<input type="text" name="foreign_filter" '
-            . 'id="input_foreign_filter" '
+             . 'id="input_foreign_filter" '
             . 'value="5" data-old="5" '
             . '/>',
             $result
@@ -318,7 +319,7 @@ class PMA_BrowseForeignersTest extends PHPUnit_Framework_TestCase
         $foreignData['the_total'] = 5;
         $GLOBALS['cfg']['ShowAll'] = false;
         $result = PMA_getHtmlForRelationalFieldSelection(
-            $db, $table, $field, $foreignData, $fieldkey, $current_value
+            $db, $table, $field, $foreignData, $fieldkey, $data
         );
 
         $this->assertContains(
@@ -333,3 +334,4 @@ class PMA_BrowseForeignersTest extends PHPUnit_Framework_TestCase
 
     }
 }
+?>

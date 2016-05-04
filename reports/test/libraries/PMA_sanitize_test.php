@@ -11,7 +11,8 @@
  */
 require_once 'libraries/sanitizing.lib.php';
 require_once 'libraries/url_generating.lib.php';
-
+require_once 'libraries/core.lib.php';
+require_once 'libraries/Util.class.php';
 
 /**
  * tests for PMA_sanitize()
@@ -162,3 +163,4 @@ class PMA_Sanitize_Test extends PHPUnit_Framework_TestCase
         );
     }
 }
+?>

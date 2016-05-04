@@ -6,10 +6,11 @@
  * @package PhpMyAdmin-test
  */
 
+require_once 'libraries/php-gettext/gettext.inc';
 require_once 'libraries/url_generating.lib.php';
-
+require_once 'libraries/Util.class.php';
 require_once 'libraries/database_interface.inc.php';
-
+require_once 'libraries/Tracker.class.php';
 /*
  * Include to test.
  */
@@ -30,7 +31,6 @@ class PMA_TRI_GetEditorForm_Test extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $GLOBALS['cfg']['ServerDefault'] = '';
-        $GLOBALS['cfg']['DBG']['sql'] = false;
         $GLOBALS['db'] = 'pma_test';
     }
 
@@ -49,7 +49,6 @@ class PMA_TRI_GetEditorForm_Test extends PHPUnit_Framework_TestCase
     public function testGetEditorFormAdd($data, $matcher)
     {
         $GLOBALS['is_ajax_request'] = false;
-        $GLOBALS['server'] = 1;
         PMA_TRI_setGlobals();
         $this->assertContains(
             $matcher,
@@ -124,7 +123,6 @@ class PMA_TRI_GetEditorForm_Test extends PHPUnit_Framework_TestCase
     public function testGetEditorFormEdit($data, $matcher)
     {
         $GLOBALS['is_ajax_request'] = false;
-        $GLOBALS['server'] = 1;
         PMA_TRI_setGlobals();
         $this->assertContains(
             $matcher,
@@ -198,7 +196,6 @@ class PMA_TRI_GetEditorForm_Test extends PHPUnit_Framework_TestCase
     public function testGetEditorFormAjax($data, $matcher)
     {
         $GLOBALS['is_ajax_request'] = true;
-        $GLOBALS['server'] = 1;
         PMA_TRI_setGlobals();
         $this->assertContains(
             $matcher,
@@ -235,3 +232,4 @@ class PMA_TRI_GetEditorForm_Test extends PHPUnit_Framework_TestCase
         );
     }
 }
+?>

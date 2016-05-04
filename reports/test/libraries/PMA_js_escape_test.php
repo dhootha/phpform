@@ -10,7 +10,7 @@
  * Include to test.
  */
 require_once 'libraries/js_escape.lib.php';
-
+require_once 'libraries/Util.class.php';
 
 /**
  * tests for JS variable formatting
@@ -38,10 +38,6 @@ class PMA_JS_Escape_Test extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             "foo = [\"1\",\"2\",\"3\",];\n",
             PMA_getJsValue('foo', $array)
-        );
-        $this->assertEquals(
-            "foo = \"bar\\\"baz\";\n",
-            PMA_getJsValue('foo', 'bar"baz')
         );
     }
 
@@ -73,3 +69,4 @@ class PMA_JS_Escape_Test extends PHPUnit_Framework_TestCase
         );
     }
 }
+?>

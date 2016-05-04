@@ -6,8 +6,9 @@
  * @package PhpMyAdmin-test
  */
 
+require_once 'libraries/php-gettext/gettext.inc';
 require_once 'libraries/url_generating.lib.php';
-
+require_once 'libraries/Util.class.php';
 /*
  * Include to test.
  */
@@ -55,9 +56,9 @@ class PMA_EVN_GetEditorForm_Test extends PHPUnit_Framework_TestCase
      *
      * @return void
      *
-     * @dataProvider providerAdd
+     * @dataProvider provider_add
      */
-    public function testgetEditorFormAdd($data, $matcher)
+    public function testgetEditorForm_add($data, $matcher)
     {
         $GLOBALS['is_ajax_request'] = false;
         PMA_EVN_setGlobals();
@@ -68,11 +69,11 @@ class PMA_EVN_GetEditorForm_Test extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data provider for testgetEditorFormAdd
+     * Data provider for testgetEditorForm_add
      *
      * @return array
      */
-    public function providerAdd()
+    public function provider_add()
     {
         $data = array(
             'item_name'           => '',
@@ -143,9 +144,9 @@ class PMA_EVN_GetEditorForm_Test extends PHPUnit_Framework_TestCase
      *
      * @return void
      *
-     * @dataProvider providerEdit
+     * @dataProvider provider_edit
      */
-    public function testgetEditorFormEdit($data, $matcher)
+    public function testgetEditorForm_edit($data, $matcher)
     {
         $GLOBALS['is_ajax_request'] = false;
         PMA_EVN_setGlobals();
@@ -160,7 +161,7 @@ class PMA_EVN_GetEditorForm_Test extends PHPUnit_Framework_TestCase
      *
      * @return array
      */
-    public function providerEdit()
+    public function provider_edit()
     {
         $data = array(
             'item_name'           => 'foo',
@@ -231,9 +232,9 @@ class PMA_EVN_GetEditorForm_Test extends PHPUnit_Framework_TestCase
      *
      * @return void
      *
-     * @dataProvider providerAjax
+     * @dataProvider provider_ajax
      */
-    public function testgetEditorFormAjax($data, $matcher)
+    public function testgetEditorForm_ajax($data, $matcher)
     {
         $GLOBALS['is_ajax_request'] = true;
         PMA_EVN_setGlobals();
@@ -248,7 +249,7 @@ class PMA_EVN_GetEditorForm_Test extends PHPUnit_Framework_TestCase
      *
      * @return array
      */
-    public function providerAjax()
+    public function provider_ajax()
     {
         $data = array(
             'item_name'           => '',
@@ -283,3 +284,4 @@ class PMA_EVN_GetEditorForm_Test extends PHPUnit_Framework_TestCase
         );
     }
 }
+?>

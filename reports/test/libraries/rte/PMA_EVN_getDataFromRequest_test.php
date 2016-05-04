@@ -28,7 +28,7 @@ class PMA_EVN_GetDataFromRequest_Test extends PHPUnit_Framework_TestCase
      *
      * @dataProvider provider
      */
-    public function testgetDataFromRequestEmpty($in, $out)
+    public function testgetDataFromRequest_empty($in, $out)
     {
         global $_REQUEST;
 
@@ -118,3 +118,4 @@ class PMA_EVN_GetDataFromRequest_Test extends PHPUnit_Framework_TestCase
         );
     }
 }
+?>

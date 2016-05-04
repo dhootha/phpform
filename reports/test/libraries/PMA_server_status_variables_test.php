@@ -9,17 +9,16 @@
 /*
  * Include to test.
  */
-use PMA\libraries\ServerStatusData;
-use PMA\libraries\Theme;
-
-
+require_once 'libraries/Util.class.php';
+require_once 'libraries/php-gettext/gettext.inc';
 require_once 'libraries/url_generating.lib.php';
-
+require_once 'libraries/ServerStatusData.class.php';
 require_once 'libraries/server_status_variables.lib.php';
-
+require_once 'libraries/Theme.class.php';
 require_once 'libraries/database_interface.inc.php';
-
+require_once 'libraries/Message.class.php';
 require_once 'libraries/sanitizing.lib.php';
+require_once 'libraries/sqlparser.lib.php';
 require_once 'libraries/js_escape.lib.php';
 
 /**
@@ -68,15 +67,15 @@ class PMA_ServerStatusVariables_Test extends PHPUnit_Framework_TestCase
         $GLOBALS['pmaThemeImage'] = 'image';
 
         //$_SESSION
-        $_SESSION['PMA_Theme'] = Theme::load('./themes/pmahomme');
-        $_SESSION['PMA_Theme'] = new Theme();
+        $_SESSION['PMA_Theme'] = PMA_Theme::load('./themes/pmahomme');
+        $_SESSION['PMA_Theme'] = new PMA_Theme();
 
         //Mock DBI
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
 
-        //this data is needed when ServerStatusData constructs
+        //this data is needed when PMA_ServerStatusData constructs
         $server_status = array(
             "Aborted_clients" => "0",
             "Aborted_connects" => "0",
@@ -121,37 +120,11 @@ class PMA_ServerStatusVariables_Test extends PHPUnit_Framework_TestCase
             ),
         );
 
-        $dbi->expects($this->at(0))
-            ->method('tryQuery')
-            ->with('SHOW GLOBAL STATUS')
-            ->will($this->returnValue(true));
-
-        $dbi->expects($this->at(1))
-            ->method('fetchRow')
-            ->will($this->returnValue(array("Aborted_clients", "0")));
-        $dbi->expects($this->at(2))
-            ->method('fetchRow')
-            ->will($this->returnValue(array("Aborted_connects", "0")));
-        $dbi->expects($this->at(3))
-            ->method('fetchRow')
-            ->will($this->returnValue(array("Com_delete_multi", "0")));
-        $dbi->expects($this->at(4))
-            ->method('fetchRow')
-            ->will($this->returnValue(array("Com_create_function", "0")));
-        $dbi->expects($this->at(5))
-            ->method('fetchRow')
-            ->will($this->returnValue(array("Com_empty_query", "0")));
-        $dbi->expects($this->at(6))
-            ->method('fetchRow')
-            ->will($this->returnValue(false));
-
-        $dbi->expects($this->at(7))->method('freeResult');
-
         $dbi->expects($this->any())->method('fetchResult')
             ->will($this->returnValueMap($fetchResult));
 
         $GLOBALS['dbi'] = $dbi;
-        $this->ServerStatusData = new ServerStatusData();
+        $this->ServerStatusData = new PMA_ServerStatusData();
     }
 
     /**

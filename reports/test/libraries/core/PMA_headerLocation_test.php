@@ -9,16 +9,18 @@
 /*
  * Include to test.
  */
-use PMA\libraries\Theme;
-
-
+require_once 'libraries/Util.class.php';
+require_once 'libraries/vendor_config.php';
+require_once 'libraries/core.lib.php';
 require_once 'libraries/js_escape.lib.php';
+require_once 'libraries/select_lang.lib.php';
 require_once 'libraries/sanitizing.lib.php';
-
+require_once 'libraries/Config.class.php';
 require_once 'libraries/url_generating.lib.php';
-
-
-
+require_once 'libraries/Theme.class.php';
+require_once 'libraries/Table.class.php';
+require_once 'libraries/php-gettext/gettext.inc';
+require_once 'libraries/Response.class.php';
 
 /**
  * Test function sending headers.
@@ -81,9 +83,9 @@ class PMA_HeaderLocation_Test extends PHPUnit_Framework_TestCase
             }
 
         }
-        $_SESSION['PMA_Theme'] = Theme::load('./themes/pmahomme');
+        $_SESSION['PMA_Theme'] = PMA_Theme::load('./themes/pmahomme');
         $GLOBALS['server'] = 0;
-        $GLOBALS['PMA_Config'] = new PMA\libraries\Config();
+        $GLOBALS['PMA_Config'] = new PMA_Config();
         $GLOBALS['PMA_Config']->enableBc();
     }
 
@@ -234,7 +236,7 @@ class PMA_HeaderLocation_Test extends PHPUnit_Framework_TestCase
             runkit_constant_redefine('PMA_IS_IIS', true);
         } elseif (!defined('PMA_IS_IIS')) {
             define('PMA_IS_IIS', true);
-        } elseif (! PMA_IS_IIS) {
+        } else {
             $this->markTestSkipped(
                 'Cannot redefine constant/function - missing runkit extension'
             );
@@ -255,42 +257,30 @@ class PMA_HeaderLocation_Test extends PHPUnit_Framework_TestCase
         $testUri_html = htmlspecialchars($testUri);
         $testUri_js = PMA_escapeJsString($testUri);
 
-        $header = "<html><head><title>- - -</title>
-    <meta http-equiv=\"expires\" content=\"0\">"
-            . "<meta http-equiv=\"Pragma\" content=\"no-cache\">"
-            . "<meta http-equiv=\"Cache-Control\" content=\"no-cache\">"
-            . "<meta http-equiv=\"Refresh\" content=\"0;url=" . $testUri_html . "\">"
-            . "<script type=\"text/javascript\">//<![CDATA[
-        setTimeout(\"window.location = decodeURI('" . $testUri_js . "')\", 2000);
-        //]]></script></head>
-<body><script type=\"text/javascript\">//<![CDATA[
-    document.write('<p><a href=\"" . $testUri_html . "\">" . __('Go') . "</a></p>');
-    //]]></script></body></html>
-";
+        $header =    "<html><head><title>- - -</title>\n" .
+                    "<meta http-equiv=\"expires\" content=\"0\">\n" .
+                    "<meta http-equiv=\"Pragma\" content=\"no-cache\">\n" .
+                    "<meta http-equiv=\"Cache-Control\" content=\"no-cache\">\n" .
+                    "<meta http-equiv=\"Refresh\" content=\"0;url=" . $testUri_html
+                    . "\">\n" .
+                    "<script type=\"text/javascript\">\n" .
+                    "//<![CDATA[\n" .
+                    "setTimeout(\"window.location = unescape('\"" . $testUri_js
+                    . "\"')\", 2000);\n" .
+                    "//]]>\n" .
+                    "</script>\n" .
+                    "</head>\n" .
+                    "<body>\n" .
+                    "<script type=\"text/javascript\">\n" .
+                    "//<![CDATA[\n" .
+                    "document.write('<p><a href=\"" . $testUri_html . "\">"
+                    . __('Go') . "</a></p>');\n" .
+                    "//]]>\n" .
+                    "</script></body></html>\n";
 
         $this->expectOutputString($header);
 
-        $restoreInstance = PMA\libraries\Response::getInstance();
-
-        $mockResponse = $this->getMockBuilder('PMA\libraries\Response')
-            ->disableOriginalConstructor()
-            ->setMethods(array('disable', 'header', 'headersSent'))
-            ->getMock();
-
-        $mockResponse->expects($this->once())
-            ->method('disable');
-
-        $mockResponse->expects($this->any())
-            ->method('headersSent')
-            ->with()
-            ->will($this->returnValue(false));
-
-        $attrInstance = new ReflectionProperty('PMA\libraries\Response', '_instance');
-        $attrInstance->setAccessible(true);
-        $attrInstance->setValue($mockResponse);
-
         PMA_sendHeaderLocation($testUri);
-
-        $attrInstance->setValue($restoreInstance);
     }
 }
+?>

@@ -10,6 +10,7 @@
  */
 
 require_once 'libraries/zip_extension.lib.php';
+require_once 'libraries/php-gettext/gettext.inc';
 
 /**
  * Tests zip extension usage.
@@ -178,3 +179,4 @@ class PMA_ZipExtension_Test extends PHPUnit_Framework_TestCase
     }
 }
 
+?>

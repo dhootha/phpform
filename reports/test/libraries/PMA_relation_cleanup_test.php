@@ -9,14 +9,13 @@
 /*
  * Include to test.
  */
-
-
+require_once 'libraries/Util.class.php';
+require_once 'libraries/Theme.class.php';
+require_once 'libraries/php-gettext/gettext.inc';
 require_once 'libraries/database_interface.inc.php';
-
+require_once 'libraries/Tracker.class.php';
 require_once 'libraries/relation.lib.php';
 require_once 'libraries/relation_cleanup.lib.php';
-
-use PMA\libraries\DatabaseInterface;
 
 /**
  * PMA_Relation_Cleanup_Test class
@@ -55,8 +54,6 @@ class PMA_Relation_Cleanup_Test extends PHPUnit_Framework_TestCase
         $GLOBALS['cfg']['Server']['navigationhiding'] = 'navigationhiding';
         $GLOBALS['cfg']['Server']['savedsearches'] = 'savedsearches';
         $GLOBALS['cfg']['Server']['central_columns'] = 'central_columns';
-        $GLOBALS['cfg']['Server']['designer_settings'] = 'designer_settings';
-        $GLOBALS['cfg']['Server']['export_templates'] = 'pma__export_templates';
 
         $this->redefineRelation();
     }
@@ -299,7 +296,7 @@ class PMA_Relation_Cleanup_Test extends PHPUnit_Framework_TestCase
  *
  * @package PhpMyAdmin-test
  */
-class DBI_PMA_Relation_Cleanup extends DatabaseInterface
+class DBI_PMA_Relation_Cleanup extends PMA_DatabaseInterface
 {
     var $index;
     var $assocIndex;
@@ -383,27 +380,27 @@ class DBI_PMA_Relation_Cleanup extends DatabaseInterface
      */
     function query($sql, $link = null, $options = 0, $cache_affected_rows = true)
     {
-        if (mb_stripos($sql, "column_info") !== false) {
+        if (/*overload*/mb_stripos($sql, "column_info") !== false) {
             unset($this->values[$this->indexs['column_info']]);
         }
 
-        if (mb_stripos($sql, "table_info") !== false) {
-            unset($this->values[$this->indexs['table_info']]);
+        if (/*overload*/mb_stripos($sql, "table_info") !== false) {
+            unset ($this->values[$this->indexs['table_info']]);
         }
 
-        if (mb_stripos($sql, "table_coords") !== false) {
+        if (/*overload*/mb_stripos($sql, "table_coords") !== false) {
             unset($this->values[$this->indexs['table_coords']]);
         }
 
-        if (mb_stripos($sql, "relation") !== false) {
+        if (/*overload*/mb_stripos($sql, "relation") !== false) {
             unset($this->values[$this->indexs['relation']]);
         }
 
-        if (mb_stripos($sql, "pdf_pages") !== false) {
+        if (/*overload*/mb_stripos($sql, "pdf_pages") !== false) {
             unset($GLOBALS [$this->indexs['pdf_pages']]);
         }
 
-        if (mb_stripos($sql, "bookmark") !== false) {
+        if (/*overload*/mb_stripos($sql, "bookmark") !== false) {
             unset($GLOBALS [$this->indexs['bookmark']]);
         }
         return true;

@@ -1,6 +1,7 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
+ * Test for PMA_getPHPDocLink, PMA_linkURL  from libraries/core.lib.php
  *
  * @package PhpMyAdmin-test
  */
@@ -8,9 +9,12 @@
 /*
  * Include to test.
  */
+require_once 'libraries/core.lib.php';
 require_once 'libraries/url_generating.lib.php';
+require_once 'libraries/php-gettext/gettext.inc';
 
 /**
+ * Test for PMA_getPHPDocLink, PMA_linkURL  from libraries/core.lib.php
  *
  * @package PhpMyAdmin-test
  */
@@ -32,7 +36,7 @@ class PMA_GetLinks_Test extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testGetPHPDocLink()
+    public function testPMA_getPHPDocLink()
     {
         $lang = _pgettext('PHP documentation language', 'en');
         $this->assertEquals(
@@ -43,7 +47,7 @@ class PMA_GetLinks_Test extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data provider for testLinkURL
+     * Data provider for testPMA_linkURL
      *
      * @return array
      */
@@ -69,7 +73,7 @@ class PMA_GetLinks_Test extends PHPUnit_Framework_TestCase
      *
      * @dataProvider providerLinkURL
      */
-    public function testLinkURL($link, $url)
+    public function testPMA_linkURL($link, $url)
     {
         $this->assertEquals(PMA_linkURL($link), $url);
     }

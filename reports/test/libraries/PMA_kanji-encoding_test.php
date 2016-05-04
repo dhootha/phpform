@@ -9,6 +9,7 @@
 /*
  * Include to test.
  */
+require_once 'libraries/php-gettext/gettext.inc';
 require_once 'libraries/kanji-encoding.lib.php';
 
 /**
@@ -167,3 +168,4 @@ class PMA_Kanji_Encoding_Test extends PHPUnit_Framework_TestCase
         );
     }
 }
+?>

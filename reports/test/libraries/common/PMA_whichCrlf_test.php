@@ -1,7 +1,7 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Test PMA\libraries\Util::whichCrlf function
+ * Test PMA_Util::whichCrlf function
  *
  * @package PhpMyAdmin-test
  * @group common.lib-tests
@@ -10,10 +10,10 @@
 /*
  * Include to test.
  */
-
+require_once 'libraries/Util.class.php';
 
 /**
- * Test PMA\libraries\Util::whichCrlf function
+ * Test PMA_Util::whichCrlf function
  *
  * @package PhpMyAdmin-test
  * @group common.lib-tests
@@ -40,11 +40,11 @@ class PMA_WhichCrlf_Test extends PHPUnit_Framework_TestCase
 
             if (PMA_USR_OS == 'Win') {
                 $this->assertEquals(
-                    "\r\n", PMA\libraries\Util::whichCrlf()
+                    "\r\n", PMA_Util::whichCrlf()
                 );
             } else {
                 $this->assertEquals(
-                    "\n", PMA\libraries\Util::whichCrlf()
+                    "\n", PMA_Util::whichCrlf()
                 );
             }
 
@@ -60,7 +60,7 @@ class PMA_WhichCrlf_Test extends PHPUnit_Framework_TestCase
                 }
 
                 $this->assertEquals(
-                    "\n", PMA\libraries\Util::whichCrlf()
+                    "\n", PMA_Util::whichCrlf()
                 );
             }
 
@@ -70,7 +70,7 @@ class PMA_WhichCrlf_Test extends PHPUnit_Framework_TestCase
                 define('PMA_USR_OS', 'Win');
             }
             $this->assertEquals(
-                "\r\n", PMA\libraries\Util::whichCrlf()
+                "\r\n", PMA_Util::whichCrlf()
             );
 
         }
@@ -85,3 +85,4 @@ class PMA_WhichCrlf_Test extends PHPUnit_Framework_TestCase
     }
 
 }
+?>

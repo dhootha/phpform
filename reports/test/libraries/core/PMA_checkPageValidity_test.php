@@ -1,6 +1,7 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
+ * Tests for PMA_checkPageValidity() from libraries/core.lib.php
  *
  * @package PhpMyAdmin-test
  */
@@ -8,14 +9,17 @@
 /*
  * Include to test.
  */
+require_once 'libraries/core.lib.php';
 
 /**
+ * Tests for PMA_checkPageValidity() from libraries/core.lib.php
  *
  * @package PhpMyAdmin-test
  */
 class PMA_CheckPageValidity_Test extends PHPUnit_Framework_TestCase
 {
     protected $goto_whitelist = array(
+        'db_create.php',
         'db_datadict.php',
         'db_sql.php',
         'db_export.php',

@@ -26,8 +26,8 @@ class Environment_Test extends PHPUnit_Framework_TestCase
     public function testPhpVersion()
     {
         $this->assertTrue(
-            version_compare('5.5', phpversion(), '<='),
-            'phpMyAdmin requires PHP 5.5 or above'
+            version_compare('5.3', phpversion(), '<='),
+            'phpMyAdmin requires PHP 5.3 or above'
         );
     }
 
@@ -49,13 +49,14 @@ class Environment_Test extends PHPUnit_Framework_TestCase
                 "Error when trying to connect to database"
             );
 
-            $pdo->exec("SHOW DATABASES;");
+            $test = $pdo->exec("SHOW DATABASES;");
             $this->assertEquals(
                 0,
                 $pdo->errorCode(),
                 'Error trying to show tables for database'
             );
-        } catch (Exception $e) {
+        }
+        catch (Exception $e) {
             $this->markTestSkipped("Error: " . $e->getMessage());
         }
 
@@ -68,3 +69,4 @@ class Environment_Test extends PHPUnit_Framework_TestCase
         $this->assertEquals(5, $version_parts[1]);
     }
 }
+?>

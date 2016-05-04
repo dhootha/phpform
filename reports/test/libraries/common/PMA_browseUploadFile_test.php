@@ -1,7 +1,7 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Test for PMA\libraries\Util::getBrowseUploadFileBlock from common.lib
+ * Test for PMA_Util::getBrowseUploadFileBlock from common.lib
  *
  * @package PhpMyAdmin-test
  * @group common.lib-tests
@@ -10,10 +10,11 @@
 /*
  * Include to test.
  */
-
+require_once 'libraries/Util.class.php';
+require_once 'libraries/php-gettext/gettext.inc';
 
 /**
- * Test for PMA\libraries\Util::getBrowseUploadFileBlock from common.lib
+ * Test for PMA_Util::getBrowseUploadFileBlock from common.lib
  *
  * @package PhpMyAdmin-test
  * @group common.lib-tests
@@ -49,7 +50,7 @@ class PMA_GetBrowseUploadFileBlock_Test extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test for PMA\libraries\Util::getBrowseUploadFileBlock
+     * Test for PMA_Util::getBrowseUploadFileBlock
      *
      * @param int    $size Size
      * @param string $unit Unit
@@ -62,7 +63,7 @@ class PMA_GetBrowseUploadFileBlock_Test extends PHPUnit_Framework_TestCase
     function testBrowseUploadFile($size, $unit, $res)
     {
         $this->assertEquals(
-            PMA\libraries\Util::getBrowseUploadFileBlock($size),
+            PMA_Util::getBrowseUploadFileBlock($size),
             '<label for="input_import_file">' . __("Browse your computer:")
             . '</label>'
             . '<div id="upload_form_status" style="display: none;"></div>'

@@ -1,7 +1,7 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- ** Test for PMA\libraries\Util::checkParameters from Util.php
+ ** Test for PMA_Util::checkParameters from Util.class.php
  *
  * @package PhpMyAdmin-test
  * @group common.lib-tests
@@ -10,13 +10,15 @@
 /*
  * Include to test.
  */
-use PMA\libraries\Theme;
-
-
+require_once 'libraries/core.lib.php';
+require_once 'libraries/Util.class.php';
+require_once 'libraries/Theme.class.php';
+require_once 'libraries/Config.class.php';
+require_once 'libraries/select_lang.lib.php';
 require_once 'libraries/sanitizing.lib.php';
 
 /**
- ** Test for PMA\libraries\Util::checkParameters from Util.php
+ ** Test for PMA_Util::checkParameters from Util.class.php
  *
  * @package PhpMyAdmin-test
  * @group common.lib-tests
@@ -30,8 +32,8 @@ class PMA_CheckParameters_Test extends PHPUnit_Framework_TestCase
      */
     function setup()
     {
-        $GLOBALS['PMA_Config'] = new PMA\libraries\Config();
-        $_SESSION['PMA_Theme'] = new Theme();
+        $GLOBALS['PMA_Config'] = new PMA_Config();
+        $_SESSION['PMA_Theme'] = new PMA_Theme();
         $GLOBALS['cfg'] = array('ServerDefault' => 1);
         $GLOBALS['pmaThemeImage'] = 'theme/';
         $GLOBALS['text_dir'] = 'ltr';
@@ -49,7 +51,7 @@ class PMA_CheckParameters_Test extends PHPUnit_Framework_TestCase
 
         $this->expectOutputRegex("/Missing parameter: field/");
 
-        PMA\libraries\Util::checkParameters(
+        PMA_Util::checkParameters(
             array('db', 'table', 'field')
         );
     }
@@ -69,7 +71,7 @@ class PMA_CheckParameters_Test extends PHPUnit_Framework_TestCase
         $GLOBALS['sql_query'] = "SELECT * FROM tblTable;";
 
         $this->expectOutputString("");
-        PMA\libraries\Util::checkParameters(
+        PMA_Util::checkParameters(
             array('db', 'table', 'field', 'sql_query')
         );
     }

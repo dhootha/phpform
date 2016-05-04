@@ -21,8 +21,6 @@ set_include_path(
 define('PHPMYADMIN', 1);
 define('TESTSUITE', 1);
 define('PMA_MYSQL_INT_VERSION', 55000);
-define('PMA_MYSQL_STR_VERSION', '5.50.00');
-define('PMA_MYSQL_VERSION_COMMENT', 'MySQL Community Server (GPL)');
 
 // Selenium tests setup
 $test_defaults = array(
@@ -48,30 +46,14 @@ foreach ($test_defaults as $varname => $defvalue) {
     }
 }
 
-require_once 'libraries/vendor_config.php';
-require_once 'libraries/autoloader.php';
+require_once 'libraries/String.class.php';
 require_once 'libraries/core.lib.php';
-$CFG = new PMA\libraries\Config();
+$GLOBALS['PMA_String'] = new PMA_String();
+require_once 'libraries/Config.class.php';
+$CFG = new PMA_Config();
 // Initialize PMA_VERSION variable
 define('PMA_VERSION', $CFG->get('PMA_VERSION'));
 unset($CFG);
-require_once 'libraries/sql-parser/autoload.php';
-
-/* Ensure default langauge is active */
-require_once 'libraries/php-gettext/gettext.inc';
-PMA\libraries\LanguageManager::getInstance()->getLanguage('en')->activate();
-
-// Set proxy information from env, if available
-$http_proxy = getenv('http_proxy');
-if ($http_proxy && ($url_info = parse_url($http_proxy))) {
-    define('PROXY_URL', $url_info['host'] . ':' . $url_info['port']);
-    define('PROXY_USER', empty($url_info['user']) ? '' : $url_info['user']);
-    define('PROXY_PASS', empty($url_info['pass']) ? '' : $url_info['pass']);
-} else {
-    define('PROXY_URL', '');
-    define('PROXY_USER', '');
-    define('PROXY_PASS', '');
-}
 
 // Ensure we have session started
 session_start();
@@ -81,7 +63,6 @@ $_SESSION[' PMA_token '] = 'token';
 $_SESSION['tmpval']['pftext'] = 'F';
 $GLOBALS['lang'] = 'en';
 $GLOBALS['is_ajax_request'] = false;
-$GLOBALS['cell_align_left'] = 'left';
 
 // Check whether we have runkit extension
 define('PMA_HAS_RUNKIT', function_exists('runkit_constant_redefine'));
@@ -168,3 +149,4 @@ function tearDownForTestsUsingDate()
         runkit_function_rename('test_date_override', 'date');
     }
 }
+?>

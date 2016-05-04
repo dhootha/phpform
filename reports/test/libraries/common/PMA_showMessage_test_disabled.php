@@ -1,7 +1,7 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- ** Test for PMA\libraries\Util::getMessage from common.lib
+ ** Test for PMA_Util::getMessage from common.lib
  *
  * @package PhpMyAdmin-test
  * @group common.lib-tests
@@ -12,12 +12,12 @@ const PMA_IS_WINDOWS = false;
 /*
  * Include to test.
  */
-
-
+require_once 'libraries/Util.class.php';
+require_once 'libraries/Table.class.php';
 require_once 'libraries/js_escape.lib.php';
 
 /**
- ** Test for PMA\libraries\Util::getMessage from common.lib
+ ** Test for PMA_Util::getMessage from common.lib
  *
  * @package PhpMyAdmin-test
  * @group common.lib-tests
@@ -66,15 +66,15 @@ class PMA_ShowMessage_Test extends PHPUnit_Framework_TestCase
             ] [
             <a href=\"import.php?db=db&amp;table=tbl&amp;sql_query=EXPLAIN+SELECT+%2A+FROM+tblPatient+&amp;server=server&amp;lang=en&amp;token=647a62ad301bf9025e3b13bc7caa02cb\" >Explain SQL</a>
             ] [
-            <a href=\"import.php?db=db&amp;table=tbl&amp;sql_query=SELECT+%2A+FROM+tblPatient+&amp;show_query=1&amp;show_as_php=1&amp;server=server&amp;lang=en&amp;token=647a62ad301bf9025e3b13bc7caa02cb\" >Create PHP code</a>
+            <a href=\"import.php?db=db&amp;table=tbl&amp;sql_query=SELECT+%2A+FROM+tblPatient+&amp;show_query=1&amp;show_as_php=1&amp;server=server&amp;lang=en&amp;token=647a62ad301bf9025e3b13bc7caa02cb\" >Create PHP Code</a>
             ] [
             <a href=\"import.php?db=db&amp;table=tbl&amp;sql_query=SELECT+%2A+FROM+tblPatient+&amp;show_query=1&amp;server=server&amp;lang=en&amp;token=647a62ad301bf9025e3b13bc7caa02cb\" >Refresh</a>
             ]</div></div>"
         );
 
-        echo PMA\libraries\Util::getMessage("msg");
+        echo PMA_Util::getMessage("msg");
 
-        //$this->assertEquals("", PMA\libraries\Util::getMessage("msg"));
+        //$this->assertEquals("", PMA_Util::getMessage("msg"));
         $this->assertTrue(true);
     }
 }

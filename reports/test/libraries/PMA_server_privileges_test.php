@@ -9,19 +9,18 @@
 /*
  * Include to test.
  */
-use PMA\libraries\Theme;
-
-
+require_once 'libraries/Util.class.php';
+require_once 'libraries/php-gettext/gettext.inc';
 require_once 'libraries/url_generating.lib.php';
-
+require_once 'libraries/Theme.class.php';
 require_once 'libraries/database_interface.inc.php';
-
+require_once 'libraries/Message.class.php';
 require_once 'libraries/sanitizing.lib.php';
+require_once 'libraries/sqlparser.lib.php';
 require_once 'libraries/js_escape.lib.php';
-
-
+require_once 'libraries/Message.class.php';
+require_once 'libraries/Response.class.php';
 require_once 'libraries/relation.lib.php';
-require_once 'libraries/relation_cleanup.lib.php';
 require_once 'libraries/server_privileges.lib.php';
 
 /**
@@ -44,6 +43,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         if (!defined("PMA_USR_BROWSER_AGENT")) {
             define("PMA_USR_BROWSER_AGENT", "other");
         }
+
         if (!defined("PMA_MYSQL_VERSION_COMMENT")) {
             define("PMA_MYSQL_VERSION_COMMENT", "MySQL");
         }
@@ -65,14 +65,12 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $GLOBALS['cfg']['LimitChars'] = 100;
         $GLOBALS['cfg']['AllowThirdPartyFraming'] = false;
         $GLOBALS['cfg']['ActionLinksMode'] = "both";
-        $GLOBALS['cfg']['DefaultTabDatabase'] = 'structure';
-        $GLOBALS['cfg']['DefaultTabTable'] = "structure";
-        $GLOBALS['cfg']['NavigationTreeDefaultTabTable'] = "structure";
-        $GLOBALS['cfg']['NavigationTreeDefaultTabTable2'] = "";
+        $GLOBALS['cfg']['DefaultTabDatabase'] = 'db_structure.php';
+        $GLOBALS['cfg']['PmaAbsoluteUri'] = "PmaAbsoluteUri";
+        $GLOBALS['cfg']['DefaultTabTable'] = "db_structure.php";
+        $GLOBALS['cfg']['NavigationTreeDefaultTabTable'] = "db_structure.php";
         $GLOBALS['cfg']['Confirm'] = "Confirm";
         $GLOBALS['cfg']['ShowHint'] = true;
-        $GLOBALS['cfg']['ShowDatabasesNavigationAsTree'] = true;
-        $GLOBALS['cfg']['LoginCookieValidity'] = 1440;
 
         $GLOBALS['cfgRelation'] = array();
         $GLOBALS['cfgRelation']['menuswork'] = false;
@@ -87,24 +85,23 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         //$_POST
         $_POST['pred_password'] = 'none';
         //$_SESSION
-        $_SESSION['PMA_Theme'] = Theme::load('./themes/pmahomme');
-        $_SESSION['PMA_Theme'] = new Theme();
+        $_SESSION['PMA_Theme'] = PMA_Theme::load('./themes/pmahomme');
+        $_SESSION['PMA_Theme'] = new PMA_Theme();
         $_SESSION['relation'][$GLOBALS['server']] = array(
-            'PMA_VERSION' => PMA_VERSION,
             'db' => 'pmadb',
             'users' => 'users',
             'usergroups' => 'usergroups',
             'menuswork' => true
         );
 
-        $pmaconfig = $this->getMockBuilder('PMA\libraries\Config')
+        $pmaconfig = $this->getMockBuilder('PMA_Config')
             ->disableOriginalConstructor()
             ->getMock();
 
         $GLOBALS['PMA_Config'] = $pmaconfig;
 
         //Mock DBI
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -152,7 +149,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $_REQUEST['tablename'] = "PMA_tablename";
         $_REQUEST['dbname'] = "PMA_dbname";
         list(
-            $username, $hostname, $dbname, $tablename, $routinename,
+            $username, $hostname, $dbname, $tablename,
             $db_and_table, $dbname_is_wildcard
         ) = PMA_getDataForDBInfo();
         $this->assertEquals(
@@ -184,7 +181,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $_REQUEST['pred_tablename'] = "PMA_pred__tablename";
         $_REQUEST['pred_dbname'] = array("PMA_pred_dbname");
         list(
-            ,, $dbname, $tablename, $routinename,
+            ,, $dbname, $tablename,
             $db_and_table, $dbname_is_wildcard
         ) = PMA_getDataForDBInfo();
         $this->assertEquals(
@@ -507,8 +504,8 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $db, $table, $username, $hostname
         );
         $sql = "SELECT * FROM `mysql`.`user`"
-            . " WHERE `User` = '" . PMA\libraries\Util::sqlAddSlashes($username) . "'"
-            . " AND `Host` = '" . PMA\libraries\Util::sqlAddSlashes($hostname) . "';";
+            . " WHERE `User` = '" . PMA_Util::sqlAddSlashes($username) . "'"
+            . " AND `Host` = '" . PMA_Util::sqlAddSlashes($hostname) . "';";
         $this->assertEquals(
             $sql,
             $ret
@@ -521,9 +518,9 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $db, $table, $username, $hostname
         );
         $sql = "SELECT * FROM `mysql`.`db`"
-            . " WHERE `User` = '" . PMA\libraries\Util::sqlAddSlashes($username) . "'"
-            . " AND `Host` = '" . PMA\libraries\Util::sqlAddSlashes($hostname) . "'"
-            . " AND '" . PMA\libraries\Util::unescapeMysqlWildcards($db) . "'"
+            . " WHERE `User` = '" . PMA_Util::sqlAddSlashes($username) . "'"
+            . " AND `Host` = '" . PMA_Util::sqlAddSlashes($hostname) . "'"
+            . " AND '" . PMA_Util::unescapeMysqlWildcards($db) . "'"
             . " LIKE `Db`;";
         $this->assertEquals(
             $sql,
@@ -538,10 +535,10 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         );
         $sql = "SELECT `Table_priv`"
             . " FROM `mysql`.`tables_priv`"
-            . " WHERE `User` = '" . PMA\libraries\Util::sqlAddSlashes($username) . "'"
-            . " AND `Host` = '" . PMA\libraries\Util::sqlAddSlashes($hostname) . "'"
-            . " AND `Db` = '" . PMA\libraries\Util::unescapeMysqlWildcards($db) . "'"
-            . " AND `Table_name` = '" . PMA\libraries\Util::sqlAddSlashes($table) . "';";
+            . " WHERE `User` = '" . PMA_Util::sqlAddSlashes($username) . "'"
+            . " AND `Host` = '" . PMA_Util::sqlAddSlashes($hostname) . "'"
+            . " AND `Db` = '" . PMA_Util::unescapeMysqlWildcards($db) . "'"
+            . " AND `Table_name` = '" . PMA_Util::sqlAddSlashes($table) . "';";
         $this->assertEquals(
             $sql,
             $ret
@@ -592,11 +589,15 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
     {
         $username = "PMA_username";
         $hostname = "PMA_hostname";
+        $GLOBALS['cfg']['TextareaCols'] = 'TextareaCols';
+        $GLOBALS['cfg']['TextareaRows'] = 'TextareaCols';
 
         list($title, $export)
             = PMA_getListForExportUserDefinition($username, $hostname);
 
         //validate 1: $export
+        $result = '<textarea class="export" cols="' . $GLOBALS['cfg']['TextareaCols']
+        . '" rows="' . $GLOBALS['cfg']['TextareaRows'];
         $this->assertContains(
             'grant user2 delete',
             $export
@@ -606,7 +607,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $export
         );
         $this->assertContains(
-            '<textarea class="export"',
+            $result,
             $export
         );
 
@@ -632,23 +633,18 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $_REQUEST['adduser_submit'] = true;
         $_POST['pred_username'] = 'any';
         $_POST['pred_hostname'] = 'localhost';
-        $_POST['pred_password'] = 'keep';
         $_REQUEST['createdb-3'] = true;
-        $_REQUEST['authentication_plugin'] = 'mysql_native_password';
-
         list($create_user_real, $create_user_show, $real_sql_query, $sql_query)
             = PMA_getSqlQueriesForDisplayAndAddUser(
                 $username, $hostname,
-                (isset($password) ? $password : '')
+                (isset ($password) ? $password : '')
             );
         $this->assertEquals(
-            "CREATE USER 'pma_username'@'pma_hostname' "
-            . "IDENTIFIED WITH mysql_native_password AS 'pma_password';",
+            "CREATE USER 'pma_username'@'pma_hostname';",
             $create_user_real
         );
         $this->assertEquals(
-            "CREATE USER 'pma_username'@'pma_hostname' "
-            . "IDENTIFIED WITH mysql_native_password AS '***';",
+            "CREATE USER 'pma_username'@'pma_hostname';",
             $create_user_show
         );
         $this->assertEquals(
@@ -674,10 +670,8 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $_REQUEST['adduser_submit'] = true;
         $_POST['pred_username'] = 'any';
         $_POST['pred_hostname'] = 'localhost';
-        $_POST['pred_password'] = 'keep';
         $_REQUEST['createdb-3'] = true;
         $_REQUEST['userGroup'] = "username";
-        $_REQUEST['authentication_plugin'] = 'mysql_native_password';
 
         list(
             $ret_message,,, $sql_query,
@@ -694,8 +688,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $ret_message->getMessage()
         );
         $this->assertEquals(
-            "CREATE USER ''@'localhost' IDENTIFIED WITH mysql_native_password AS '***';"
-            . "GRANT USAGE ON *.* TO ''@'localhost' REQUIRE NONE;"
+            "CREATE USER ''@'localhost';GRANT USAGE ON *.* TO ''@'localhost' REQUIRE NONE;"
             . "GRANT ALL PRIVILEGES ON `pma_dbname`.* TO ''@'localhost';",
             $sql_query
         );
@@ -716,7 +709,6 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $hostname = 'pma_hostname';
         $err_url = "error.php";
         $_POST['pma_pw'] = 'pma_pw';
-        $_REQUEST['authentication_plugin'] = 'mysql_native_password';
 
         $message = PMA_updatePassword(
             $err_url, $username, $hostname
@@ -748,7 +740,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $_POST['max_questions'] = 1000;
         list ($message, $sql_query)
             = PMA_getMessageAndSqlQueryForPrivilegesRevoke(
-                $dbname, $tablename, $username, $hostname, ''
+                $dbname, $tablename, $username, $hostname
             );
 
         $this->assertEquals(
@@ -756,9 +748,9 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $message->getMessage()
         );
         $this->assertEquals(
-            "REVOKE ALL PRIVILEGES ON  `pma_dbname`.`pma_tablename` "
+            "REVOKE ALL PRIVILEGES ON `pma_dbname`.`pma_tablename` "
             . "FROM 'pma_username'@'pma_hostname'; "
-            . "REVOKE GRANT OPTION ON  `pma_dbname`.`pma_tablename` "
+            . "REVOKE GRANT OPTION ON `pma_dbname`.`pma_tablename` "
             . "FROM 'pma_username'@'pma_hostname';",
             $sql_query
         );
@@ -782,7 +774,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $_POST['Grant_priv'] = 'Y';
         $_POST['max_questions'] = 1000;
         list($sql_query, $message) = PMA_updatePrivileges(
-            $username, $hostname, $tablename, $dbname, ''
+            $username, $hostname, $tablename, $dbname
         );
 
         $this->assertEquals(
@@ -790,7 +782,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $message->getMessage()
         );
         $this->assertEquals(
-            "REVOKE ALL PRIVILEGES ON  `pma_dbname`.`pma_tablename` "
+            "REVOKE ALL PRIVILEGES ON `pma_dbname`.`pma_tablename` "
             . "FROM 'pma_username'@'pma_hostname';  ",
             $sql_query
         );
@@ -809,7 +801,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $GLOBALS['username'] = "username";
 
         //Mock DBI
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -873,7 +865,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $html
         );
         $this->assertContains(
-            __('Check all'),
+            __('Check All'),
             $html
         );
         $this->assertContains(
@@ -940,9 +932,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
     {
         $username = "PMA_username";
         $hostname = "PMA_hostname";
-        $password = "pma_password";
-        $_POST['pred_password'] = 'keep';
-        $_REQUEST['authentication_plugin'] = 'mysql_native_password';
+        $password = "PMA_password";
         $dbname = "PMA_db";
 
         list($create_user_real, $create_user_show, $real_sql_query, $sql_query)
@@ -950,15 +940,13 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
 
         //validate 1: $create_user_real
         $this->assertEquals(
-            "CREATE USER 'PMA_username'@'PMA_hostname' IDENTIFIED "
-            . "WITH mysql_native_password AS 'pma_password';",
+            "CREATE USER 'PMA_username'@'PMA_hostname';",
             $create_user_real
         );
 
         //validate 2: $create_user_show
         $this->assertEquals(
-            "CREATE USER 'PMA_username'@'PMA_hostname' IDENTIFIED "
-            . "WITH mysql_native_password AS '***';",
+            "CREATE USER 'PMA_username'@'PMA_hostname';",
             $create_user_show
         );
 
@@ -1074,7 +1062,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $GLOBALS['username'] = 'pma_username';
 
         $dbi_old = $GLOBALS['dbi'];
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
         $fields_info = array(
@@ -1106,7 +1094,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $html
         );
 
-        $output = PMA\libraries\Util::showHint(
+        $output = PMA_Util::showHint(
             __(
                 'When Host table is used, this field is ignored '
                 . 'and values stored in Host table are used instead.'
@@ -1179,7 +1167,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
     public function testPMAGetHtmlForAddUser()
     {
         $dbi_old = $GLOBALS['dbi'];
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
         $fields_info = array(
@@ -1213,7 +1201,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $html
         );
 
-        $item = PMA\libraries\Util::getCheckbox(
+        $item = PMA_Util::getCheckbox(
             'createdb-2',
             __('Grant all privileges on wildcard name (username\\_%).'),
             false, false, 'createdb-2'
@@ -1246,7 +1234,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
     public function testPMAGetHtmlForSpecificDbPrivileges()
     {
         $dbi_old = $GLOBALS['dbi'];
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
         $fields_info = array(
@@ -1321,7 +1309,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
     public function testPMAGetHtmlForSpecificTablePrivileges()
     {
         $dbi_old = $GLOBALS['dbi'];
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
         $fields_info = array(
@@ -1481,7 +1469,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $tablename = "pma_tablename";
 
         $html = PMA_getUserLink(
-            'edit', $username, $hostname, $dbname, $tablename, ''
+            'edit', $username, $hostname, $dbname, $tablename
         );
 
         $url_html = PMA_URL_getCommon(
@@ -1490,7 +1478,6 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
                 'hostname' => $hostname,
                 'dbname' => $dbname,
                 'tablename' => $tablename,
-                'routinename' => '',
             )
         );
         $this->assertContains(
@@ -1498,12 +1485,12 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $html
         );
         $this->assertContains(
-            __('Edit privileges'),
+            __('Edit Privileges'),
             $html
         );
 
         $html = PMA_getUserLink(
-            'revoke', $username, $hostname, $dbname, $tablename, ''
+            'revoke', $username, $hostname, $dbname, $tablename
         );
 
         $url_html = PMA_URL_getCommon(
@@ -1512,7 +1499,6 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
                 'hostname' => $hostname,
                 'dbname' => $dbname,
                 'tablename' => $tablename,
-                'routinename' => '',
                 'revokeall' => 1,
             )
         );
@@ -1594,7 +1580,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
 
         //sql_query
         $this->assertEquals(
-            PMA\libraries\Util::getMessage(null, $sql_query),
+            PMA_Util::getMessage(null, $sql_query),
             $extra_data['sql_query']
         );
 
@@ -1626,7 +1612,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $hostname = "pma_hostname";
 
         $dbi_old = $GLOBALS['dbi'];
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
         $fields_info = array(
@@ -1659,13 +1645,13 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
 
         //PMA_getHtmlForLoginInformationFields
         $this->assertContains(
-            PMA_getHtmlForLoginInformationFields('change', $username, $hostname),
+            PMA_getHtmlForLoginInformationFields('change'),
             $html
         );
 
         //Create a new user with the same privileges
         $this->assertContains(
-            "Create a new user account with the same privileges",
+            "Create a new user with the same privileges",
             $html
         );
 
@@ -1691,9 +1677,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $html
         );
         $this->assertContains(
-            PMA\libraries\Util::getScriptNameForOption(
-                $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
-            ),
+            $GLOBALS['cfg']['DefaultTabDatabase'],
             $html
         );
         $item = PMA_URL_getCommon(
@@ -1717,9 +1701,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $html
         );
         $this->assertContains(
-            PMA\libraries\Util::getScriptNameForOption(
-                $GLOBALS['cfg']['DefaultTabTable'], 'table'
-            ),
+            $GLOBALS['cfg']['DefaultTabTable'],
             $html
         );
         $item = PMA_URL_getCommon(
@@ -1737,7 +1719,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             htmlspecialchars($tablename),
             $html
         );
-        $item = PMA\libraries\Util::getTitleForTarget(
+        $item = PMA_Util::getTitleForTarget(
             $GLOBALS['cfg']['DefaultTabTable']
         );
         $this->assertContains(
@@ -1787,9 +1769,9 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $html
         );
 
-        //PMA\libraries\Util::showHint
+        //PMA_Util::showHint
         $this->assertContains(
-            PMA\libraries\Util::showHint(
+            PMA_Util::showHint(
                 __('Note: MySQL privilege names are expressed in English.')
             ),
             $html
@@ -1853,11 +1835,11 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
 
         //labels
         $this->assertContains(
-            __('Add user account'),
+            __('Add user'),
             $html
         );
         $this->assertContains(
-            __('Remove selected user accounts'),
+            __('Remove selected users'),
             $html
         );
         $this->assertContains(
@@ -1880,19 +1862,6 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
         $_REQUEST['change_copy'] = "change_copy";
         $_REQUEST['old_hostname'] = "old_hostname";
         $_REQUEST['old_username'] = "old_username";
-        $_SESSION['relation'][1] = array(
-            'PMA_VERSION' => PMA_VERSION,
-            'bookmarkwork' => false,
-            'historywork' => false,
-            'recentwork' => false,
-            'favoritework' => false,
-            'uiprefswork' => false,
-            'userconfigwork' => false,
-            'menuswork' => false,
-            'navwork' => false,
-            'savedsearcheswork' => false,
-            'designersettingswork' => false,
-        );
 
         $queries = array();
 
@@ -1922,7 +1891,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
             $html
         );
         $this->assertContains(
-            PMA\libraries\Util::getIcon('b_usradd.png'),
+            PMA_Util::getIcon('b_usradd.png'),
             $html
         );
         $this->assertContains(
@@ -1953,11 +1922,11 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
 
         //title
         $this->assertContains(
-            __('Edit privileges:'),
+            __('Edit Privileges:'),
             $html
         );
         $this->assertContains(
-            __('User account'),
+            __('User'),
             $html
         );
 
@@ -2030,6 +1999,49 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests for PMA_getUserSpecificRights
+     *
+     * @return void
+     */
+    function testPMAGetUserSpecificRights()
+    {
+        // Setup for the test
+        $GLOBALS['dbi']->expects($this->any())->method('fetchAssoc')
+            ->will(
+                $this->onConsecutiveCalls(
+                    array('Db' => 'y'), false, array('Db' => 'y'), false,
+                    false, array('Table_name' => 't')
+                )
+            );
+
+        // Test case 1
+        $tables = array('columns_priv');
+        $user_host_condition = '';
+        $dbname = '';
+        $expected = array(
+            'y' => array(
+                'privs' => array('USAGE'),
+                'Db' => 'y',
+                'Grant_priv' => 'N',
+                'Column_priv' => true,
+                'can_delete' => true
+            )
+        );
+        $actual = PMA_getUserSpecificRights($tables, $user_host_condition, $dbname);
+        $this->assertEquals($expected, $actual);
+
+        // Test case 2
+        $dbname = 'db';
+        $expected = array(
+            't' => array(
+                'Table_name' => 't'
+            )
+        );
+        $actual = PMA_getUserSpecificRights($tables, $user_host_condition, $dbname);
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
      * Tests for PMA_getHtmlForUserProperties
      *
      * @return void
@@ -2071,6 +2083,61 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests for PMA_getHtmlForUserRights
+     *
+     * @return void
+     */
+    function testPMAGetHtmlForUserRights()
+    {
+        // Test case 1
+        $db_rights = array(
+            'y' => array(
+                'privs' => array('USAGE'),
+                'Db' => 'y',
+                'Grant_priv' => 'N',
+                'Column_priv' => true,
+                'can_delete' => true
+            )
+        );
+        $exp_found_rows = array('y');
+        $actual = PMA_getHtmlForUserRights($db_rights, '', 'host', 'user');
+        $this->assertArrayHasKey(0, $actual);
+        $this->assertArrayHasKey(1, $actual);
+        $this->assertEquals($exp_found_rows, $actual[0]);
+        $this->assertContains('Edit Privileges', $actual[1]);
+        $this->assertContains('Revoke', $actual[1]);
+        $this->assertContains(
+            '<tr class="odd">',
+            $actual[1]
+        );
+        $this->assertContains(
+            '<dfn title="No privileges.">USAGE</dfn>',
+            $actual[1]
+        );
+        $this->assertContains(
+            '<img src="imageb_usredit.png" title="Edit Privileges" '
+                . 'alt="Edit Privileges" />',
+            $actual[1]
+        );
+        $this->assertContains(
+            '<img src="imageb_usrdrop.png" title="Revoke" alt="Revoke" />',
+            $actual[1]
+        );
+
+        // Test case 2
+        $actual = PMA_getHtmlForUserRights(array(), '', '', '');
+        $this->assertArrayHasKey(0, $actual);
+        $this->assertArrayHasKey(1, $actual);
+        $this->assertEquals(array(), $actual[0]);
+        $this->assertEquals(
+            '<tr class="odd">' . "\n"
+            . '<td colspan="6"><center><i>None</i></center></td>' . "\n"
+            . '</tr>' . "\n",
+            $actual[1]
+        );
+    }
+
+    /**
      * Tests for PMA_getHtmlForAllTableSpecificRights
      *
      * @return void
@@ -2078,28 +2145,121 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
     function testPMAGetHtmlForAllTableSpecificRights()
     {
         // Test case 1
-        $actual = PMA_getHtmlForAllTableSpecificRights('pma', 'host', 'table', 'pmadb');
+        $actual = PMA_getHtmlForAllTableSpecificRights('pma', 'host', 'pmadb');
+        $this->assertArrayHasKey(0, $actual);
+        $this->assertArrayHasKey(1, $actual);
         $this->assertContains(
             '<input type="hidden" name="username" value="pma" />',
-            $actual
+            $actual[0]
         );
         $this->assertContains(
             '<input type="hidden" name="hostname" value="host" />',
-            $actual
+            $actual[0]
         );
         $this->assertContains(
             '<legend data-submenu-label="Table">'
-            . 'Table-specific privileges',
-            $actual
+                . 'Table-specific privileges',
+            $actual[0]
         );
+        $this->assertEquals(array(), $actual[1]);
 
         // Test case 2
-        $GLOBALS['dblist'] = new stdClass();
-        $GLOBALS['dblist']->databases = array('x', 'y', 'z');
-        $actual = PMA_getHtmlForAllTableSpecificRights('pma2', 'host2', 'database', '');
+        $actual = PMA_getHtmlForAllTableSpecificRights('pma2', 'host2', '');
+        $this->assertArrayHasKey(0, $actual);
+        $this->assertArrayHasKey(1, $actual);
         $this->assertContains(
-            '<legend data-submenu-label="Database">'
-            . 'Database-specific privileges',
+                '<legend data-submenu-label="Database">'
+                    . 'Database-specific privileges',
+            $actual[0]
+        );
+    }
+
+    /**
+     * Tests for PMA_getHtmlForSelectDbInEditPrivs
+     *
+     * @return void
+     */
+    function testPMAGetHtmlForSelectDbInEditPrivs()
+    {
+        $GLOBALS['pma'] = new StdClass();
+        $GLOBALS['pma']->databases = array(
+            'pmadb',
+            'testdb',
+            'mysql'
+        );
+        $actual = PMA_getHtmlForSelectDbInEditPrivs(array('pmadb'));
+        $this->assertContains(
+            '<label for="text_dbname">'
+                . 'Add privileges on the following database(s):',
+            $actual
+        );
+        $this->assertContains(
+            '<select name="pred_dbname[]" multiple="multiple">',
+            $actual
+        );
+        $this->assertContains(
+            '<option value="testdb">'
+                . 'testdb',
+            $actual
+        );
+        $this->assertContains(
+            '<option value="mysql">'
+                . 'mysql',
+            $actual
+        );
+        $this->assertContains(
+            '<input type="text" id="text_dbname" name="dbname" />',
+            $actual
+        );
+        $this->assertContains(
+            'Wildcards % and _ should be escaped with a \ to use them literally.',
+            $actual
+        );
+    }
+
+    /**
+     * Tests for PMA_displayTablesInEditPrivs
+     *
+     * @return void
+     */
+    function testPMADisplayTablesInEditPrivs()
+    {
+        // Setup for the test
+        $GLOBALS['dbi']->expects($this->any())->method('fetchRow')
+            ->will($this->onConsecutiveCalls(array('t<bl'), array('ab"c')));
+
+        // Test case 1
+        $actual = PMA_displayTablesInEditPrivs('testdb', array());
+        $this->assertContains(
+            '<input type="hidden" name="dbname"',
+            $actual
+        );
+        $this->assertContains(
+            '<label for="text_tablename">'
+                . 'Add privileges on the following table:',
+            $actual
+        );
+        $this->assertContains(
+            '<input type="text" id="text_tablename" name="tablename" />',
+            $actual
+        );
+        $this->assertContains(
+            '<select name="pred_tablename" class="autosubmit">',
+            $actual
+        );
+        $this->assertContains(
+            '<option value="" selected="selected">'
+                . 'Use text field:',
+            $actual
+        );
+        $this->assertContains(
+            '<option value="t&lt;bl">t&lt;bl</option>', $actual
+        );
+        $this->assertContains(
+            '<option value="ab&quot;c">ab&quot;c</option>', $actual
+        );
+        $this->assertContains(
+            '<input type="text" id="text_tablename" name="tablename" />',
             $actual
         );
     }
@@ -2140,7 +2300,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
     function testPMAGetDbRightsForUserOverview()
     {
         //Mock DBI
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
         $dbi->expects($this->any())
@@ -2182,7 +2342,7 @@ class PMA_ServerPrivileges_Test extends PHPUnit_Framework_TestCase
     function testPMADeleteUser()
     {
         //Mock DBI
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
         $dbi->expects($this->any())

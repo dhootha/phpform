@@ -5,14 +5,12 @@
  *
  * @package PhpMyAdmin
  */
-use PMA\libraries\Message;
-
 if (!defined('PHPMYADMIN')) {
     exit;
 }
 // build user preferences menu
 
-$form_param = isset($_GET['form']) ? $_GET['form'] : null;
+$form_param = filter_input(INPUT_GET, 'form');
 if (! isset($forms[$form_param])) {
     $forms_keys = array_keys($forms);
     $form_param = array_shift($forms_keys);
@@ -24,13 +22,14 @@ $tabs_icons = array(
     'Main_panel'  => 'b_props.png',
     'Import'      => 'b_import.png',
     'Export'      => 'b_export.png');
-
-$content = PMA\libraries\Util::getHtmlTab(
+echo '<ul id="topmenu2">';
+echo PMA_Util::getHtmlTab(
     array(
         'link' => 'prefs_manage.php',
         'text' => __('Manage your settings')
     )
 ) . "\n";
+echo '<li>&nbsp; &nbsp;</li>' . "\n";
 $script_name = basename($GLOBALS['PMA_PHP_SELF']);
 foreach (array_keys($forms) as $formset) {
     $tab = array(
@@ -38,22 +37,13 @@ foreach (array_keys($forms) as $formset) {
         'text' => PMA_lang('Form_' . $formset),
         'icon' => $tabs_icons[$formset],
         'active' => ($script_name == 'prefs_forms.php' && $formset == $form_param));
-    $content .= PMA\libraries\Util::getHtmlTab($tab, array('form' => $formset))
-        . "\n";
+    echo PMA_Util::getHtmlTab($tab, array('form' => $formset)) . "\n";
 }
-echo PMA\libraries\Template::get('list/unordered')->render(
-    array(
-        'id' => 'topmenu2',
-        'class' => 'user_prefs_tabs',
-        'content' => $content,
-    )
-);
-echo '<div class="clearfloat"></div>';
-
+echo '</ul><div class="clearfloat"></div>';
 
 // show "configuration saved" message and reload navigation panel if needed
 if (!empty($_GET['saved'])) {
-    Message::rawSuccess(__('Configuration has been saved.'))->display();
+    PMA_Message::rawSuccess(__('Configuration has been saved.'))->display();
 }
 
 /* debug code
@@ -66,19 +56,16 @@ $arr2 = implode(', ', $arr2);
 $arr2 .= '<br />Blacklist: ' . (empty($cfg['UserprefsDisallow'])
         ? '<i>empty</i>'
         : implode(', ', $cfg['UserprefsDisallow']));
-$msg = Message::notice('Settings: ' . $arr2);
+$msg = PMA_Message::notice('Settings: ' . $arr2);
 $msg->display();
 //*/
 
 // warn about using session storage for settings
 $cfgRelation = PMA_getRelationsParam();
 if (! $cfgRelation['userconfigwork']) {
-    $msg = __(
-        'Your preferences will be saved for current session only. Storing them '
-        . 'permanently requires %sphpMyAdmin configuration storage%s.'
-    );
+    $msg = __('Your preferences will be saved for current session only. Storing them permanently requires %sphpMyAdmin configuration storage%s.');
     $msg = PMA_sanitize(
         sprintf($msg, '[doc@linked-tables]', '[/doc]')
     );
-    Message::notice($msg)->display();
+    PMA_Message::notice($msg)->display();
 }

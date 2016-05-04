@@ -186,7 +186,7 @@ abstract class PMA_SeleniumBase extends PHPUnit_Extensions_Selenium2TestCase
             );
         }
         $this->database_name = $GLOBALS['TESTSUITE_DATABASE']
-            . mb_substr(md5(rand()), 0, 7);
+            . /*overload*/mb_substr(md5(rand()), 0, 7);
         $this->dbQuery(
             'CREATE DATABASE IF NOT EXISTS ' . $this->database_name
         );
@@ -425,9 +425,6 @@ abstract class PMA_SeleniumBase extends PHPUnit_Extensions_Selenium2TestCase
         } catch (PHPUnit_Extensions_Selenium2TestCase_WebDriverException $e) {
             // Element not present
             return false;
-        } catch (InvalidArgumentException $e) {
-            // Element not present
-            return false;
         }
         // Element Present
         return true;
@@ -485,7 +482,7 @@ abstract class PMA_SeleniumBase extends PHPUnit_Extensions_Selenium2TestCase
          * Not supported in Safari Webdriver, see
          * http://code.google.com/p/selenium/issues/detail?id=4136
          */
-        if (mb_strtolower($this->getBrowser()) == 'safari') {
+        if (/*overload*/mb_strtolower($this->getBrowser()) == 'safari') {
             $this->markTestSkipped('Can not send keys to Safari browser.');
         }
         parent::keys($text);
@@ -505,7 +502,7 @@ abstract class PMA_SeleniumBase extends PHPUnit_Extensions_Selenium2TestCase
          * Not supported in Safari Webdriver, see
          * http://code.google.com/p/selenium/issues/detail?id=4136
          */
-        if (mb_strtolower($this->getBrowser()) == 'safari') {
+        if (/*overload*/mb_strtolower($this->getBrowser()) == 'safari') {
             $this->markTestSkipped('MoveTo not supported on Safari browser.');
         }
         parent::moveto($element);
@@ -515,7 +512,7 @@ abstract class PMA_SeleniumBase extends PHPUnit_Extensions_Selenium2TestCase
      * Wrapper around alertText method to not use it on not supported
      * browsers.
      *
-     * @return mixed
+     * @return void
      */
     public function alertText()
     {
@@ -523,7 +520,7 @@ abstract class PMA_SeleniumBase extends PHPUnit_Extensions_Selenium2TestCase
          * Not supported in Safari Webdriver, see
          * http://code.google.com/p/selenium/issues/detail?id=4136
          */
-        if (mb_strtolower($this->getBrowser()) == 'safari') {
+        if (/*overload*/mb_strtolower($this->getBrowser()) == 'safari') {
             $this->markTestSkipped('Alerts not supported on Safari browser.');
         }
         return parent::alertText();
@@ -542,7 +539,7 @@ abstract class PMA_SeleniumBase extends PHPUnit_Extensions_Selenium2TestCase
          * Firefox needs some escaping of a text, see
          * http://code.google.com/p/selenium/issues/detail?id=1723
          */
-        if (mb_strtolower($this->getBrowser()) == 'firefox') {
+        if (/*overload*/mb_strtolower($this->getBrowser()) == 'firefox') {
             $text = str_replace(
                 "(",
                 PHPUnit_Extensions_Selenium2TestCase_Keys::SHIFT
@@ -613,3 +610,4 @@ abstract class PMA_SeleniumBase extends PHPUnit_Extensions_Selenium2TestCase
         );
     }
 }
+?>

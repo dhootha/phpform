@@ -41,13 +41,7 @@ if ($GLOBALS['cfg']['RecodingEngine'] == 'iconv') {
         PMA_warnMissingExtension('mbstring');
     }
 } elseif ($GLOBALS['cfg']['RecodingEngine'] == 'auto') {
-    /*
-     * We also need to verify iconv works, see
-     * https://github.com/phpmyadmin/phpmyadmin/issues/11787/
-     * and
-     * https://bugs.php.net/bug.php?id=44096
-     */
-    if (@function_exists('iconv') && @iconv_strlen('', 'cp1250') !== false) {
+    if (@function_exists('iconv')) {
         $PMA_recoding_engine = PMA_getIconvRecodingEngine();
     } elseif (@function_exists('recode_string')) {
         $PMA_recoding_engine = PMA_CHARSET_RECODE;
@@ -66,9 +60,9 @@ if ($PMA_recoding_engine == PMA_CHARSET_ICONV_AIX) {
 }
 
 /**
- * Determines the correct recoding engine to use
+ * Determines the correct recoding engine to use 
  *
- * @return int $PMA_recoding_engine
+ * @return int $PMA_recoding_engine 
  *
  * @access  public
  *
@@ -123,3 +117,4 @@ function PMA_convertString($src_charset, $dest_charset, $what)
     }
 } //  end of the "PMA_convertString()" function
 
+?>

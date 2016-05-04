@@ -9,6 +9,7 @@
 /*
  * Include to test.
  */
+require_once 'libraries/core.lib.php';
 require_once 'libraries/url_generating.lib.php';
 
 /**
@@ -128,3 +129,4 @@ class PMA_GenerateCommonURL_Test extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected, PMA_URL_getCommon());
     }
 }
+?>

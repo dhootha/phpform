@@ -82,3 +82,4 @@ class PMA_Config_Functions_Test extends PHPUnit_Framework_TestCase
     }
 
 }
+?>

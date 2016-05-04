@@ -8,33 +8,22 @@
     "authors": [
         {
             "name": "The phpMyAdmin Team",
-            "email": "developers@phpmyadmin.net",
+            "email": "phpmyadmin-devel@lists.sourceforge.net",
             "homepage": "https://www.phpmyadmin.net/team/"
         }
     ],
     "support": {
         "forum": "https://www.phpmyadmin.net/support/",
         "issues": "https://github.com/phpmyadmin/phpmyadmin/issues",
-        "wiki": "https://wiki.phpmyadmin.net/",
-        "docs": "https://docs.phpmyadmin.net/",
+        "wiki": "http://wiki.phpmyadmin.net/",
         "source": "https://github.com/phpmyadmin/phpmyadmin"
     },
-    "non-feature-branches": ["RELEASE_.*"],
     "require": {
-        "php": ">=5.5.0"
+        "php": ">=5.3.0"
     },
     "require-dev": {
-        "satooshi/php-coveralls": "~0.6",
-        "phpunit/phpunit": "~4.1",
-        "codacy/coverage": "dev-master",
-        "phpunit/phpunit-selenium": "~1.2",
-        "squizlabs/php_codesniffer": "2.*",
-        "phpmyadmin/coding-standard": ">=0.1.0"
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://www.phpmyadmin.net"
-        }
-    ]
+        "satooshi/php-coveralls": ">=0.6",
+        "phpunit/phpunit": "<4.2",
+        "phpunit/phpunit-selenium": ">=1.2"
+    }
 }

@@ -49,3 +49,4 @@ class PMA_SeleniumLoginTest extends PMA_SeleniumBase
         $this->assertTrue($this->isUnsuccessLogin());
     }
 }
+?>

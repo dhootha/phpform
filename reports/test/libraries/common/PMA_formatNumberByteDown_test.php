@@ -10,7 +10,8 @@
 /*
  * Include to test.
  */
-
+require_once 'libraries/Util.class.php';
+require_once 'libraries/php-gettext/gettext.inc';
 
 /**
  * Test for format number and byte
@@ -89,7 +90,7 @@ class PMA_FormatNumberByteDown_Test extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $d,
-            (string) PMA\libraries\Util::formatNumber(
+            (string) PMA_Util::formatNumber(
                 $a, $b, $c, false
             )
         );
@@ -128,8 +129,9 @@ class PMA_FormatNumberByteDown_Test extends PHPUnit_Framework_TestCase
      */
     public function testFormatByteDown($a, $b, $c, $e)
     {
-        $result = PMA\libraries\Util::formatByteDown($a, $b, $c);
+        $result = PMA_Util::formatByteDown($a, $b, $c);
         $result[0] = trim($result[0]);
         $this->assertEquals($e, $result);
     }
 }
+?>

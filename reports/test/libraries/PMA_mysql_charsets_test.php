@@ -10,6 +10,7 @@
  * Include to test.
  */
 require_once 'libraries/mysql_charsets.inc.php';
+require_once 'libraries/php-gettext/gettext.inc';
 
 /**
  * Tests for MySQL Charsets
@@ -21,6 +22,7 @@ class PMA_MySQL_Charsets_Test extends PHPUnit_Framework_TestCase
     /**
      * Test for PMA_generateCharsetQueryPart
      *
+     * @param bool   $drizzle   Value for PMA_DRIZZLE
      * @param string $collation Collation
      * @param string $expected  Expected Charset Query
      *
@@ -28,12 +30,35 @@ class PMA_MySQL_Charsets_Test extends PHPUnit_Framework_TestCase
      * @test
      * @dataProvider charsetQueryData
      */
-    public function testGenerateCharsetQueryPart($collation, $expected)
-    {
+    public function testGenerateCharsetQueryPart(
+        $drizzle, $collation, $expected
+    ) {
+        if (! PMA_HAS_RUNKIT) {
+            $this->markTestSkipped(
+                'Cannot redefine constant - missing runkit extension'
+            );
+        }
+
+        $restoreDrizzle = '';
+
+        if (defined('PMA_DRIZZLE')) {
+            $restoreDrizzle = PMA_DRIZZLE;
+            runkit_constant_redefine('PMA_DRIZZLE', $drizzle);
+        } else {
+            $restoreDrizzle = 'PMA_TEST_CONSTANT_REMOVE';
+            define('PMA_DRIZZLE', $drizzle);
+        }
+
         $this->assertEquals(
             $expected,
             PMA_generateCharsetQueryPart($collation)
         );
+
+        if ($restoreDrizzle === 'PMA_TEST_CONSTANT_REMOVE') {
+            runkit_constant_remove('PMA_DRIZZLE');
+        } else {
+            runkit_constant_redefine('PMA_DRIZZLE', $restoreDrizzle);
+        }
     }
 
     /**
@@ -44,9 +69,10 @@ class PMA_MySQL_Charsets_Test extends PHPUnit_Framework_TestCase
     public function charsetQueryData()
     {
         return array(
-            array("a_b_c_d", " CHARSET=a COLLATE a_b_c_d"),
-            array("a_", " CHARSET=a COLLATE a_"),
-            array("a", " CHARSET=a"),
+            array(false, "a_b_c_d", " CHARACTER SET a COLLATE a_b_c_d"),
+            array(false, "a_", " CHARACTER SET a COLLATE a_"),
+            array(false, "a", " CHARACTER SET a"),
+            array(true, "a_b_c_d", " COLLATE a_b_c_d")
         );
     }
 
@@ -59,20 +85,61 @@ class PMA_MySQL_Charsets_Test extends PHPUnit_Framework_TestCase
      */
     public function testGetDbCollation()
     {
-        $GLOBALS['server'] = 1;
-        // test case for system schema
-        $this->assertEquals(
-            'utf8_general_ci',
-            PMA_getDbCollation("information_schema")
-        );
+        if (! PMA_HAS_RUNKIT) {
+            $this->markTestSkipped(
+                'Cannot redefine constant - missing runkit extension'
+            );
+        } else {
+            $GLOBALS['server'] = 1;
+            // test case for system schema
+            $this->assertEquals(
+                'utf8_general_ci',
+                PMA_getDbCollation("information_schema")
+            );
 
-        $GLOBALS['cfg']['Server']['DisableIS'] = false;
-        $GLOBALS['cfg']['DBG']['sql'] = false;
+            $restoreDrizzle = '';
 
-        $this->assertEquals(
-            'utf8_general_ci',
-            PMA_getDbCollation('pma_test')
-        );
+            // test case with no pma drizzle
+            if (defined('PMA_DRIZZLE')) {
+                $restoreDrizzle = PMA_DRIZZLE;
+                runkit_constant_redefine('PMA_DRIZZLE', false);
+            } else {
+                $restoreDrizzle = 'PMA_TEST_CONSTANT_REMOVE';
+                define('PMA_DRIZZLE', false);
+            }
+
+            $GLOBALS['cfg']['Server']['DisableIS'] = false;
+            $GLOBALS['cfg']['DBG']['sql'] = false;
+
+            $this->assertEquals(
+                'utf8_general_ci',
+                PMA_getDbCollation('pma_test')
+            );
+
+            // test case with pma drizzle as true
+            runkit_constant_redefine('PMA_DRIZZLE', true);
+            $this->assertEquals(
+                'utf8_general_ci_pma_drizzle',
+                PMA_getDbCollation('pma_test')
+            );
+
+            $GLOBALS['cfg']['Server']['DisableIS'] = true;
+            $GLOBALS['db'] = 'pma_test2';
+            $this->assertEquals(
+                'bar',
+                PMA_getDbCollation('pma_test')
+            );
+            $this->assertNotEquals(
+                'pma_test',
+                $GLOBALS['dummy_db']
+            );
+
+            if ($restoreDrizzle === 'PMA_TEST_CONSTANT_REMOVE') {
+                runkit_constant_remove('PMA_DRIZZLE');
+            } else {
+                runkit_constant_redefine('PMA_DRIZZLE', $restoreDrizzle);
+            }
+        }
     }
 
     /**
@@ -246,3 +313,4 @@ class PMA_MySQL_Charsets_Test extends PHPUnit_Framework_TestCase
         $this->assertEquals('utf8_general_ci', PMA_getServerCollation());
     }
 }
+?>

@@ -5,22 +5,16 @@
  *
  * @package PhpMyAdmin
  */
-use PMA\libraries\config\PageSettings;
-use PMA\libraries\Response;
 
 /**
  *
  */
 require_once 'libraries/common.inc.php';
-require_once 'libraries/config/user_preferences.forms.php';
-require_once 'libraries/config/page_settings.forms.php';
-
-PageSettings::showGroup('Sql_queries');
 
 /**
  * Does the common work
  */
-$response = Response::getInstance();
+$response = PMA_Response::getInstance();
 $header   = $response->getHeader();
 $scripts  = $header->getScripts();
 $scripts->addFile('makegrid.js');
@@ -34,3 +28,5 @@ require_once 'libraries/sql_query_form.lib.php';
  * Query box, bookmark, insert data from textfile
  */
 $response->addHTML(PMA_getHtmlForSqlQueryForm());
+
+?>

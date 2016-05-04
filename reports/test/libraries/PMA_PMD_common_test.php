@@ -6,7 +6,8 @@
  */
 
 require_once 'libraries/database_interface.inc.php';
-
+require_once 'libraries/Util.class.php';
+require_once 'libraries/php-gettext/gettext.inc';
 
 /**
  * Tests for libraries/pmd_common.php
@@ -28,7 +29,6 @@ class PMA_PMD_CommonTest extends PHPUnit_Framework_TestCase
         $_SESSION = array(
             'relation' => array(
                 '1' => array(
-                    'PMA_VERSION' => PMA_VERSION,
                     'db' => 'pmadb',
                     'pdf_pages' => 'pdf_pages',
                     'pdfwork' => true,
@@ -51,7 +51,7 @@ class PMA_PMD_CommonTest extends PHPUnit_Framework_TestCase
     {
         $pg = 1;
 
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -69,7 +69,7 @@ class PMA_PMD_CommonTest extends PHPUnit_Framework_TestCase
                 'name',
                 null,
                 2,
-                PMA\libraries\DatabaseInterface::QUERY_STORE
+                PMA_DatabaseInterface::QUERY_STORE
             );
         $GLOBALS['dbi'] = $dbi;
 
@@ -86,7 +86,7 @@ class PMA_PMD_CommonTest extends PHPUnit_Framework_TestCase
         $pg = 1;
         $pageName = 'pageName';
 
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -98,7 +98,7 @@ class PMA_PMD_CommonTest extends PHPUnit_Framework_TestCase
                 null,
                 null,
                 2,
-                PMA\libraries\DatabaseInterface::QUERY_STORE
+                PMA_DatabaseInterface::QUERY_STORE
             )
             ->will($this->returnValue(array($pageName)));
         $GLOBALS['dbi'] = $dbi;
@@ -117,7 +117,7 @@ class PMA_PMD_CommonTest extends PHPUnit_Framework_TestCase
     {
         $pg = 1;
 
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -127,7 +127,7 @@ class PMA_PMD_CommonTest extends PHPUnit_Framework_TestCase
                 "DELETE FROM `pmadb`.`table_coords`"
                 . " WHERE `pdf_page_number` = " . $pg,
                 2,
-                PMA\libraries\DatabaseInterface::QUERY_STORE,
+                PMA_DatabaseInterface::QUERY_STORE,
                 false
             )
             ->will($this->returnValue(true));
@@ -137,7 +137,7 @@ class PMA_PMD_CommonTest extends PHPUnit_Framework_TestCase
             ->with(
                 "DELETE FROM `pmadb`.`pdf_pages` WHERE `page_nr` = " . $pg,
                 2,
-                PMA\libraries\DatabaseInterface::QUERY_STORE,
+                PMA_DatabaseInterface::QUERY_STORE,
                 false
             )
             ->will($this->returnValue(true));
@@ -148,129 +148,20 @@ class PMA_PMD_CommonTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test for testGetDefaultPage() when there is a default page
-     * (a page having the same name as database)
+     * Test for PMA_getFirstPage()
      *
      * @return void
      */
-    public function testGetDefaultPage()
+    public function testGetFirstPage()
     {
         $db = 'db';
-        $default_pg = '2';
+        $pg = '1';
 
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
+        $dbi = $this->getMockBuilder('PMA_DatabaseInterface')
             ->disableOriginalConstructor()
             ->getMock();
 
         $dbi->expects($this->at(0))
-            ->method('fetchResult')
-            ->with(
-                "SELECT `page_nr` FROM `pmadb`.`pdf_pages`"
-                . " WHERE `db_name` = '" . $db . "'"
-                . " AND `page_descr` = '" . $db . "'",
-                null,
-                null,
-                2,
-                PMA\libraries\DatabaseInterface::QUERY_STORE
-            )
-            ->will($this->returnValue(array($default_pg)));
-        $GLOBALS['dbi'] = $dbi;
-
-        $result = PMA_getDefaultPage($db);
-        $this->assertEquals($default_pg, $result);
-    }
-
-    /**
-     * Test for testGetDefaultPage() when there is no default page
-     *
-     * @return void
-     */
-    public function testGetDefaultPageWithNoDefaultPage()
-    {
-        $db = 'db';
-
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $dbi->expects($this->at(0))
-            ->method('fetchResult')
-            ->with(
-                "SELECT `page_nr` FROM `pmadb`.`pdf_pages`"
-                . " WHERE `db_name` = '" . $db . "'"
-                . " AND `page_descr` = '" . $db . "'",
-                null,
-                null,
-                2,
-                PMA\libraries\DatabaseInterface::QUERY_STORE
-            )
-            ->will($this->returnValue(array()));
-        $GLOBALS['dbi'] = $dbi;
-
-        $result = PMA_getDefaultPage($db);
-        $this->assertEquals(-1, $result);
-    }
-
-    /**
-     * Test for testGetLoadingPage() when there is a default page
-     *
-     * @return void
-     */
-    public function testGetLoadingPageWithDefaultPage()
-    {
-        $db = 'db';
-        $default_pg = '2';
-
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $dbi->expects($this->at(0))
-            ->method('fetchResult')
-            ->with(
-                "SELECT `page_nr` FROM `pmadb`.`pdf_pages`"
-                . " WHERE `db_name` = '" . $db . "'"
-                . " AND `page_descr` = '" . $db . "'",
-                null,
-                null,
-                2,
-                PMA\libraries\DatabaseInterface::QUERY_STORE
-            )
-            ->will($this->returnValue(array($default_pg)));
-        $GLOBALS['dbi'] = $dbi;
-
-        $result = PMA_getLoadingPage($db);
-        $this->assertEquals($default_pg, $result);
-    }
-
-    /**
-     * Test for testGetLoadingPage() when there is no default page
-     *
-     * @return void
-     */
-    public function testGetLoadingPageWithNoDefaultPage()
-    {
-        $db = 'db';
-        $first_pg = '1';
-
-        $dbi = $this->getMockBuilder('PMA\libraries\DatabaseInterface')
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $dbi->expects($this->at(0))
-            ->method('fetchResult')
-            ->with(
-                "SELECT `page_nr` FROM `pmadb`.`pdf_pages`"
-                . " WHERE `db_name` = '" . $db . "'"
-                . " AND `page_descr` = '" . $db . "'",
-                null,
-                null,
-                2,
-                PMA\libraries\DatabaseInterface::QUERY_STORE
-            )
-            ->will($this->returnValue(array()));
-
-        $dbi->expects($this->at(1))
             ->method('fetchResult')
             ->with(
                 "SELECT MIN(`page_nr`) FROM `pmadb`.`pdf_pages`"
@@ -278,12 +169,14 @@ class PMA_PMD_CommonTest extends PHPUnit_Framework_TestCase
                 null,
                 null,
                 2,
-                PMA\libraries\DatabaseInterface::QUERY_STORE
+                PMA_DatabaseInterface::QUERY_STORE
             )
-            ->will($this->returnValue(array($first_pg)));
+            ->will($this->returnValue(array($pg)));
         $GLOBALS['dbi'] = $dbi;
 
-        $result = PMA_getLoadingPage($db);
-        $this->assertEquals($first_pg, $result);
+        $result = PMA_getFirstPage($db);
+
+        $this->assertEquals($pg, $result);
     }
 }
+?>

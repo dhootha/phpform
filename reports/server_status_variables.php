@@ -6,14 +6,19 @@
  * @package PhpMyAdmin
  */
 
-use PMA\libraries\Message;
-use PMA\libraries\ServerStatusData;
-
 require_once 'libraries/common.inc.php';
 require_once 'libraries/server_common.inc.php';
+require_once 'libraries/ServerStatusData.class.php';
 require_once 'libraries/server_status_variables.lib.php';
-require_once 'libraries/replication.inc.php';
-require_once 'libraries/replication_gui.lib.php';
+
+if (PMA_DRIZZLE) {
+    $GLOBALS['replication_info'] = array();
+    $GLOBALS['replication_info']['master']['status'] = false;
+    $GLOBALS['replication_info']['slave']['status'] = false;
+} else {
+    include_once 'libraries/replication.inc.php';
+    include_once 'libraries/replication_gui.lib.php';
+}
 
 /**
  * flush status variables if requested
@@ -31,9 +36,9 @@ if (isset($_REQUEST['flush'])) {
     unset($_flush_commands);
 }
 
-$serverStatusData = new ServerStatusData();
+$ServerStatusData = new PMA_ServerStatusData();
 
-$response = PMA\libraries\Response::getInstance();
+$response = PMA_Response::getInstance();
 $header   = $response->getHeader();
 $scripts  = $header->getScripts();
 $scripts->addFile('server_status_variables.js');
@@ -41,18 +46,12 @@ $scripts->addFile('jquery/jquery.tablesorter.js');
 $scripts->addFile('server_status_sorter.js');
 
 $response->addHTML('<div>');
-$response->addHTML($serverStatusData->getMenuHtml());
-if ($serverStatusData->dataLoaded) {
-    $response->addHTML(PMA_getHtmlForFilter($serverStatusData));
-    $response->addHTML(PMA_getHtmlForLinkSuggestions($serverStatusData));
-    $response->addHTML(PMA_getHtmlForVariablesList($serverStatusData));
-} else {
-    $response->addHTML(
-        Message::error(
-            __('Not enough privilege to view status variables.')
-        )->getDisplay()
-    );
-}
+$response->addHTML($ServerStatusData->getMenuHtml());
+$response->addHTML(PMA_getHtmlForFilter($ServerStatusData));
+$response->addHTML(PMA_getHtmlForLinkSuggestions($ServerStatusData));
+$response->addHTML(PMA_getHtmlForVariablesList($ServerStatusData));
 $response->addHTML('</div>');
 
 exit;
+
+?>

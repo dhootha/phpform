@@ -1,6 +1,7 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
+ * Tests for PMA_isValid() from libraries/core.lib.php
  *
  * @package PhpMyAdmin-test
  */
@@ -8,8 +9,10 @@
 /*
  * Include to test.
  */
+require_once 'libraries/core.lib.php';
 
 /**
+ * Tests for PMA_isValid() from libraries/core.lib.php
  *
  * @package PhpMyAdmin-test
  */
@@ -341,3 +344,4 @@ class PMA_IsValid_Test extends PHPUnit_Framework_TestCase
 
 }
 
+?>

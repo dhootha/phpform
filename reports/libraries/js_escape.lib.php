@@ -6,6 +6,9 @@
  * @package PhpMyAdmin
  *
  */
+if (! defined('PHPMYADMIN')) {
+    exit;
+}
 
 /**
  * Format a string so it can be a string inside JavaScript code inside an
@@ -30,9 +33,7 @@ function PMA_jsFormat($a_string = '', $add_backquotes = true)
         $a_string = str_replace('#', '\\#', $a_string);
     }
 
-    return $add_backquotes
-        ? PMA\libraries\Util::backquote($a_string)
-        : $a_string;
+    return (($add_backquotes) ? PMA_Util::backquote($a_string) : $a_string);
 } // end of the 'PMA_jsFormat()' function
 
 /**
@@ -131,45 +132,4 @@ function PMA_printJsValue($key, $value)
     echo PMA_getJsValue($key, $value);
 }
 
-/**
- * Formats javascript assignment for form validation api
- * with proper escaping of a value.
- *
- * @param string  $key   Name of value to set
- * @param string  $value Value to set
- * @param boolean $addOn Check if $.validator.format is required or not
- * @param boolean $comma Check if comma is required
- *
- * @return string Javascript code.
- */
-function PMA_getJsValueForFormValidation($key, $value, $addOn, $comma)
-{
-    $result = $key . ': ';
-    if ($addOn) {
-        $result .= '$.validator.format(';
-    }
-    $result .= PMA_formatJsVal($value);
-    if ($addOn) {
-        $result .= ')';
-    }
-    if ($comma) {
-        $result .= ', ';
-    }
-    return $result;
-}
-
-/**
- * Prints javascript assignment for form validation api
- * with proper escaping of a value.
- *
- * @param string  $key   Name of value to set
- * @param string  $value Value to set
- * @param boolean $addOn Check if $.validator.format is required or not
- * @param boolean $comma Check if comma is required
- *
- * @return void
- */
-function PMA_printJsValueForFormValidation($key, $value, $addOn=false, $comma=true)
-{
-    echo PMA_getJsValueForFormValidation($key, $value, $addOn, $comma);
-}
+?>
