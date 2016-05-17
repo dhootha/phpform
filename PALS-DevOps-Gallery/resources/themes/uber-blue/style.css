@@ -3,12 +3,12 @@
 /* -------------------------------------------------------------------------- */
 
 html {
-    background-color: #355664;
+    background-color: #FFFFFF;
     font-size: 100%;
 }
 
 body {
-    background-color: #355664;
+    background-color: #672d79;
     color: #333;
     font-family: Arial, Helvetica, sans-serif, Verdana;
     font-size: .8em;
@@ -16,7 +16,7 @@ body {
 }
 
 #galleryWrapper {
-    background-color: #213E4A;
+    background-color: #672d79;
     border-radius: 5px;
     margin: 20px auto;
     padding: 20px;
@@ -71,9 +71,9 @@ h1 {
 }
 
 #galleryList li a {
-    background-color: #15242A !important;
-    border-top: 1px solid #132228;
-    border-left: 1px solid #132228;
+    background-color: #9e57a3 !important;
+    border-top: 1px solid #9e57a3;
+    border-left: 1px solid #9e57a3;
     border-right: 1px solid #204656;
     border-bottom: 1px solid #204656;
     display: block;
@@ -81,7 +81,7 @@ h1 {
 }
 
 #galleryList li a:hover {
-    background-color: #1E2D34 !important;
+    background-color: #672d79 !important;
 }
 
 #galleryList li a img {
@@ -153,7 +153,7 @@ h1 {
 }
 
 #galleryPagination li.current {
-    background-color: #15242A;
+    background-color: #9e57a3;
     border-top: 1px solid #132228;
     border-left: 1px solid #132228;
     border-right: 1px solid #204656;
@@ -164,7 +164,7 @@ h1 {
 
 #galleryPagination li.inactive {
     background-color: transparent;
-    color: #15242A;
+    color: #9e57a3;
     border: 1px solid transparent;
     display: block;
     padding: 3px 6px;
@@ -208,14 +208,14 @@ h1 {
 
 .line {
     background-color: #24404C;
-    border-bottom: 1px solid #416371;
-    height: 1px;
+/*    border-bottom: 1px solid #416371;
+    height: 1px; */
     margin: 2em 0;
     overflow: hidden;
 }
 
 #galleryWrapper .line {
-    background-color: #15242A;
+    background-color: #9e57a3;
     border-bottom-color: #204656;
     margin: 10px 0;
 }
