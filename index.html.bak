@@ -300,10 +300,10 @@ function validateContact() {
                       <TR>
                 <TD COLSPAN="3" ALIGN="left" VALIGN="top">
 					<select name="pro_ans_field10" id="pro_ans_field10" class="input r123formelement certain-type-ahead" size="1" >
-                    <OPTION VALUE=""></OPTION>
-                    <option value="1" >12th May 2016</option>
+<!--                     <OPTION VALUE=""></OPTION> -->
+                    <!-- <option value="1" >12th May 2016</option> -->
                     <option value="2" >25th May 2016</option>
-                    <option value="3" >08th June 2016</option>
+                    <!-- <option value="3" >08th June 2016</option> -->
                   </select>
 				</TD>
               </TR>
@@ -395,7 +395,8 @@ function validateContact() {
   </div>
           <div class="content-section">
     <div class="header">DevOps with Microsoft Cloud</div>
-    <p>10:00 AM - 02:00 PM on 12th May or 25th May or 08th June 2016</p>
+<!--    <p>10:00 AM - 02:00 PM on 12th May or 25th May or 08th June 2016</p> -->
+    <p>10:00 AM - 02:00 PM on 25th May 2016</p>
     <p> Lemon Tree Premier, Hi-tech City, Hyderabad<br/></p>
     <div>
               <p>Join us to be more agile, improve quality, save time and money and accelerate your application delivery life cycle. </p>
@@ -427,7 +428,15 @@ function validateContact() {
                 </tbody>
       </table>
             </div>
-    <br/>
+			<br/>
+<table>
+                  <tr>
+            <td>Click <a href="#">here</a> to view the previous event</td>
+          </tr>
+                </tbody>
+      </table>
+
+	<br/>
     <br/>
 			RSVP: Sriya Singhnina, <br>Phone: +91-9704963439, Email: sriya@palsglobalsolutions.com
     <br/>
