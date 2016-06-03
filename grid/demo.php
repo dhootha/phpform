@@ -106,7 +106,7 @@ select
 , m.pro_fname
 , m.pro_lname
 , m.pro_email
-, c.pro_phone
+, m.pro_phone
 , m.pro_ans_field08
 , m.pro_organization
 , m.pro_ans_field10
@@ -126,7 +126,7 @@ select
 , m.pro_fname
 , m.pro_lname
 , m.pro_email
-, c.pro_phone
+, m.pro_phone
 , m.pro_ans_field08
 , m.pro_organization
 , m.pro_ans_field10
