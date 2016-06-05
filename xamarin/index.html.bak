@@ -293,21 +293,23 @@ function validateContact() {
                       <TR>
                 <TD COLSPAN="2" valign="middle" align="left"><input type="text" name="pro_organization" value="" size="25" maxlength="100" class="r123formelement requiredField" id="pro_organization"></TD>
               </TR>
-                      <tr >
+<!--                      <tr >
                 <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="pro_ans_field10"><font class="subheader"><span class="CustomProfileRegistrantCountry">Select a Date</span></font></label>
                           <span class="error">*</span></TD>
               </TR>
-                      <TR>
+			  -->
+<!--
+				<TR>
                 <TD COLSPAN="3" ALIGN="left" VALIGN="top">
-<!--					<select name="pro_ans_field10" id="pro_ans_field10" class="input r123formelement certain-type-ahead" size="1" >
+					<select name="pro_ans_field10" id="pro_ans_field10" class="input r123formelement certain-type-ahead" size="1" >
                      <OPTION VALUE=""></OPTION> 
                      <option value="1" >12th May 2016</option> 
                     <option value="2" >25th May 2016</option>
                      <option value="3" >08th June 2016</option>
                   </select>
-				  -->
 				</TD>
               </TR>
+				  -->
                     </TABLE></td>
                 </tr>
      
@@ -395,12 +397,12 @@ function validateContact() {
             </div>
   </div>
           <div class="content-section">
-    <div class="header">DevOps with Microsoft Cloud</div>
+    <div class="header">Round Table on Building Cross Platform Mobile Applications</div>
 <!--    <p>10:00 AM - 02:00 PM on 12th May or 25th May or 08th June 2016</p> -->
-    <p>10:00 AM - 02:00 PM on 25th May 2016</p>
+    <p>10:00 AM - 02:00 PM on 22nd June 2016</p>
     <p> Lemon Tree Premier, Hi-tech City, Hyderabad<br/></p>
     <div>
-              <p>Join us to be more agile, improve quality, save time and money and accelerate your application delivery life cycle. </p>
+              <p>Join us to explore Xamarin and take a 360⁰ view of the exciting benefits that it brings to you. </p>
               <table cellpadding="4" cellspacing="0" class="day-agenda bg-color-row" style="width:100%;">
         <tbody>
                   <tr>
@@ -415,31 +417,24 @@ function validateContact() {
             <td>Welcome and Registration</td>
           </tr>
                   <tr>
-            <td>10:30 - 12:45</td>
-            <td>Insights into End to End DevOps with Microsoft Cloud</td>
+            <td>10:30 -13:15</td>
+            <td>Cross Platform Development in Visual Studio with Xamarin</td>
           </tr>
                   <tr>
-            <td>12:45-13:00 </td>
-            <td>Q&A and Feedback</td>
+            <td>13:15 -13:30</td>
+            <td>Q&A Session and Feedback</td>
           </tr>
                   <tr>
-            <td>13:00-14:00</td>
+            <td>13:30 -14:00</td>
             <td>Lunch</td>
           </tr>
                 </tbody>
       </table>
             </div>
 			<br/>
-<table>
-                  <tr>
-            <td>Please click <a href="PALS-DevOps-Gallery/" style="color:#0797c7;">here</a> to check the snippets from our first Round Table on 12'th May 2016.</td>
-          </tr>
-                </tbody>
-      </table>
-
 	<br/>
     <br/>
-			RSVP: Sriya Singhnina, <br>Phone: +91-9704963439, Email: sriya@palsglobalsolutions.com
+			RSVP: Sriya Singhnina, <br>Phone: +91-9515050829, Email: sriya@palsglobalsolutions.com
     <br/>
     <br/>
     <br/>
