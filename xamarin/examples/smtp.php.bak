@@ -8,6 +8,9 @@ $password = "2d8b8a3a";
 $dbname = "acsm_70271d13b405930";
 // Database=acsm_70271d13b405930;Data Source=ap-cdbr-azure-southeast-b.cloudapp.net;User Id=b9638ac1a1d625;Password=2d8b8a3a
 
+/*
+Server: palsevents.database.windows.net,1433 \r\nSQL Database: events\r\nUser Name: palsevents\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:palsevents.database.windows.net,1433; Database = events\", \"palsevents\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting to SQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"palsevents@palsevents\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"events\", \"LoginTimeout\" => 30, \"Encrypt\" => 1);\r\n$serverName = \"tcp:palsevents.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
+*/
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -18,7 +21,7 @@ if ($conn->connect_error) {
 //$sql = "INSERT INTO events (pro_fname, pro_lname, pro_email,pro_phone,pro_ans_field08,pro_organization,pro_ans_field10) VALUES ('".mysql_real_escape_string($_POST['pro_fname'])."', '".mysql_real_escape_string($_POST['pro_lname'])."', '".mysql_real_escape_string($_POST['pro_email'])."','".mysql_real_escape_string($_POST['pro_phone'])."','".mysql_real_escape_string($_POST['pro_ans_field08'])."','".mysql_real_escape_string($_POST['pro_organization'])."','".mysql_real_escape_string($_POST['pro_ans_field10'])."')";
 
 
-$sql = "INSERT INTO events (pro_fname, pro_lname, pro_email,pro_phone,pro_ans_field08,pro_organization,pro_ans_field10)
+$sql = "INSERT INTO xamarine (pro_fname, pro_lname, pro_email,pro_phone,pro_ans_field08,pro_organization,pro_ans_field10)
 VALUES ('".$_POST['pro_fname']."', '".$_POST['pro_lname']."', '".$_POST['pro_email']."','".$_POST['pro_phone']."','".$_POST['pro_ans_field08']."','".$_POST['pro_organization']."','".$_POST['pro_ans_field10']."')";
 
 if ($conn->query($sql) === TRUE) {
@@ -68,17 +71,17 @@ $mail->Username = "events@palsglobalsolutions.com";
 //Password to use for SMTP authentication
 $mail->Password = "P@ls2016";
 //Set who the message is to be sent from
-$mail->setFrom('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
+$mail->setFrom('events@palsglobalsolutions.com', 'Xamarin with Visual Studio');
 //Set an alternative reply-to address
-$mail->addReplyTo('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
+$mail->addReplyTo('events@palsglobalsolutions.com', 'Xamarin with Visual Studio');
 
 //Set who the message is to be sent to
 $mail->addAddress($_POST['pro_email'], $_POST['pro_fname']." ".$_POST['pro_lname']);
-$mail->addBCC('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
-$mail->addBCC('uday@palsglobalsolutions.com', 'Microsoft DevOps Events');
-$mail->addBCC('sriya@palsglobalsolutions.com', 'Microsoft DevOps Events');
+$mail->addBCC('events@palsglobalsolutions.com', 'Microsoft Xamarin Events');
+$mail->addBCC('uday@palsglobalsolutions.com', 'Microsoft Xamarin Events');
+$mail->addBCC('sriya@palsglobalsolutions.com', 'Microsoft Xamarin Events');
 //Set the subject line
-$mail->Subject = 'Demystifying DevOps - Join us for the Round Table Event';
+$mail->Subject = 'Xamarin with Visual Studio - Join us for the Round Table Event';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 //$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
@@ -97,7 +100,7 @@ if(isset($_POST['pro_ans_field10'])){
 		$eventDate = "08th June 2016";
 	}
 } else {
-		$eventDate = "12th June 2016";
+		$eventDate = "22nd June 2016";
 }
 
 
@@ -154,7 +157,7 @@ if (!$mail->send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
 	
 
-		$updatesql = "update events set user_status=1 where id=".$conn->insert_id;
+		$updatesql = "update xamarine set user_status=1 where id=".$conn->insert_id;
 
 		if ($conn->query($updatesql) === TRUE) {
 			echo "New record created successfullyMessage sent!";

@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 //$sql = "INSERT INTO events (pro_fname, pro_lname, pro_email,pro_phone,pro_ans_field08,pro_organization,pro_ans_field10) VALUES ('".mysql_real_escape_string($_POST['pro_fname'])."', '".mysql_real_escape_string($_POST['pro_lname'])."', '".mysql_real_escape_string($_POST['pro_email'])."','".mysql_real_escape_string($_POST['pro_phone'])."','".mysql_real_escape_string($_POST['pro_ans_field08'])."','".mysql_real_escape_string($_POST['pro_organization'])."','".mysql_real_escape_string($_POST['pro_ans_field10'])."')";
 
 
-$sql = "INSERT INTO events (pro_fname, pro_lname, pro_email,pro_phone,pro_ans_field08,pro_organization,pro_ans_field10)
+$sql = "INSERT INTO xamarine (pro_fname, pro_lname, pro_email,pro_phone,pro_ans_field08,pro_organization,pro_ans_field10)
 VALUES ('".$_POST['pro_fname']."', '".$_POST['pro_lname']."', '".$_POST['pro_email']."','".$_POST['pro_phone']."','".$_POST['pro_ans_field08']."','".$_POST['pro_organization']."','".$_POST['pro_ans_field10']."')";
 
 if ($conn->query($sql) === TRUE) {
@@ -71,17 +71,17 @@ $mail->Username = "events@palsglobalsolutions.com";
 //Password to use for SMTP authentication
 $mail->Password = "P@ls2016";
 //Set who the message is to be sent from
-$mail->setFrom('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
+$mail->setFrom('events@palsglobalsolutions.com', 'Xamarin with Visual Studio');
 //Set an alternative reply-to address
-$mail->addReplyTo('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
+$mail->addReplyTo('events@palsglobalsolutions.com', 'Xamarin with Visual Studio');
 
 //Set who the message is to be sent to
 $mail->addAddress($_POST['pro_email'], $_POST['pro_fname']." ".$_POST['pro_lname']);
-$mail->addBCC('events@palsglobalsolutions.com', 'Microsoft DevOps Events');
-$mail->addBCC('uday@palsglobalsolutions.com', 'Microsoft DevOps Events');
-$mail->addBCC('sriya@palsglobalsolutions.com', 'Microsoft DevOps Events');
+$mail->addBCC('events@palsglobalsolutions.com', 'Microsoft Xamarin Events');
+$mail->addBCC('uday@palsglobalsolutions.com', 'Microsoft Xamarin Events');
+$mail->addBCC('sriya@palsglobalsolutions.com', 'Microsoft Xamarin Events');
 //Set the subject line
-$mail->Subject = 'Demystifying DevOps - Join us for the Round Table Event';
+$mail->Subject = 'Xamarin with Visual Studio - Join us for the Round Table Event';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 //$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
@@ -100,7 +100,7 @@ if(isset($_POST['pro_ans_field10'])){
 		$eventDate = "08th June 2016";
 	}
 } else {
-		$eventDate = "12th June 2016";
+		$eventDate = "22nd June 2016";
 }
 
 
@@ -157,7 +157,7 @@ if (!$mail->send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
 	
 
-		$updatesql = "update events set user_status=1 where id=".$conn->insert_id;
+		$updatesql = "update xamarine set user_status=1 where id=".$conn->insert_id;
 
 		if ($conn->query($updatesql) === TRUE) {
 			echo "New record created successfullyMessage sent!";
