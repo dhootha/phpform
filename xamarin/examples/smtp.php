@@ -1,7 +1,7 @@
 <?php
 
 //print_r($_REQUEST);
-
+$_POST['pro_ans_field10'] = "22nd June 2016";
 $servername = "ap-cdbr-azure-southeast-b.cloudapp.net";
 $username = "b9638ac1a1d625";
 $password = "2d8b8a3a";
