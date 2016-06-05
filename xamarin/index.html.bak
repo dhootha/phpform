@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="css/microsoft-template-style-v2.css"/>
 		<style>
 .form-section { display:none; }
-.ms-banner-section { background-image: url(Images/banner.jpg); height:354px; margin: -79px 0 0; }
+.ms-banner-section { background-image: url(Images/xamarin_banner.jpg); height:354px; margin: -79px 0 0; }
 .banner-title-text { color:#000000; }
 .r123FormSubmit, .r123FormSubmit:hover { background-color: #438ab4; color:#ffffff }
 </style>
@@ -299,12 +299,13 @@ function validateContact() {
               </TR>
                       <TR>
                 <TD COLSPAN="3" ALIGN="left" VALIGN="top">
-					<select name="pro_ans_field10" id="pro_ans_field10" class="input r123formelement certain-type-ahead" size="1" >
-<!--                     <OPTION VALUE=""></OPTION> -->
-                    <!-- <option value="1" >12th May 2016</option> -->
+<!--					<select name="pro_ans_field10" id="pro_ans_field10" class="input r123formelement certain-type-ahead" size="1" >
+                     <OPTION VALUE=""></OPTION> 
+                     <option value="1" >12th May 2016</option> 
                     <option value="2" >25th May 2016</option>
-                    <!-- <option value="3" >08th June 2016</option> -->
+                     <option value="3" >08th June 2016</option>
                   </select>
+				  -->
 				</TD>
               </TR>
                     </TABLE></td>
