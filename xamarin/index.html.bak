@@ -229,14 +229,14 @@ function validateContact() {
                   <td><div id="uniqueMessage"></div>
             <TABLE border="0" class="form-table ms-tablelayout regoTable" cellpadding="0" cellspacing="0">
                       <TR>
-                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_fname"><font class="subheader">First name</font></label>
+                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_fname"><font class="subheader">First Name</font></label>
                           <span class="error">*</span></TD>
               </TR>
                       <TR>
                 <TD COLSPAN="2" valign="middle" align="left"><INPUT TYPE="Text" NAME="pro_fname" VALUE="" SIZE="25" MAXLENGTH="50" CLASS="r123formelement requiredField" ID="pro_fname"></TD>
               </TR>
                       <TR>
-                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_lname"><font class="subheader">Last name</font></label>
+                <TD COLSPAN=3 ALIGN="left" valign="middle"><label for="pro_lname"><font class="subheader">Last Name</font></label>
                           <span class="error">*</span></TD>
               </TR>
                       <TR>
@@ -293,23 +293,19 @@ function validateContact() {
                       <TR>
                 <TD COLSPAN="2" valign="middle" align="left"><input type="text" name="pro_organization" value="" size="25" maxlength="100" class="r123formelement requiredField" id="pro_organization"></TD>
               </TR>
-<!--                      <tr >
+                     <tr >
                 <TD COLSPAN="3" ALIGN="left" VALIGN="top"><label for="pro_ans_field10"><font class="subheader"><span class="CustomProfileRegistrantCountry">Select a Date</span></font></label>
                           <span class="error">*</span></TD>
               </TR>
-			  -->
-<!--
+
 				<TR>
                 <TD COLSPAN="3" ALIGN="left" VALIGN="top">
 					<select name="pro_ans_field10" id="pro_ans_field10" class="input r123formelement certain-type-ahead" size="1" >
-                     <OPTION VALUE=""></OPTION> 
-                     <option value="1" >12th May 2016</option> 
-                    <option value="2" >25th May 2016</option>
-                     <option value="3" >08th June 2016</option>
+                     <option value="3" >22nd June 2016</option>
                   </select>
 				</TD>
               </TR>
--->
+
                     </TABLE></td>
                 </tr>
      
