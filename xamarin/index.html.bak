@@ -3,7 +3,7 @@
 		<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>DevOps with Microsoft Cloud - Join us for the Round Table Event</title>
+		<title>Xamarin with Visual Studio - Join us for the Round Table Event</title>
 		<link rel="shortcut icon" href="//www.microsoft.com/favicon.ico?v2" />
 		<link rel="stylesheet" href="css/microsoft-template-style-v2.css"/>
 		<style>
@@ -400,7 +400,7 @@ function validateContact() {
     <div class="header">Round Table on Building Cross Platform Mobile Applications</div>
 <!--    <p>10:00 AM - 02:00 PM on 12th May or 25th May or 08th June 2016</p> -->
     <p>10:00 AM - 02:00 PM on 22nd June 2016</p>
-    <p> Lemon Tree Premier, Hi-tech City, Hyderabad<br/></p>
+    <p> Lemon Tree Premier, Hitech City, Hyderabad<br/></p>
     <div>
               <p>Join us to explore Xamarin and take a 360⁰ view of the exciting benefits that it brings to you. </p>
               <table cellpadding="4" cellspacing="0" class="day-agenda bg-color-row" style="width:100%;">
